@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sigilipelli.github.io/rag-mastery-path/sitemap.xml
