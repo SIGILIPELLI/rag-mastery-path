@@ -48,6 +48,8 @@ sites cover the neighboring ground:
 - [AI/ML Mastery Path](https://sigilipelli.github.io/ai-ml-mastery-path/) — machine-learning foundations
 - [LLM Development Mastery Path](https://sigilipelli.github.io/llm-dev-mastery-path/) — building LLM applications
 
+🎥 **Prefer video?** Watch the [Mastery Path video series](https://youtube.com/@sigilipelli) on YouTube — Shorts and full walkthroughs of these lessons.
+
 ## More from the Mastery Path series
 
 Free, structured, module-wise training across 31 other languages and platforms:
