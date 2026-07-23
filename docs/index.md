@@ -50,15 +50,50 @@ sites cover the neighboring ground:
 
 ## More from the Mastery Path series
 
-Free, module-wise, entry-to-master training for languages and platforms:
+Free, structured, module-wise training across 31 other languages and platforms:
 
-- [Python Mastery Path](https://sigilipelli.github.io/python-mastery-path/)
-- [Java Mastery Path](https://sigilipelli.github.io/java-mastery-path/)
-- [JavaScript Mastery Path](https://sigilipelli.github.io/javascript-mastery-path/)
-- [TypeScript Mastery Path](https://sigilipelli.github.io/typescript-mastery-path/)
-- [SQL Mastery Path](https://sigilipelli.github.io/sql-mastery-path/)
-- [Go Mastery Path](https://sigilipelli.github.io/go-mastery-path/)
-- [Rust Mastery Path](https://sigilipelli.github.io/rust-mastery-path/)
-- [AWS Mastery Path](https://sigilipelli.github.io/aws-mastery-path/)
-- [Azure Mastery Path](https://sigilipelli.github.io/azure-mastery-path/)
-- [GCP Mastery Path](https://sigilipelli.github.io/gcp-mastery-path/)
+<div class="mastery-grid-wrap">
+<p class="mastery-grid-category">Languages</p>
+<div class="mastery-grid">
+  <a href="https://sigilipelli.github.io/python-mastery-path/">🐍 Python</a>
+  <a href="https://sigilipelli.github.io/java-mastery-path/">☕ Java</a>
+  <a href="https://sigilipelli.github.io/javascript-mastery-path/">🟨 JavaScript</a>
+  <a href="https://sigilipelli.github.io/typescript-mastery-path/">🔷 TypeScript</a>
+  <a href="https://sigilipelli.github.io/shell-mastery-path/">🐚 Shell/Bash</a>
+  <a href="https://sigilipelli.github.io/powershell-mastery-path/">💻 PowerShell</a>
+  <a href="https://sigilipelli.github.io/c-mastery-path/">🇨 C</a>
+  <a href="https://sigilipelli.github.io/cpp-mastery-path/">➕ C++</a>
+  <a href="https://sigilipelli.github.io/go-mastery-path/">🐹 Go</a>
+  <a href="https://sigilipelli.github.io/rust-mastery-path/">🦀 Rust</a>
+  <a href="https://sigilipelli.github.io/sql-mastery-path/">🗄️ SQL</a>
+  <a href="https://sigilipelli.github.io/ruby-mastery-path/">💎 Ruby</a>
+  <a href="https://sigilipelli.github.io/php-mastery-path/">🐘 PHP</a>
+  <a href="https://sigilipelli.github.io/kotlin-mastery-path/">🟣 Kotlin</a>
+  <a href="https://sigilipelli.github.io/swift-mastery-path/">🐦 Swift</a>
+  <a href="https://sigilipelli.github.io/dart-mastery-path/">🎯 Dart</a>
+  <a href="https://sigilipelli.github.io/scala-mastery-path/">🔴 Scala</a>
+  <a href="https://sigilipelli.github.io/r-mastery-path/">📊 R</a>
+</div>
+<p class="mastery-grid-category">Cloud Platforms</p>
+<div class="mastery-grid">
+  <a href="https://sigilipelli.github.io/aws-mastery-path/">☁️ AWS</a>
+  <a href="https://sigilipelli.github.io/azure-mastery-path/">☁️ Azure</a>
+  <a href="https://sigilipelli.github.io/gcp-mastery-path/">☁️ GCP</a>
+  <a href="https://sigilipelli.github.io/ibm-cloud-mastery-path/">☁️ IBM Cloud</a>
+  <a href="https://sigilipelli.github.io/adobe-mastery-path/">🎨 Adobe</a>
+</div>
+<p class="mastery-grid-category">AI / ML / LLM</p>
+<div class="mastery-grid">
+  <a href="https://sigilipelli.github.io/ai-ml-mastery-path/">🤖 AI/ML</a>
+  <a href="https://sigilipelli.github.io/llm-dev-mastery-path/">🧠 LLM Dev</a>
+  <a href="https://sigilipelli.github.io/edge-ai-mastery-path/">📱 Edge AI</a>
+</div>
+<p class="mastery-grid-category">Embedded Systems</p>
+<div class="mastery-grid">
+  <a href="https://sigilipelli.github.io/embedded-mastery-path/">🔌 Embedded</a>
+  <a href="https://sigilipelli.github.io/embedded-linux-mastery-path/">🐧 Embedded Linux</a>
+  <a href="https://sigilipelli.github.io/embedded-python-mastery-path/">🐍 Embedded Python</a>
+  <a href="https://sigilipelli.github.io/freertos-mastery-path/">⏱️ FreeRTOS</a>
+  <a href="https://sigilipelli.github.io/s32k-mastery-path/">🔧 S32K</a>
+</div>
+</div>
