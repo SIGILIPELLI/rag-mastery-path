@@ -1,3 +1,8 @@
+---
+title: "Learn RAG (Retrieval-Augmented Generation) Free: Full Course"
+description: "Free course on building RAG pipelines -- embeddings, vector stores, and retrieval, with real hands-on projects. Part of a 37-course free learning library."
+---
+
 # RAG Pipelines Mastery Path
 
 A structured, module-wise training program on **Retrieval-Augmented Generation
