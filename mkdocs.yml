@@ -62,39 +62,8 @@ nav:
       - "08 · Evaluating RAG": level-1/08-evaluating-rag.md
       - "09 · Common Failure Modes": level-1/09-failure-modes.md
       - "10 · Project — Docs Q&A Bot": level-1/10-capstone-docs-qa-bot.md
-  - "Level 2 · Intermediate":
-      - Overview: level-2/index.md
-      - "01 · Keyword Search & BM25": level-2/01-bm25-keyword-search.md
-      - "02 · Hybrid Search (Dense + Sparse)": level-2/02-hybrid-search.md
-      - "03 · Reranking with Cross-Encoders": level-2/03-reranking.md
-      - "04 · Query Rewriting & Expansion": level-2/04-query-rewriting.md
-      - "05 · Metadata Design & Filtered Retrieval": level-2/05-metadata-filtering.md
-      - "06 · Structured & Table RAG": level-2/06-structured-table-rag.md
-      - "07 · Multi-Format Ingestion (PDF/HTML/Docs)": level-2/07-multi-format-ingestion.md
-      - "08 · RAG with LangChain": level-2/08-rag-langchain.md
-      - "09 · RAG with LlamaIndex": level-2/09-rag-llamaindex.md
-      - "10 · Project — Hybrid Search Assistant": level-2/10-project-hybrid-assistant.md
-  - "Level 3 · Advanced":
-      - Overview: level-3/index.md
-      - "01 · Agentic RAG": level-3/01-agentic-rag.md
-      - "02 · Multi-Hop Retrieval & Query Decomposition": level-3/02-multi-hop-retrieval.md
-      - "03 · GraphRAG & Knowledge Graphs": level-3/03-graphrag.md
-      - "04 · Production Vector Databases": level-3/04-production-vector-dbs.md
-      - "05 · Embedding Model Selection & Fine-Tuning": level-3/05-embedding-selection.md
-      - "06 · Evaluation at Scale": level-3/06-eval-at-scale.md
-      - "07 · Streaming, Caching & Latency": level-3/07-streaming-caching-latency.md
-      - "08 · Incremental Indexing & Freshness": level-3/08-incremental-indexing.md
-      - "09 · Observability & Tracing": level-3/09-observability.md
-      - "10 · Project — Agentic Research Assistant": level-3/10-project-agentic-assistant.md
-  - "Level 4 · Master":
-      - Overview: level-4/index.md
-      - "01 · Enterprise RAG Architecture Patterns": level-4/01-enterprise-architecture.md
-      - "02 · Multi-Tenant RAG & Access Control": level-4/02-multi-tenant-access-control.md
-      - "03 · Cost Optimization": level-4/03-cost-optimization.md
-      - "04 · Latency Optimization at Scale": level-4/04-latency-optimization.md
-      - "05 · RAG Security": level-4/05-rag-security.md
-      - "06 · Governance, Compliance & Auditability": level-4/06-governance-compliance.md
-      - "07 · Continuous Evaluation & Feedback Loops": level-4/07-continuous-evaluation.md
-      - "08 · Fine-Tuning vs. RAG vs. Hybrid": level-4/08-finetuning-vs-rag.md
-      - "09 · Scaling Ingestion Pipelines": level-4/09-scaling-ingestion.md
-      - "10 · Capstone — Enterprise Knowledge Platform": level-4/10-capstone-enterprise-platform.md
+# --- auto-pruned stub levels (see AdSense low-value-content fix) ---
+exclude_docs: |
+  level-2/*.md
+  level-3/*.md
+  level-4/*.md
