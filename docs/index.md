@@ -21,7 +21,7 @@ plain Python — no framework required to understand what's actually happening.
 | Level | Focus | Modules |
 |-------|-------|---------|
 | [Level 1 · Entry](level-1/index.md) | Embeddings, chunking, vector stores, retrieval, grounded generation, a full working pipeline | 9 topics + 1 project |
-| Level 2 · Intermediate (coming soon) | BM25 & hybrid search, reranking, query rewriting, table RAG, LangChain & LlamaIndex | 9 topics + 1 project |
+| [Level 2 · Intermediate](level-2/index.md) | BM25 & hybrid search, reranking, query rewriting, table RAG, LangChain & LlamaIndex | 9 topics + 1 project |
 | Level 3 · Advanced (coming soon) | Agentic RAG, multi-hop retrieval, GraphRAG, production vector DBs, eval at scale | 9 topics + 1 project |
 | Level 4 · Master (coming soon) | Enterprise architecture, multi-tenancy, cost/latency optimization, RAG security | 9 topics + 1 capstone |
 

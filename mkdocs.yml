@@ -62,8 +62,19 @@ nav:
       - "08 · Evaluating RAG": level-1/08-evaluating-rag.md
       - "09 · Common Failure Modes": level-1/09-failure-modes.md
       - "10 · Project — Docs Q&A Bot": level-1/10-capstone-docs-qa-bot.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · Keyword Search & BM25": level-2/01-bm25-keyword-search.md
+      - "02 · Hybrid Search (Dense + Sparse)": level-2/02-hybrid-search.md
+      - "03 · Reranking with Cross-Encoders": level-2/03-reranking.md
+      - "04 · Query Rewriting & Expansion": level-2/04-query-rewriting.md
+      - "05 · Metadata Design & Filtered Retrieval": level-2/05-metadata-filtering.md
+      - "06 · Structured & Table RAG": level-2/06-structured-table-rag.md
+      - "07 · Multi-Format Ingestion (PDF/HTML/Docs)": level-2/07-multi-format-ingestion.md
+      - "08 · RAG with LangChain": level-2/08-rag-langchain.md
+      - "09 · RAG with LlamaIndex": level-2/09-rag-llamaindex.md
+      - "10 · Project — Hybrid Search Documentation Assistant": level-2/10-project-hybrid-assistant.md
 # --- auto-pruned stub levels (see AdSense low-value-content fix) ---
 exclude_docs: |
-  level-2/*.md
   level-3/*.md
   level-4/*.md
