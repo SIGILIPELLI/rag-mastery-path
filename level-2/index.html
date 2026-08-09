@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://sigilipelli.github.io/rag-mastery-path/level-1/">
+        <link rel="canonical" href="https://sigilipelli.github.io/rag-mastery-path/level-2/">
       
       
-        <link rel="prev" href="../privacy/">
+        <link rel="prev" href="../level-1/10-capstone-docs-qa-bot/">
       
       
-        <link rel="next" href="01-what-is-rag/">
+        <link rel="next" href="01-bm25-keyword-search/">
       
       
         
@@ -66,7 +66,7 @@
   <meta property="og:site_name" content="RAG Pipelines Mastery Path">
   <meta property="og:title" content="Overview">
   <meta property="og:description" content="A structured, module-wise training program on Retrieval-Augmented Generation from entry level to master level — free, with runnable Python code in every module.">
-  <meta property="og:url" content="https://sigilipelli.github.io/rag-mastery-path/level-1/">
+  <meta property="og:url" content="https://sigilipelli.github.io/rag-mastery-path/level-2/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Overview">
   <meta name="twitter:description" content="A structured, module-wise training program on Retrieval-Augmented Generation from entry level to master level — free, with runnable Python code in every module.">
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#level-1-entry-foundations" class="md-skip">
+        <a href="#level-2-intermediate-smarter-retrieval" class="md-skip">
           Skip to content
         </a>
       
@@ -275,13 +275,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../level-1/" class="md-tabs__link">
           
   
   
@@ -299,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../level-2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -420,6 +420,380 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/01-what-is-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · What Is RAG & Why It Exists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/02-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Embeddings & Semantic Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Chunking Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/04-vector-stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Vector Stores (ChromaDB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/05-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/06-prompt-assembly-generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Prompt Assembly & Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/07-minimal-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · A Minimal End-to-End Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/08-evaluating-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Evaluating RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/09-failure-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Common Failure Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/10-capstone-docs-qa-bot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Docs Q&A Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -467,385 +841,11 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
             <a href="./" class="md-nav__link md-nav__link--active">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Level 1 · Entry
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Level 1 · Entry
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="01-what-is-rag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 · What Is RAG & Why It Exists
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="02-embeddings/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 · Embeddings & Semantic Similarity
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="03-chunking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 · Chunking Strategies
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="04-vector-stores/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 · Vector Stores (ChromaDB)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="05-retrieval/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 · Retrieval
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="06-prompt-assembly-generation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 · Prompt Assembly & Generation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="07-minimal-pipeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    07 · A Minimal End-to-End Pipeline
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="08-evaluating-rag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 · Evaluating RAG
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="09-failure-modes/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 · Common Failure Modes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="10-capstone-docs-qa-bot/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 · Project — Docs Q&A Bot
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../level-2/" class="md-nav__link ">
               
   
   
@@ -863,13 +863,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -889,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/01-bm25-keyword-search/" class="md-nav__link">
+      <a href="01-bm25-keyword-search/" class="md-nav__link">
         
   
   
@@ -917,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/02-hybrid-search/" class="md-nav__link">
+      <a href="02-hybrid-search/" class="md-nav__link">
         
   
   
@@ -945,7 +945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/03-reranking/" class="md-nav__link">
+      <a href="03-reranking/" class="md-nav__link">
         
   
   
@@ -973,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/04-query-rewriting/" class="md-nav__link">
+      <a href="04-query-rewriting/" class="md-nav__link">
         
   
   
@@ -1001,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/05-metadata-filtering/" class="md-nav__link">
+      <a href="05-metadata-filtering/" class="md-nav__link">
         
   
   
@@ -1029,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/06-structured-table-rag/" class="md-nav__link">
+      <a href="06-structured-table-rag/" class="md-nav__link">
         
   
   
@@ -1057,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/07-multi-format-ingestion/" class="md-nav__link">
+      <a href="07-multi-format-ingestion/" class="md-nav__link">
         
   
   
@@ -1085,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/08-rag-langchain/" class="md-nav__link">
+      <a href="08-rag-langchain/" class="md-nav__link">
         
   
   
@@ -1113,7 +1113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/09-rag-llamaindex/" class="md-nav__link">
+      <a href="09-rag-llamaindex/" class="md-nav__link">
         
   
   
@@ -1141,7 +1141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../level-2/10-project-hybrid-assistant/" class="md-nav__link">
+      <a href="10-project-hybrid-assistant/" class="md-nav__link">
         
   
   
@@ -1226,35 +1226,25 @@
   
 
 
-<h1 id="level-1-entry-foundations">Level 1 · Entry <span class="level-badge">Foundations</span><a class="headerlink" href="#level-1-entry-foundations" title="Permanent link">&para;</a></h1>
-<p>Goal: understand every moving part of a RAG pipeline — embeddings, chunking,
-vector storage, retrieval, and grounded generation — and ship a working docs
-Q&amp;A bot built from those parts in plain Python.</p>
+<h1 id="level-2-intermediate-smarter-retrieval">Level 2 · Intermediate <span class="level-badge">Smarter Retrieval</span><a class="headerlink" href="#level-2-intermediate-smarter-retrieval" title="Permanent link">&para;</a></h1>
+<p>Goal: move beyond plain top-k vector search — combine dense and keyword retrieval, rerank results, rewrite queries, handle tables and messy real-world documents, and learn what the popular frameworks actually do under the hood.</p>
 <h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="01-what-is-rag/">What Is RAG &amp; Why It Exists</a></li>
-<li><a href="02-embeddings/">Embeddings &amp; Semantic Similarity</a></li>
-<li><a href="03-chunking/">Chunking Strategies</a></li>
-<li><a href="04-vector-stores/">Vector Stores (ChromaDB)</a></li>
-<li><a href="05-retrieval/">Retrieval</a></li>
-<li><a href="06-prompt-assembly-generation/">Prompt Assembly &amp; Generation</a></li>
-<li><a href="07-minimal-pipeline/">A Minimal End-to-End Pipeline</a></li>
-<li><a href="08-evaluating-rag/">Evaluating RAG</a></li>
-<li><a href="09-failure-modes/">Common Failure Modes</a></li>
-<li><a href="10-capstone-docs-qa-bot/">Project — Docs Q&amp;A Bot</a></li>
+<li><a href="01-bm25-keyword-search/">Keyword Search &amp; BM25</a></li>
+<li><a href="02-hybrid-search/">Hybrid Search (Dense + Sparse)</a></li>
+<li><a href="03-reranking/">Reranking with Cross-Encoders</a></li>
+<li><a href="04-query-rewriting/">Query Rewriting &amp; Expansion</a></li>
+<li><a href="05-metadata-filtering/">Metadata Design &amp; Filtered Retrieval</a></li>
+<li><a href="06-structured-table-rag/">Structured &amp; Table RAG</a></li>
+<li><a href="07-multi-format-ingestion/">Multi-Format Ingestion (PDF/HTML/Docs)</a></li>
+<li><a href="08-rag-langchain/">RAG with LangChain</a></li>
+<li><a href="09-rag-llamaindex/">RAG with LlamaIndex</a></li>
+<li><a href="10-project-hybrid-assistant/">Project — Hybrid Search Documentation Assistant</a></li>
 </ol>
-<p>By the end of this level you'll be able to take a folder of documents, index it
-into a vector store, answer questions over it with cited sources, measure how
-well your pipeline retrieves and answers, and recognize (and fix) the most
-common ways RAG systems fail.</p>
 <div class="admonition info">
-<p class="admonition-title">Setup for this level</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>sentence-transformers<span class="w"> </span>chromadb<span class="w"> </span>anthropic
-</code></pre></div>
-<code>sentence-transformers</code> and <code>chromadb</code> run locally and are free — no API
-key, no network calls after the first model download. Only the generation
-lessons (06, 07, 08, 10) additionally use the Anthropic API, which needs an
-<code>ANTHROPIC_API_KEY</code> environment variable. Everything else runs without one.</p>
+<p class="admonition-title">Coming soon</p>
+<p>Full lesson content for this level is being written next. Start with
+<a href="../level-1/">Level 1 · Entry</a>, which is complete.</p>
 </div>
 
 
