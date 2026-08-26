@@ -14,7 +14,3 @@ Goal: build RAG systems that hold up in production — agentic and multi-hop ret
 8. [Incremental Indexing & Freshness](08-incremental-indexing.md)
 9. [Observability & Tracing](09-observability.md)
 10. [Project — Agentic Research Assistant](10-project-agentic-assistant.md)
-
-!!! info "Coming soon"
-    Full lesson content for this level is being written next. Start with
-    [Level 1 · Entry](../level-1/index.md), which is complete.
