@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sigilipelli.github.io/rag-mastery-path/sitemap.xml
+Sitemap: https://sigilipelli.github.io/rag-skillmastery/sitemap.xml
