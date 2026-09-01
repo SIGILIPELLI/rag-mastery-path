@@ -1,187 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/privacy/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/privacy/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/01-what-is-rag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/01-what-is-rag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/02-embeddings/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/02-embeddings/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/03-chunking/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/03-chunking/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/04-vector-stores/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/04-vector-stores/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/05-retrieval/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/05-retrieval/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/06-prompt-assembly-generation/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/06-prompt-assembly-generation/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/07-minimal-pipeline/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/07-minimal-pipeline/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/08-evaluating-rag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/08-evaluating-rag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/09-failure-modes/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/09-failure-modes/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-1/10-capstone-docs-qa-bot/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-1/10-capstone-docs-qa-bot/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/01-bm25-keyword-search/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/01-bm25-keyword-search/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/02-hybrid-search/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/02-hybrid-search/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/03-reranking/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/03-reranking/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/04-query-rewriting/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/04-query-rewriting/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/05-metadata-filtering/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/05-metadata-filtering/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/06-structured-table-rag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/06-structured-table-rag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/07-multi-format-ingestion/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/07-multi-format-ingestion/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/08-rag-langchain/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/08-rag-langchain/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/09-rag-llamaindex/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/09-rag-llamaindex/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-2/10-project-hybrid-assistant/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-2/10-project-hybrid-assistant/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/01-agentic-rag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/01-agentic-rag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/02-multi-hop-retrieval/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/02-multi-hop-retrieval/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/03-graphrag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/03-graphrag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/04-production-vector-dbs/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/04-production-vector-dbs/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/05-embedding-selection/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/05-embedding-selection/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/06-eval-at-scale/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/06-eval-at-scale/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/07-streaming-caching-latency/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/07-streaming-caching-latency/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/08-incremental-indexing/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/08-incremental-indexing/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/09-observability/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/09-observability/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-3/10-project-agentic-assistant/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-3/10-project-agentic-assistant/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/01-enterprise-architecture/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/01-enterprise-architecture/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/02-multi-tenant-access-control/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/02-multi-tenant-access-control/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/03-cost-optimization/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/03-cost-optimization/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/04-latency-optimization/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/04-latency-optimization/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/05-rag-security/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/05-rag-security/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/06-governance-compliance/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/06-governance-compliance/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/07-continuous-evaluation/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/07-continuous-evaluation/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/08-finetuning-vs-rag/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/08-finetuning-vs-rag/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/09-scaling-ingestion/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/09-scaling-ingestion/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
-         <loc>https://sigilipelli.github.io/rag-skillmastery/level-4/10-capstone-enterprise-platform/</loc>
+         <loc>https://sigilipelli.github.io/rag-mastery-path/level-4/10-capstone-enterprise-platform/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
 </urlset>
