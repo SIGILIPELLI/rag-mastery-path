@@ -241,6 +241,49 @@ where one wins, they fail on *disjoint* query sets.
 | Blind to | Paraphrase and synonyms |
 | Library | `rank-bm25` for learning; Elasticsearch/Postgres FTS in production |
 
+## How It Actually Works
+
+**The three terms of BM25, and what each is actually doing.** BM25 scores a
+document `D` for a query term `t` as roughly
+`IDF(t) * (tf(t,D) * (k1+1)) / (tf(t,D) + k1 * (1 - b + b * |D|/avgdl))`,
+summed over query terms. Each piece has a distinct mechanical job:
+
+- **IDF(t) = log((N - n_t + 0.5) / (n_t + 0.5))** — inverse document
+  frequency, down-weighting terms that appear in most documents ("the",
+  "system") toward zero (or negative) and up-weighting rare terms toward a
+  large positive value. This is the "rare words carry the signal" intuition
+  turned into arithmetic: `n_t` (documents containing term t) sits in the
+  denominator, so common terms shrink the whole term's contribution.
+- **tf(t,D) saturating through k1** — raw term frequency is fed through
+  `tf*(k1+1)/(tf+k1)`, a function that grows fast for the first few
+  occurrences and then flattens (asymptoting toward `k1+1`) — so a document
+  mentioning "refund" 20 times doesn't score 20x higher than one mentioning
+  it once; the marginal value of repeated occurrences decays, which is
+  exactly what keeps BM25 from being trivially gamed by keyword stuffing.
+- **Length normalization through b** — dividing by `|D|/avgdl` penalizes long
+  documents for the same raw term count, because a term appearing twice in a
+  50-word document is a much stronger signal than the same term appearing
+  twice in a 5,000-word document; `b` (0 to 1) tunes how aggressively length
+  is penalized, with `b=0` disabling normalization entirely.
+
+**Why "using a real library" breaks without an analyzer.** BM25 operates on
+exact token matches — after tokenization, "Refund" and "refund" and
+"refunds" are three unrelated strings unless something normalizes them
+first. A real analyzer applies lowercasing, stemming or lemmatization
+(collapsing "refunds"/"refunded"/"refunding" to a shared root), and stopword
+removal *before* BM25 ever computes a score — the ranking algorithm itself
+has no notion of morphology or synonymy at all. This is the fundamental,
+structural reason sparse and dense retrieval fail on different inputs: BM25
+fails on vocabulary mismatch (query says "cancel," document says
+"terminate") because it only ever compares surface tokens, no matter how
+good the analyzer is, while dense embeddings can bridge that gap because
+they were trained to place synonymous phrases nearby in vector space — and
+dense embeddings in turn fail on exact-match needs (part numbers, error
+codes, acronyms) precisely because those tokens are rare enough that their
+embedding is dominated by noise, whereas BM25's IDF term makes rare exact
+tokens its strongest signal. That complementary failure pattern is the whole
+argument for hybrid search (next lesson).
+
 ## Exercise
 
 Take the 16-document corpus (or your own from Level 1) and build a

@@ -160,6 +160,47 @@ pipeline uses before deciding a change is "metadata-only."
 | Metadata update produces wrong answers | Metadata baked into embedded text | Re-embed on metadata change too, or separate metadata from embedded text |
 | Users trust stale time-sensitive facts | No freshness surfaced in answer | Track and show `indexed_at` age |
 
+## How It Actually Works
+
+**Why content hashing, not modification timestamps, is the correct
+"did this change" check.** File-system mtimes get touched by operations that
+don't change content at all (a re-save with identical text, a permissions
+change, a copy during backup/sync) and can be missing or unreliable across
+storage backends (object stores like S3 handle timestamps differently than a
+local filesystem, and a CMS export can reset every mtime to the export
+time). Hashing the actual chunk content (a fast non-cryptographic hash like
+xxHash, or SHA-256 if you need collision resistance) and comparing against
+the hash stored at last ingestion gives a check that is true content
+equality, immune to metadata noise — if the hash matches, re-embedding that
+chunk is provably wasted work, because the embedding model is a
+deterministic function of the input text and would produce the identical
+vector again.
+
+**Why deletes are structurally easy to forget and expensive to get wrong.**
+Re-ingestion pipelines are naturally biased toward "process what's here" —
+walk the current document set, hash and diff each one, upsert what changed.
+A deleted source document simply isn't in that walk anymore, so nothing in
+the natural flow of the pipeline notices its absence; its chunks and vectors
+silently remain in the index forever unless the pipeline explicitly diffs
+"what's indexed" against "what currently exists" and removes the difference.
+This is a pure liability, not a performance issue: a stale-but-still-indexed
+chunk from a deleted document can retrieve and get cited in an answer for a
+document that, from the user's perspective, no longer exists — arguably
+worse than the "stale index" failure mode in level-1 lesson 9, because the
+source of truth doesn't just disagree with the index, it has no record of
+the fact at all anymore.
+
+**Why re-embedding cost hides specifically in metadata-only updates.**
+Updating a chunk's metadata (say, its `access_tier` after a permissions
+change) feels like it should be nearly free — but if the update path
+re-runs the same code path as full re-ingestion, it re-embeds text whose
+embedding hasn't changed at all, paying the embedding model's full
+per-chunk cost for zero semantic benefit. The content hash from above is
+exactly the guard that should gate this: hash matches → update the metadata
+fields in place in the vector store without touching the embedding; hash
+differs → re-embed. Skipping this check is how "just update the metadata"
+silently becomes "re-embed the entire corpus" at scale.
+
 ## Exercise
 
 Add a `deleted_ids` return value to `sync()` (currently it only counts them)

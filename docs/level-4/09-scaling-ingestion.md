@@ -148,6 +148,52 @@ sequential pipeline doesn't have:
 | Both combined | Multiplies the above | Rate limit is shared — parallel batches can still trip it |
 | None of the above, just "run it overnight" | Simplicity | Doesn't scale to same-day freshness at enterprise volume |
 
+## How It Actually Works
+
+**Why embedding calls parallelize almost for free, and why that ceiling is
+real.** Each chunk's embedding is computed independently — the encoder's
+forward pass for chunk A doesn't depend on chunk B's output at all (unlike
+generation's autoregressive per-token dependency, level-3 lesson 7), so
+issuing many embedding requests concurrently is limited only by the
+embedding service's rate limits and your own concurrency settings, not by
+any inherent sequential dependency in the computation. The ceiling shows up
+as provider-side rate limiting (requests or tokens per minute) or, for
+self-hosted models, GPU memory and batch-size limits — parallelizing past
+that ceiling doesn't increase throughput, it just queues requests, which is
+why naive "just add more concurrent workers" plans plateau and sometimes
+regress (excess concurrent connections adding overhead and retries) past a
+provider-specific point.
+
+**Why batching amortizes a fixed cost that exists independently of how much
+work parallelization does.** Every API call, whether embedding one chunk or
+one hundred, pays a fixed per-request overhead (network round-trip, request
+parsing, model-loading amortization on the server side) on top of the
+actual per-token compute cost. Batching many chunks into one request spreads
+that fixed cost across all of them, while parallelizing many single-chunk
+requests pays the fixed cost N times regardless of how concurrently those N
+requests execute — batching and parallelism are solving different
+inefficiencies (fixed-cost amortization vs. wall-clock time from serial
+execution) and combining them (parallel batches, not parallel single
+requests) is what actually maximizes throughput, which is exactly why
+naive full parallelization without batching leaves throughput on the table.
+
+**Why silent drops and duplicates are the predictable failure mode of a
+fast, concurrent pipeline specifically, not of ingestion in general.** A
+sequential pipeline that fails on document 500 of 1,000 has an obvious,
+visible failure point to resume from. A pipeline running hundreds of
+concurrent batched requests has many in-flight operations at any failure
+moment — a batch that partially succeeds (some chunks embedded, the request
+then times out) can leave the pipeline's bookkeeping unsure whether those
+chunks were actually stored, and a naive retry-the-whole-batch-on-timeout
+strategy can duplicate the chunks that *did* succeed while a naive
+skip-on-timeout strategy can silently drop the ones that didn't — both
+failure modes are specifically products of concurrency (many overlapping,
+partially-observable operations) rather than something a slower, sequential
+pipeline would exhibit, which is why idempotent writes (keyed by the
+content hash from level-3 lesson 8, so a duplicate write is a no-op) and
+explicit per-chunk status tracking are the correct fix rather than "add more
+retries."
+
 ## Exercise
 
 Using the `cost_model` function, find the batch size at which doubling it

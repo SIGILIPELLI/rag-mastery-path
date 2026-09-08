@@ -142,6 +142,51 @@ in practice:
 | Access-control leakage via errors | Verbose "not found" / "not authorized" messages | Generic denial messages, audited error text |
 | False sense of security from keyword filters | Pattern-matching treated as sufficient | Treat as a tripwire only, layer real structural defenses |
 
+## How It Actually Works
+
+**Why indirect prompt injection is the same attention mechanism from level-1
+lesson 9 exploited deliberately.** Grounding works because a transformer's
+self-attention treats retrieved text as ordinary context to condition
+generation on — there is no architectural marker distinguishing "trusted
+system instruction" from "untrusted retrieved document" once both are
+tokens in the same context window. An attacker who can get text into any
+document your ingestion pipeline indexes (a support ticket, a shared wiki
+page, an uploaded PDF) can plant instruction-shaped text that, once
+retrieved and placed in context, competes on equal footing with your actual
+system prompt for influence over the next-token distribution — this is not
+a hypothetical edge case, it's the direct, structural consequence of RAG's
+core mechanism having no built-in trust boundary between instruction and
+data.
+
+**Why pattern-based flagging is necessarily incomplete, and why that's an
+inherent limitation, not an implementation gap.** Regex or keyword matching
+against known injection phrasings ("ignore previous instructions," "you are
+now DAN") catches attacks that reuse known surface forms, but next-token
+prediction doesn't require exact phrasing to be influenced — a
+paraphrase, a different language, or text styled as a legitimate-looking
+instruction embedded in a document's normal prose can achieve the same
+effect without matching any fixed pattern. This is structurally the same
+limitation BM25 has against vocabulary mismatch (level-2 lesson 1): a
+surface-pattern matcher can only catch the surface forms it was built to
+recognize, and an adversarial author (unlike a well-meaning document
+writer) is specifically motivated to avoid those forms.
+
+**Why defenses that actually hold up work by restoring a trust boundary
+architecturally rather than lexically.** Techniques that hold up in practice
+— strict output schemas that constrain what the model's response can even
+express (an answer is a rigid citation-plus-quote structure rather than free
+text, limiting what a hijacked generation can *do*), explicit delimiter/role
+tagging the model has been trained to respect as a hard boundary between
+instruction and data, or a privilege-separated design where retrieved
+content is summarized or extracted by one constrained call before ever
+reaching a second call that has any ability to take action — succeed by
+reducing what a successful injection can accomplish, not by trying to
+detect every possible injection first. This mirrors the earlier lesson on
+metadata as a security boundary (level-2 lesson 5): the durable defenses put
+a hard architectural constraint below the level where content is being
+generated, rather than trying to filter untrusted content perfectly before
+it arrives.
+
 ## Exercise
 
 Extend `detect_injection` to also flag chunks that contain instruction-like

@@ -134,6 +134,49 @@ just as accurate.
 | Best for | "Find X" | "How does X relate to Y" |
 | Failure mode | Miss paraphrases | Miss connections if extraction/resolution is bad |
 
+## How It Actually Works
+
+**Why graph traversal answers questions vector similarity structurally
+cannot.** Embedding-based retrieval finds chunks *similar in meaning* to a
+query — a well-suited operation for "what is X," a poor fit for "how is X
+connected to Y through a chain of relationships," because relatedness-by-
+path (A reports to B, B manages team C, team C owns project D) is not the
+same signal as embedding-space proximity: two entities several relationship-
+hops apart can have completely unrelated text describing them and therefore
+dissimilar embeddings, even though they're tightly connected in reality.
+GraphRAG sidesteps this by storing relationships as explicit edges
+(subject, relation, object triples) and answering multi-hop relational
+questions by walking those edges directly — a graph traversal (breadth-first
+or guided by the query) that follows real, extracted connections rather than
+hoping semantic similarity happens to correlate with relational proximity.
+
+**Why community summaries trade granularity for query-time speed.**
+Detecting communities (densely-interconnected clusters of entities and
+relations, typically via algorithms like Louvain modularity optimization)
+and pre-generating an LLM summary of each community means a broad question
+("what are the main themes in this codebase's architecture?") can be
+answered by reading a handful of summaries instead of traversing the entire
+graph or retrieving dozens of chunks — the summarization work is done once,
+offline, at construction time, and amortized across every future query that
+benefits from that community's summary. This is the same underlying
+trade-off as embedding chunks once at ingestion versus computing similarity
+at query time (level-1 lesson 4): expensive, one-time offline work in
+exchange for cheap, repeated online queries.
+
+**Why construction cost, not query cost, is GraphRAG's real bill.**
+Building the graph requires an LLM call (or several) per chunk to extract
+entities and relationships accurately enough to be trustworthy edges — a
+cost that scales with corpus size in the same way embedding does, but at
+LLM-generation prices and latencies rather than embedding-model prices,
+and with a harder accuracy problem (structured relation extraction is more
+error-prone than producing a similarity-preserving vector). Every mistake in
+extraction becomes a wrong or missing edge baked permanently into the graph
+until re-extraction — unlike a bad chunk boundary, which only degrades one
+embedding, a wrong extracted relationship can corrupt every downstream
+traversal query that depends on that edge, which is exactly why extraction
+quality is called out as the real trap rather than the traversal or
+summarization algorithms themselves.
+
 ## Exercise
 
 Add a sixth triple, `("Marcus Lee", "mentored", "Jane Rivera")`, creating a

@@ -183,6 +183,40 @@ extending it with real evaluation, a real ingestion pipeline, and a
 documented architecture decision (module 01) is the gap between this
 capstone and a production enterprise platform.
 
+## How It Actually Works
+
+**Why "verifying the isolation guarantee" requires a different kind of test
+than "demonstrating a correct answer."** A demonstration runs the happy path
+(tenant A asks a question, gets tenant A's data back) and confirms it looks
+right — but that test alone cannot distinguish "isolation is enforced" from
+"isolation happened to hold for this particular query," because it never
+exercises the failure mode isolation exists to prevent. Verifying the
+guarantee means adversarially constructing a query designed to retrieve the
+*other* tenant's confidential document (using vocabulary drawn from that
+document, so an unfiltered similarity search would rank it highly) and
+confirming the tenant-scoped filter (level-4 lesson 2's filter-before-
+ranking pattern) excludes it *before* ranking runs, not just that the final
+answer happens not to mention it — because a filter applied too late could
+still have let that content into a reranker or cache (level-4 lesson 2's
+point about intermediate stages) even if the final generated text looks
+clean.
+
+**Why this capstone's three building blocks compose without conflicting,
+and what would break if they didn't.** Tenant-scoped retrieval (filtering
+before the ANN search touches other tenants' vectors), injection detection
+on retrieved content (screening text after it's retrieved but before it
+reaches the prompt), and audit logging (recording what was retrieved and
+why) sit at three different points in the same pipeline — retrieval-time,
+post-retrieval-pre-generation, and cross-cutting observation — which is why
+they layer rather than interfere: tenant scoping determines *what enters*
+the candidate set, injection detection determines *whether retrieved text is
+safe to place in context*, and audit logging *records the resulting
+decision chain* regardless of what the first two stages did. If tenant
+scoping ran *after* injection detection instead of before, injection
+detection would be needlessly scanning other tenants' documents that should
+never have been candidates at all — the ordering isn't arbitrary, it mirrors
+each lesson's original claim about which stage the fix belongs at.
+
 ## Stretch goals
 
 - Add `classification` enforcement: extend `tenant_scoped_search` to also

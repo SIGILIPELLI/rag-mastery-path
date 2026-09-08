@@ -181,6 +181,39 @@ the same harness on your corpus and you may get the opposite ordering.
 | E | + LLM multi-query | ? | ? | +300–800 ms | 1 | Measure it |
 | F | + metadata filters | ? | ? | ~0 | 0 | Measure it |
 
+## How It Actually Works
+
+**Why an ablation table is the only honest way to know which technique
+earned its place.** Every technique in level 2 — BM25 fusion, reranking,
+query rewriting, metadata filtering — changes retrieval quality by a
+different, non-additive amount depending on what else is already enabled,
+because they interact: reranking's benefit shrinks if hybrid fusion already
+put the right chunk near the top (there's less room for the reranker to
+improve); query rewriting's benefit shrinks if the corpus vocabulary already
+closely matches how users phrase questions. Measuring each feature flag in
+isolation against the *same* golden set and the *same* baseline (lesson 8's
+hit-rate/MRR, level-1) — flip one flag at a time, hold the rest fixed — is
+the only way to attribute an accuracy delta to a specific mechanism rather
+than to noise or to another feature's overlapping effect. This is exactly
+why "the reference run" in this project's harness can show rows B and C
+(sparse fusion, reranking) earning less credit than expected: on a small
+stand-in corpus, hybrid fusion and reranking are solving a problem (surface-
+level vocabulary mismatch, blurry ranking near the top) that may barely
+exist yet — the ablation table reveals that honestly instead of assuming
+"more techniques always means better retrieval."
+
+**Why the harness — not any single retrieval technique — is the actual
+deliverable of this project.** A retrieval pipeline with five toggleable
+mechanisms and no measurement layer is five unverified hypotheses bolted
+together; you cannot tell whether reranking is helping, hurting, or doing
+nothing on your specific corpus without re-running the same golden set
+through the same metric every time you change a flag. `evaluate.py`'s job is
+to make that comparison cheap enough to run after every change, which is the
+only thing that turns "I added reranking because the lesson said it helps"
+into "I added reranking because it moved MRR from 0.61 to 0.79 on my golden
+set" — the second claim is falsifiable and specific to your data; the first
+is just borrowed confidence from a different corpus's results.
+
 ## Definition of done
 
 - [ ] `ingest.py` handles at least two formats with boilerplate stripping and

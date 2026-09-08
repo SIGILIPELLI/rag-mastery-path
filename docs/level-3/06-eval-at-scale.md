@@ -199,6 +199,48 @@ guess.
 | Answer relevance | Does the answer address the question? | Longer, vaguer answers |
 | CI regression gate | Did this change make things worse? | A floor set too low to ever trip |
 
+## How It Actually Works
+
+**Why "trivially gameable" metrics are a mathematical property of the
+metric, not sloppy implementation.** A metric like "percentage of retrieved
+chunks that mention any query keyword" can be driven toward 100% by simply
+retrieving more, longer chunks — more text means more chances for incidental
+keyword overlap, regardless of whether the chunk actually answers the
+question. This is the same failure shape as optimizing BM25's raw term
+frequency without saturation (level-2 lesson 1): a metric that rewards a
+correlate of quality instead of quality itself gets gamed by whatever
+maximizes the correlate, because gradient (or in this non-differentiable
+case, simple parameter search over top_k and chunk size) always finds the
+path of least resistance to a higher score, not the path to genuinely better
+retrieval. Precision-style metrics (hit-rate, MRR from level-1 lesson 8) are
+harder to game this way specifically because they're anchored to a golden
+set's *known-correct* documents rather than to an easily-inflatable proxy
+like keyword presence.
+
+**Why synthetic question generation has a built-in circularity to guard
+against.** Generating questions from your own chunks with an LLM ("read
+this chunk, write a question it answers") produces query-document pairs
+that are, by construction, unusually easy: the question was derived directly
+from the answer text, often reusing its exact vocabulary, which is a much
+easier retrieval problem than a real user's independently-phrased question.
+This inflates hit-rate and MRR relative to real-world performance in the
+same way eval-set contamination does (level-3 lesson 5) — the fix isn't to
+avoid synthetic generation, it's to also validate against a smaller set of
+genuinely independent, human-written questions and treat any large gap
+between the two scores as a signal that your synthetic set is measuring
+something easier than real usage.
+
+**Why CI regression suites need a stored baseline, not just a live score.**
+A single evaluation run's hit-rate/MRR number is only useful in the sense of
+level-1 lesson 8's calibration point: relative to something. Storing the
+previous commit's scores and failing CI on a statistically meaningful drop
+(not just any drop — embedding models and generation calls have enough
+run-to-run variance that a threshold, not an exact-match check, is required)
+turns evaluation from a one-time exercise into the same kind of regression
+gate a test suite provides for code correctness — except the "bug" it
+catches is a chunking change or a model swap that silently degraded
+retrieval quality without throwing any exception.
+
 ## Exercise
 
 Extend `run_regression_suite` to also compute average faithfulness (using a

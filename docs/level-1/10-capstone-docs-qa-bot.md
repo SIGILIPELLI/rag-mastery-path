@@ -298,6 +298,35 @@ Work through this checklist — each item maps to a lesson:
 | `golden.json` | Ground truth incl. unanswerables | 8 |
 | `docs/` | The corpus — treat as untrusted input | 9 |
 
+## How It Actually Works
+
+**Why this project's file layout mirrors the two-phase architecture exactly.**
+`ingest.py` and `bot.py` being separate files isn't a style choice — they run
+on genuinely different triggers and cadences (ingestion on document change,
+querying on every user message), touch different resources (ingestion is
+embedding-model-bound and I/O-bound reading files; querying is embedding-
+model-bound plus LLM-bound), and fail differently (a bad chunk in ingestion
+silently degrades future answers; a bad prompt in `bot.py` fails visibly on
+one request). Splitting them lets you re-run ingestion after a document
+change without touching or restarting the serving path, which is the same
+separation production systems make between an indexing pipeline and a
+serving API, just at much larger scale.
+
+**Why `evaluate.py` closes a loop that `ingest.py`/`bot.py` alone cannot.**
+Ingestion and querying can each run "successfully" — no exceptions, valid
+output — while still producing wrong answers, because success in the
+software-engineering sense (code ran) and success in the retrieval sense
+(the right chunk was found and used) are orthogonal. `evaluate.py` exists to
+close that gap by running the *whole* pipeline (embed question → retrieve →
+generate) against `golden.json`'s known-correct answers and scoring hit-rate/
+MRR/answer-correctness (lesson 8's metrics), which is the only way to detect
+regressions when you change chunk size, swap the embedding model, or adjust
+top-k — none of which will throw an error, but any of which can silently
+tank quality. "Definition of done" for a RAG project is therefore never
+"the code runs"; it's "the eval score on the golden set meets a bar," because
+the golden set is the only artifact in the whole project that encodes what
+"correct" actually means.
+
 ## Exercise
 
 Ship it, then stretch it. After completing the checklist, pick **one**

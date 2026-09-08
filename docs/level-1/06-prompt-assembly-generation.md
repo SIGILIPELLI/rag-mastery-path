@@ -160,6 +160,48 @@ def answer_question(question: str) -> str:
 | Threshold before generate | Skip the LLM when retrieval found nothing |
 | Provider-agnostic | Same prompt works on any chat-completions API |
 
+## How It Actually Works
+
+**Why position and instructions in the prompt causally change generation.**
+An autoregressive LLM predicts each output token from a single probability
+distribution conditioned on the entire prompt so far, computed via self-
+attention across every prior token — but attention is not uniform: models
+are measurably better at using information near the *start* and *end* of the
+context than information buried in the middle (the "lost in the middle"
+effect, covered fully in lesson 9), and instructions phrased as explicit
+constraints ("only answer using the text below; say 'I don't know' if it
+isn't there") work because next-token prediction is highly sensitive to
+recently-seen patterns — an explicit refusal instruction raises the
+probability mass on refusal-shaped continuations whenever the retrieved
+context doesn't contain matching tokens to attend to. This is also why
+prompt *order* matters mechanically, not just stylistically: putting the
+instruction after the context (so it's the most recent thing the model
+"read") typically anchors behavior more reliably than an instruction buried
+before a long context block.
+
+**Grounding is a bet on attention over parametric memory, and it's not a sure
+bet.** Concatenating retrieved chunks into context doesn't disable the
+model's trained-in knowledge — both sources of information compete during
+generation. When the retrieved text directly contains the answer, copying
+attended tokens is the path of least resistance and usually wins. When the
+retrieved text is present but doesn't actually answer the question (a near-
+miss chunk), the model can still blend it with parametric knowledge and
+produce a plausible-sounding but ungrounded answer — which is exactly why
+this lesson's "prove it works" exercise needs an explicit refusal
+instruction *and* still needs to be tested against edge cases: grounding is
+a strong bias induced by what's in the context window, not a hard guarantee
+enforced by the architecture.
+
+**Token budget is arithmetic, not vibes.** Every chunk you concatenate
+consumes tokens from the same fixed context window the model uses for
+attention computation; the tokenizer (typically a byte-pair-encoding
+variant) maps text to sub-word tokens at roughly 4 characters per token in
+English, so `top_k=5` chunks of 1000 characters is roughly 1,250 tokens
+before the question, instructions, and expected answer are even counted —
+the concrete reason lesson 9's "context overflow" failure mode exists and why
+prompt assembly has to budget tokens explicitly rather than just concatenate
+until it "looks like enough."
+
 ## Exercise
 
 Write an *ablation test*: take one answerable question and one unanswerable

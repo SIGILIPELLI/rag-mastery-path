@@ -147,6 +147,42 @@ set, not just the final answer.
 | Failure mode | Under-retrieval | Runaway loops, latency spikes |
 | Needs | Retriever | Retriever + tool schema + budget enforcement + tracing |
 
+## How It Actually Works
+
+**Why an agentic loop is a different control structure, not just "RAG with
+extra steps."** The level-1/2 pipeline is a fixed directed graph — embed,
+retrieve, assemble, generate, always in that order, exactly once. Agentic
+RAG replaces the fixed sequence with a loop where the LLM itself decides,
+after seeing each retrieval result, whether to retrieve again (with a
+refined query), call a different tool, or stop and answer — the model's own
+next-token prediction over a "should I search again or answer now?"-shaped
+prompt *is* the control flow. Mechanically this works because the model is
+given the previous retrieval results back in its context and asked to
+continue generating, and what it generates next (another tool call, or a
+final answer) is just another instance of the same `P(next_token |
+context)` computation from lesson 1 — the "decision" isn't a separate
+reasoning module, it's the same generation mechanism now producing
+structured tool-call tokens instead of prose.
+
+**Why unbounded loops are a real, not hypothetical, risk given this
+mechanism.** Because the "keep searching" decision comes from next-token
+prediction over an increasingly long context of prior (possibly
+unproductive) search results, there's no architectural guarantee of
+convergence — a model conditioned on several rounds of unhelpful retrieval
+results can just as easily predict "search again, differently" as "give up
+and answer with what I have," especially since models are trained on data
+where persistence usually looks better than premature answers. Each
+additional loop iteration also grows the context window (previous queries
+and their results accumulate), which both costs more tokens per call and
+pushes earlier results toward the "lost in the middle" degradation zone
+(lesson 9, level-1) — so an unbounded loop doesn't just risk running forever,
+it risks the model's own attention over its own search history getting
+worse the longer the loop runs. This is why hard iteration caps and
+explicit "you have used N of M searches" reminders in the prompt are not
+defensive-programming boilerplate — they're compensating directly for the
+absence of any built-in stopping guarantee in the generation mechanism
+driving the loop.
+
 ## Exercise
 
 Extend `agent_loop` so it stops early when a new subquery's results are

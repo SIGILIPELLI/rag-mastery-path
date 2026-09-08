@@ -136,6 +136,52 @@ threaded through it as deliberately as the retrieval filter does.**
 | Leak survives a retrieval-filter code review | Check the cache and any cross-request scratchpad state next |
 | Team says "we filter after ranking, it's fine, we just top_k a bit higher" | Overfetch-then-filter — recall degrades as filter selectivity increases (Level 3 module 04) and doesn't remove the structural risk |
 
+## How It Actually Works
+
+**Why "filter after ranking" is a recall bug that becomes a security bug
+under multi-tenancy, mechanically.** Level-3 lesson 4 already showed that
+post-filtering an ANN search's top-k can return fewer than k results when
+many top matches fail the predicate. Under single-tenant metadata filtering
+that's a quality annoyance; under multi-tenant access control the same
+mechanism becomes a breach vector the moment the *unfiltered* top-k results
+are used anywhere before the filter runs — for example, if a reranker
+(level-2 lesson 3) scores the pre-filter candidate set, or if retrieved
+text briefly enters a shared cache (level-3 lesson 7) keyed without tenant
+scope, another tenant's data has already been read, processed, or cached
+by code paths the access-control filter never touched. The vulnerability
+isn't in the filter's correctness — it's in every place upstream of the
+filter that touched the data first.
+
+**Why filtering before ranking is the only version that closes this
+structurally, not just usually.** Restricting the candidate set to the
+requesting tenant's vectors *before* the ANN search or reranking step runs
+means other tenants' vectors are never fetched, never scored, never placed
+in a cache keyed insufficiently, and never assembled into a prompt — the
+same principle as level-2 lesson 5's "metadata as a security boundary,"
+now applied at the point where the actual attack surface (accidental
+exposure through an intermediate processing stage, not just the final
+answer) lives. Row-level security pushes this even further down: enforcing
+the tenant predicate inside the database or vector store's own query engine
+means the isolation guarantee doesn't depend on every application code path
+remembering to add the filter correctly — a single missed `WHERE tenant_id
+= ?` in a new endpoint is a silent bypass under application-level filtering,
+but is a structural impossibility under database-level row security,
+because the row simply doesn't exist in the query's visible result set
+regardless of what code executed it.
+
+**Why permission checks stopping at retrieval leave the generation step
+exposed anyway.** Filtering retrieval correctly guarantees the LLM's context
+window never contains another tenant's chunk — but it does not, by itself,
+guarantee the model's *response* respects further constraints (a chunk
+correctly retrieved for the current tenant might still contain a
+sub-document-level permission boundary, e.g. an HR document one manager can
+see fully and another can only see redacted). Generation-time checks — output
+filtering, or a second-pass permission validation against what was actually
+included in the final prompt — exist because "the right document reached
+context" and "the right information reached the user" are not the same
+guarantee once documents themselves contain heterogeneous permission
+levels.
+
 ## Exercise
 
 Write a test with three tenants and a query engineered (like the one above)

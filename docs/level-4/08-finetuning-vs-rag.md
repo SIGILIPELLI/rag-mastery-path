@@ -126,6 +126,47 @@ how to operate.
 | Facts change frequently, format must stay consistent | Hybrid — fine-tuned model + RAG context |
 | "Let's fine-tune on our whole knowledge base" | Almost always the wrong call — that's what RAG is for |
 
+## How It Actually Works
+
+**Why RAG and fine-tuning modify genuinely different parts of the
+generation mechanism, which is what makes the cost/update-speed asymmetry
+absolute rather than incidental.** RAG changes the *conditioning context* fed
+into a fixed set of weights (level-1 lesson 1's `P(next_token | context)`
+argument) — updating knowledge means updating what's retrievable, which is
+an indexing operation (embed and store, level-1 lesson 4) costing seconds to
+minutes and requiring no change to the model itself. Fine-tuning changes
+the *weights themselves* via gradient descent over example data — updating
+knowledge means another training run, which costs GPU-hours to GPU-days
+depending on model and data size, and produces a new model artifact that has
+to be validated and redeployed before the update takes effect anywhere. This
+is not a difference of degree; it's a difference of which layer of the
+system a knowledge update touches, which is why "update speed" isn't a minor
+inconvenience of fine-tuning — it's a structural property of choosing to
+encode facts in weights instead of in a swappable context source.
+
+**Why fine-tuning wins for behavior in exactly the cases where RAG's
+mechanism has nothing to contribute.** RAG's leverage comes entirely from
+putting relevant *text* in front of the model at generation time — it has no
+mechanism for changing *how* the model writes (tone, format adherence,
+domain-specific reasoning style) because those are properties of the
+weights' learned generation policy, not properties of any retrievable
+document. Fine-tuning directly reshapes that policy through gradient
+updates on examples of the desired behavior, which is why style transfer,
+strict output-format compliance, and domain-specific reasoning patterns are
+fine-tuning's genuine strength and RAG's genuine blind spot — no amount of
+retrieved context teaches a model a new *way of answering*, only new
+*material to answer with*.
+
+**Why the hybrid pattern is not a compromise but an exploitation of the
+fact that these two mechanisms are orthogonal.** Because RAG operates on
+context and fine-tuning operates on weights, applying both means the fixed,
+fine-tuned generation policy (house style, structured citation format) runs
+*on top of* whatever facts the current retrieval call supplies — the two
+mechanisms don't compete for the same computational resource, so combining
+them captures fine-tuning's behavioral control and RAG's fact-freshness
+simultaneously, at the combined cost of both (a fine-tuning pipeline to
+maintain and an index to keep fresh) rather than a compromise between them.
+
 ## Exercise
 
 Take one real eval failure from your own project (or one from Level 3 module

@@ -221,6 +221,54 @@ before the expensive one.**
 | Fused order ≠ correct order | Put a reranker after fusion |
 | Cost | Every technique is +1 LLM call on the critical path |
 
+## How It Actually Works
+
+**Why the baseline fails: a query is not written in the vector space of the
+answer.** Embedding similarity works by placing semantically related text
+nearby, but "related" is trained on pairs like (question, passage-that-
+answers-it) — a terse, keyword-light question ("undo a bad release") and a
+verbose, procedural passage ("To roll back a deployment, run...") can sit
+farther apart in embedding space than the training distribution's typical
+question-answer pairs, because the query and the answer differ in length,
+register, and vocabulary all at once. Every technique in this lesson works
+by transforming one side of that gap so the two sides land closer together
+in the space the embedding model actually organizes well.
+
+**Multi-query retrieval widens the net by sampling multiple points near the
+true information need.** Generating several paraphrases of the question and
+embedding each one produces several *different* vectors, each landing in a
+slightly different region of the space — because paraphrase changes surface
+form (and therefore the embedding, which is sensitive to wording) without
+changing meaning. Fusing the retrieved sets (typically with RRF, lesson 2)
+means a relevant document only needs to be close to *any one* of the
+paraphrase vectors, not to the single original phrasing — trading extra
+embedding + search calls for a meaningfully larger effective search radius
+around the true intent.
+
+**HyDE inverts the direction of the mismatch instead of widening it.**
+Hypothetical Document Embeddings asks an LLM to *hallucinate* a plausible
+answer to the question first, then embeds that fabricated passage — not the
+question — and searches with it. This works because the fabricated answer,
+even though factually unverified, is written in the same register, length,
+and vocabulary as a real answer passage would be (it's generated to look
+like one), so its embedding lands in the same neighborhood of the space as
+genuine answer passages, which is precisely the neighborhood retrieval needs
+to search. The hallucinated content itself is discarded immediately after
+its embedding is computed — HyDE never lets the fabrication reach the user,
+it only uses it as a better-placed anchor point for the nearest-neighbor
+search.
+
+**Conversational rewriting solves a different problem: reference
+resolution, not vector placement.** "What about the monthly plan?" as a
+follow-up to a question about annual refunds embeds as a nearly context-free
+fragment — "monthly plan" alone doesn't carry the topic "refund window" that
+made the previous turn's retrieval relevant. Rewriting folds prior turns'
+entities into a self-contained query ("What is the refund window for the
+monthly plan?") *before* embedding, because the embedding model has no
+memory of the conversation — each call to `embed()` sees only the string
+it's given, so any context not present in that string is invisible to
+retrieval no matter how relevant it was one turn ago.
+
 ## Exercise
 
 Build a rewriting layer and prove each piece earns its latency.

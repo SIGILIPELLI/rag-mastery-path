@@ -179,6 +179,38 @@ This loop — not any single metric — is what separates a demo from a system.
 | Golden set | Ground truth: question + answer + evidence ids | Grows from real failures |
 | Debug rule | Low hit rate → fix retrieval first | — |
 
+## How It Actually Works
+
+**Hit-rate and MRR are measuring two different failure modes.** Hit-rate@k
+asks a binary question per query — "was a correct chunk anywhere in the
+top-k?" — and averages that across the golden set: `hits / total_queries`.
+It's blind to *where* in the top-k the answer landed, which is deliberate:
+it tells you whether your retrieval breadth (k) is adequate at all. Mean
+Reciprocal Rank instead scores each query by `1 / rank_of_first_correct_hit`
+(0 if no hit) and averages those — a correct answer at rank 1 scores 1.0, at
+rank 4 scores 0.25. MRR is sensitive to exactly the thing hit-rate ignores:
+whether the correct chunk floats to the *top* of the ranking, which matters
+because prompt assembly (lesson 6) and reranking (level-2 lesson 3) both care
+about rank order, not just presence-in-top-k. A system with high hit-rate@10
+but low MRR is a system that finds the right answer but buries it — the
+textbook signal that reranking, not more retrieval, is the fix.
+
+**Why LLM-as-judge is itself a similarity-scoring problem, recursively.**
+Using an LLM to grade "is this generated answer correct given the golden
+answer?" runs into the same fundamental issue retrieval has: you need a
+notion of semantic equivalence that tolerates paraphrase but rejects
+contradiction. A judge prompt that does *exact string match* is as brittle
+as a keyword search; a good judge prompt gives the LLM both answers and asks
+it to reason about factual overlap before scoring, because the judge model's
+attention over both texts simultaneously can catch paraphrases that a fixed
+similarity metric (like embedding cosine similarity between the two answers)
+would either over- or under-score. This is why LLM-as-judge tends to
+correlate better with human grading than embedding-similarity-based
+auto-grading, at the cost of being slower, non-deterministic across runs, and
+itself capable of being wrong — which is exactly why the golden set with
+human-verified answers still has to exist as ground truth underneath the
+judge.
+
 ## Exercise
 
 Build a golden set of 10 questions (including 2 unanswerable) for the corpus

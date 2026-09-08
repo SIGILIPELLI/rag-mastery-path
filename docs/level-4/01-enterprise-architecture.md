@@ -122,6 +122,40 @@ change has to be reviewed.
 | "Just add it to the existing index" without a filter review | Stop — this is how implicit pattern-1 sprawl starts |
 | One team's config change breaks another team's pipeline | Sign the config-driven approach was needed and isn't there yet |
 
+## How It Actually Works
+
+**Why architecture pattern choice is really a choice about where the
+embed→retrieve→generate seam gets duplicated or shared.** Level-1 lesson 7
+established that every RAG pipeline decomposes into the same ingestion and
+query phases regardless of scale. Enterprise patterns differ only in how
+many independent copies of that pipeline exist and how they share
+infrastructure: a single shared index serving many teams keeps one
+embedding model, one vector store, and one set of chunking rules consistent
+across the org (cheap to operate, but every team's documents compete for
+the same `top_k` slots and the same relevance tuning); federated
+per-team indexes each get pipeline decisions tuned to their own corpus (a
+legal team's chunking needs differ genuinely from an engineering wiki's,
+lesson 3's tradeoffs are not universal) at the cost of N times the
+operational surface area and no cross-team retrieval without an extra
+fan-out-and-fuse layer (level-2 lesson 2's RRF, applied across indexes
+instead of across techniques within one).
+
+**Why config-driven pipelines are the practical answer to "the pipeline
+keeps changing."** Every lesson from chunking through reranking exposed
+parameters (chunk size, `top_k`, fusion weights, rerank candidate count)
+that this course tuned by hand per lesson — at enterprise scale, with
+multiple corpora and teams, those parameters need to be re-tunable per
+deployment without a code change and re-deploy, because different corpora
+genuinely warrant different settings (level-3 lesson 5's point that
+benchmark results don't transfer across domains applies to pipeline
+parameters just as much as to embedding model choice). Externalizing them
+into config makes re-tuning an operational change instead of an engineering
+one — which is also precisely what makes "architecture decisions made by
+whoever asked first" a real trap: a config default set for one team's
+corpus silently becomes every other team's default too, unless the
+config-driven system is deliberately built to vary per tenant rather than
+globally.
+
 ## Exercise
 
 Extend `PipelineConfig` with an `isolation_mode` field (`"shared_filtered"`,

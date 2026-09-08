@@ -192,6 +192,44 @@ Treat it accordingly:
 | Never LLM-generated | Filters come from the session, not the model |
 | Recency | Prefer a ranking boost over a hard filter |
 
+## How It Actually Works
+
+**Pre-filter vs. post-filter is a real algorithmic fork, not an API detail.**
+Post-filtering runs the ANN search first (HNSW or otherwise) over the *full*
+index and then discards results that fail the metadata predicate — simple to
+implement, but if the top-k the index naturally returns happens to be mostly
+filtered out (say, `top_k=10` but only 1 of those 10 belongs to the
+requested tenant), you can end up with far fewer than k usable results even
+though plenty of matching documents exist deeper in the ranking. Pre-
+filtering restricts the candidate set to only documents matching the
+predicate *before* the similarity search runs — exact for brute-force search
+(just mask the matrix rows), but for graph-based ANN indexes like HNSW it's
+genuinely hard: the graph's navigability relies on being able to hop through
+*any* nearby node as a stepping-stone toward the query, and if most nodes
+are excluded by the filter, the greedy walk can lose the path to the true
+nearest matching neighbors entirely, silently degrading recall in a way that
+looks like "search is broken" rather than "search is filtered." Production
+vector databases handle this with specialized strategies — filtered graph
+traversal that still allows hopping through excluded nodes without returning
+them, or maintaining separate sub-indexes per common filter value — covered
+in level-3's production vector database lesson.
+
+**Why metadata as a security boundary requires filtering to be enforced
+below the application layer.** If tenant isolation is implemented as "the
+LLM prompt says only use documents where tenant_id matches," that
+instruction is a soft bias on generation (lesson 6's grounding mechanism) —
+retrieval still fetched the other tenant's chunk into context, so a
+sufficiently adversarial prompt, a model error, or a bug in prompt assembly
+can leak it. Enforcing the filter as a hard predicate *inside* the vector
+store query — so the other tenant's vectors are structurally excluded from
+the candidate set and never enter the retrieval results at all — means the
+data physically cannot reach the LLM's context window through this path,
+which is the only version of "isolation" that survives an adversarial or
+buggy prompt. This is the same reason database-level row security is
+preferred over "the application always remembers to add a WHERE clause":
+enforcement closest to the data source is enforcement that can't be
+bypassed by a mistake upstream.
+
 ## Exercise
 
 Design and stress-test a metadata schema for a corpus with real constraints.

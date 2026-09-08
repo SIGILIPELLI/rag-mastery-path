@@ -215,6 +215,39 @@ and retrieval, exposed as a plain function that the rest of the system calls.
 | Defaults | `top_k=2`, 1024-token chunks — always override |
 | Choose it when | Retrieval quality over many documents is the hard part |
 
+## How It Actually Works
+
+**Why "distrust the three-line version" is good advice, mechanistically.**
+`VectorStoreIndex.from_documents(docs)` followed by `.as_query_engine()`
+hides a chain of default decisions that determine retrieval quality just as
+much as anything you'd tune explicitly: a default chunk size and overlap
+(lesson 3's tradeoffs, chosen for you), a default embedding model (not
+necessarily the best fit for your domain, lesson 5 in level-3), a default
+`top_k` (lesson 5's precision/recall tradeoff, picked without seeing your
+data), and a default prompt template for assembly (lesson 6's grounding
+instructions, generic rather than tuned to your failure modes). None of
+these defaults are wrong exactly — they're reasonable general-purpose
+choices — but "it runs in three lines" and "it retrieves well for your
+corpus" are unrelated claims, and the three-line version makes it easy to
+mistake the first for evidence of the second.
+
+**What node parsing and postprocessors actually correspond to.**
+LlamaIndex's vocabulary (`Document`, `Node`, `NodeParser`, `Postprocessor`)
+names the same pipeline stages this course has covered from lesson 3
+onward, just with framework-specific terms: a `Node` is a chunk plus
+metadata plus relationships to neighboring nodes (useful for retrieving a
+chunk's surrounding context, not just the chunk itself — a capability plain
+chunking doesn't give you for free); a `NodeParser` is a chunker (lesson 3);
+a `Postprocessor` is anything that runs between raw retrieval and prompt
+assembly — a reranker (lesson 3, level-2), a metadata filter (lesson 5), or
+a similarity-score cutoff. What's genuinely distinctive about LlamaIndex
+relative to hand-rolled pipelines and to LangChain is its node-relationship
+model: because nodes track links to adjacent nodes at ingestion time, a
+retriever can expand a hit to include its neighbors post-retrieval (a
+built-in mitigation for the "chunk too small to contain the full answer"
+tension from lesson 3), something that requires manual bookkeeping in a
+plain-Python or LangChain pipeline.
+
 ## Exercise
 
 Build the same pipeline a third time — LlamaIndex — and run your lesson 1 golden

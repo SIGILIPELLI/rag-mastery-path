@@ -163,6 +163,48 @@ keywords involved. The geometry *is* the meaning.
 | Truncation | Models cut off long inputs → chunk before embedding |
 | Score intuition | Compare rankings, not absolute values |
 
+## How It Actually Works
+
+**From tokens to a single vector.** A sentence embedding model is a
+transformer encoder (BERT-style, bidirectional attention) with a *pooling*
+layer stacked on top. Feed it "annual plans can be refunded within 14 days"
+and it first produces one contextual vector per token — each token's vector
+already blends in information from every other token via self-attention, so
+the vector for "refunded" is shaded by "annual," "14," and "days" sitting
+near it. Pooling (mean-pooling over all token vectors is standard for
+sentence-transformer models like MiniLM) then collapses that sequence of
+vectors into one fixed-length vector, typically 384–1536 dimensions. That
+single vector is the embedding: a lossy but structured compression of the
+sentence's meaning into a point in high-dimensional space.
+
+**What makes the space "semantic."** The encoder's weights are what make
+nearby points meaningful, and those weights come from contrastive training:
+the model is shown millions of (anchor, positive, negative) triples — e.g.
+a question paired with a passage that answers it (positive) and a passage
+that doesn't (negative) — and trained with a loss (commonly InfoNCE) that
+directly pushes anchor and positive embeddings closer together while pushing
+anchor and negative embeddings apart, measured by the same similarity
+function you'll use at query time. Nothing in this process teaches the model
+"grammar" or "topic" as human concepts — it purely reshapes the vector space
+so that pairs humans judged relevant end up close and pairs judged irrelevant
+end up far, for whatever geometric notion of "close" the loss function used.
+This is also why an embedding model trained mostly on English news text can
+underperform on legal or medical text: the contrastive pairs it saw shaped a
+space tuned to that domain's notion of relevance.
+
+**Why cosine similarity, specifically.** Cosine similarity between vectors
+**a** and **b** is `(a·b) / (‖a‖‖b‖)` — the dot product normalized by both
+vectors' magnitudes, equivalent to the cosine of the angle between them. It
+ranges from -1 to 1 and, critically, ignores vector *length*, measuring only
+*direction*. This matters because embedding magnitude often correlates with
+incidental factors (sentence length, token frequency) that have nothing to
+do with meaning, while direction in the trained space is what the
+contrastive loss actually optimized. If two models are trained with unit-
+normalized embeddings (most modern sentence-transformer models are), cosine
+similarity and plain dot product become identical — which is why some vector
+stores default to dot product for speed and only normalize vectors once at
+index time rather than per query.
+
 ## Exercise
 
 Build a tiny "semantic FAQ matcher": create a list of 8–10 FAQ answers from

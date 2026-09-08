@@ -237,6 +237,51 @@ The traps specific to Office formats:
 | Empty extraction | Assert a minimum length; never index silently |
 | Golden rule | Read the extracted text before indexing at scale |
 
+## How It Actually Works
+
+**Why PDF extraction is fundamentally lossy in a way HTML/Markdown parsing
+is not.** A PDF is a page-description format: it stores instructions like
+"draw the glyph 'R' at coordinate (120, 340) in font Helvetica-12" — it has
+no native concept of "paragraph," "table," or even "reading order." Text
+extractors reconstruct structure heuristically, by clustering glyphs into
+lines based on vertical position and lines into paragraphs based on spacing
+and indentation — which works well for simple single-column layouts and
+breaks down for multi-column layouts, tables (columns of numbers can get
+read left-to-right across the whole page instead of top-to-bottom within a
+column), headers/footers repeated on every page, and text embedded in
+images (which extracts as nothing at all unless you run OCR). This is a
+structural limitation of the format, not a bug in any particular library —
+every PDF text extractor is solving the same ill-posed inverse problem of
+recovering document structure from a stream of positioned glyphs.
+
+**Why HTML stripping is a precision problem, not a completeness problem.**
+HTML *does* carry real structure (tags), so the failure mode is different:
+naive text extraction (concatenating all visible text) pulls in navigation
+menus, cookie banners, related-article widgets, and ad text alongside the
+actual content, because a `<div class="sidebar">` and a `<div
+class="article-body">` look identical to an extractor that only reads text
+nodes. This pollutes chunk embeddings with boilerplate that's identical
+across every page on the site — which, mechanically, makes every page's
+chunks embed *more similarly to each other* than they should (since they now
+share large amounts of near-duplicate boilerplate text), degrading the
+embedding space's ability to distinguish between pages on genuinely
+different topics. The fix (targeting content-bearing tags, stripping
+`nav`/`header`/`footer`/`aside`) isn't just cosmetic cleanup — it's removing
+a systematic source of embedding noise that would otherwise be baked into
+every chunk from that source.
+
+**Why format comparison ultimately reduces to "how much structure survives
+extraction."** Markdown and well-structured Word documents (built with real
+heading styles, not bold-and-bigger-font pretending to be a heading) preserve
+the most exploitable structure for chunking (lesson 3's structural chunking
+strategy needs real heading boundaries to split on), while scanned PDFs and
+image-heavy slides preserve the least, sometimes requiring OCR before any
+text exists to chunk at all. Every ingestion pipeline you build is, at its
+core, an attempt to recover as much of that original structure as the source
+format allows — the less structure survives, the more the downstream
+retrieval quality depends on chunking and embedding compensating for
+information the extractor could not recover.
+
 ## Exercise
 
 Build an ingestion pipeline that survives contact with reality, and prove it.

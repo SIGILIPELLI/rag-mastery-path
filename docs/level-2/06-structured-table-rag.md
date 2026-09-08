@@ -208,6 +208,51 @@ prompt.
 | Text-to-SQL safety | Read-only, `SELECT`-only, `LIMIT`, timeout |
 | Production pattern | Route: lookups → chunks, math → SQL |
 
+## How It Actually Works
+
+**Why whole-table embedding fails for a reason distinct from prose chunking.**
+A table's meaning lives in the *relationship* between a cell and its row/
+column headers, not in the linear sequence of characters — "Q3, 2024,
+$45,000" only means "Q3 2024 revenue was $45,000" if you know which numbers
+are which. Serializing an entire table into one text blob and embedding it
+produces one vector that averages over every row and every column
+simultaneously, exactly like averaging unrelated topics in prose chunking
+(lesson 3) — a query about one specific row ("what was Q3 2024 revenue?")
+has to compete, in that single embedding, against the influence of every
+other row's numbers on the pooled vector. The larger the table, the more
+diluted any single fact becomes, which is why whole-table embedding degrades
+fast as row count grows even though nothing about the *chunking* changed
+compared to a small table.
+
+**Why row-level verbalization fixes this specifically, and what it costs.**
+Turning each row into a self-contained sentence ("Q3 2024 revenue was
+$45,000") before embedding does two things mechanically: it makes the
+header-to-cell relationship explicit in the token sequence the encoder
+attends over (rather than implicit in table structure the encoder never
+sees), and it isolates each row into its own embedding so a query about Q3
+2024 competes only against other rows' embeddings in nearest-neighbor
+search, not against them inside one averaged vector. The cost is that
+cross-row questions ("which quarter had the highest revenue?") now require
+either retrieving *every* row (defeating the point of retrieval) or a
+different mechanism entirely — which is exactly the gap text-to-SQL closes.
+
+**Why text-to-SQL is not "the LLM writes code," it's a different retrieval
+paradigm.** Embedding-based retrieval finds rows *similar* to the query;
+aggregation questions need rows *matching a computed condition* across the
+whole table (max, sum, group-by) — a fundamentally different operation that
+no amount of nearest-neighbor search over row embeddings can perform,
+because "similar in meaning" and "the maximum value in this column" are
+unrelated properties of the data. Text-to-SQL sidesteps retrieval altogether
+for these queries: the LLM translates natural language into a query against
+the *actual structured data* (a real database engine computing an exact
+aggregate), then the result — not a retrieved chunk — gets embedded into the
+final answer. Choosing between the three strategies is really choosing
+which operation your question needs: lookup-by-similarity (verbalized rows),
+whole-table context (single chunk, only for small tables), or exact
+computation (SQL) — and production table-RAG systems typically route between
+verbalized-row retrieval and text-to-SQL based on query classification
+rather than picking one strategy for every question.
+
 ## Exercise
 
 Take a table with at least 15 rows and 5 columns — a real one, from your own

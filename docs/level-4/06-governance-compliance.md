@@ -155,6 +155,49 @@ still can't answer them:
 | Are we retaining data the required duration — no more, no less? | Explicit, per-category retention policy, enforced in code |
 | Is the audit log itself secure? | Access control and review scope on the log, same as the primary system |
 
+## How It Actually Works
+
+**Why audit logging for RAG needs to capture the retrieval step, not just
+the final answer.** A tamper-evident log of "user asked X, system answered
+Y" is insufficient for compliance because it cannot answer "why did the
+system say Y" — the retrieved chunks that grounded the answer (level-1
+lesson 6's mechanism: the model's response is causally shaped by whatever
+text was in context) are the actual evidentiary chain, and if they aren't
+logged at generation time, they generally cannot be reconstructed after the
+fact — the index may have changed (level-3 lesson 8's incremental
+indexing), the same query embedded again might not retrieve the identical
+chunks if the underlying vectors shifted. Tamper-evidence (hash-chaining log
+entries, or write-once storage) matters specifically because audit logs are
+often the artifact examined *after* an incident is suspected, at which point
+an attacker or a bug that already compromised the system has every
+incentive to have altered the log too.
+
+**Why data lineage is a graph-traversal problem structurally identical to
+level-3 lesson 3's GraphRAG traversal, just over provenance edges instead of
+semantic ones.** "What data informed this answer" requires tracing:
+answer → which chunks were in context → which document each chunk was
+extracted from → which source system that document came from → what
+permissions applied to it at retrieval time. Each arrow is an edge in a
+provenance graph that has to be captured at the moment each transformation
+happens (chunking records its source document, embedding records its source
+chunk, retrieval records which embedding matched), because none of these
+edges can be reliably reconstructed from the final artifacts alone — a chunk
+of text alone doesn't say which document it came from unless that
+association was recorded when the chunk was created.
+
+**Why retention policy enforcement is a re-indexing problem, not a database
+deletion problem.** Deleting a source document to satisfy a retention
+requirement is incomplete if its chunks' embeddings remain in the vector
+index — exactly the "deletes are the part teams forget" mechanism from
+level-3 lesson 8, now with a compliance deadline attached rather than just a
+staleness cost. Enforcing retention correctly means the same
+diff-what's-indexed-against-what-should-exist logic that catches ordinary
+deletions has to run on a schedule tied to the retention policy, and has to
+verifiably remove the vector, not just mark a metadata flag the retrieval
+path might not check — an unenforced "deleted" flag that a query predicate
+forgets to filter on is functionally identical to the row-level-security gap
+in level-4 lesson 2, just for compliance rather than access control.
+
 ## Exercise
 
 Extend `AuditLog` with a `redact_actor(actor_id)` method that removes all

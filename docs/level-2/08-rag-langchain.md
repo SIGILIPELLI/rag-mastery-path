@@ -209,6 +209,40 @@ survive.
 | Real value | Loaders + swappability + tracing |
 | Real cost | Indirection, version churn, hidden call counts |
 
+## How It Actually Works
+
+**What a framework's "chain" abstraction is actually compiling to.**
+LangChain's `Runnable`/chain interface (and LlamaIndex's query engine,
+lesson 9) are not a different execution model from the `rag.py` you wrote by
+hand in level-1 — they are the exact same sequence (embed question →
+retrieve → assemble prompt → generate) wrapped in composable objects with a
+shared `.invoke()`/`.run()` interface. When you write
+`retriever | prompt | llm`, the pipe operator is Python's `__or__` overload
+building a linked sequence of callables, and `.invoke()` walks that sequence
+calling each stage's output as the next stage's input — mechanically
+identical to `answer = llm(build_prompt(question, retriever(question)))`,
+just decomposed into named, independently swappable objects. Nothing about
+using a framework changes what happens at the embedding-model or vector-
+store layer underneath; it changes how much boilerplate you write to wire
+those layers together and how easily one stage (say, the retriever) can be
+swapped for a hybrid-plus-reranking pipeline without touching the rest of
+the chain.
+
+**Why "framework or plain Python" is a real engineering tradeoff, not a
+preference.** A hand-rolled pipeline gives you full visibility into every
+token that gets embedded, every score used for ranking, and every character
+placed in the prompt — essential when debugging *why* retrieval missed
+something, because you can print or log any intermediate value trivially.
+A framework's abstraction layers trade that visibility for reusable
+components (built-in loaders for a dozen file formats, pre-wired hybrid
+retrievers, standard eval harness integrations) that would take real time to
+reimplement — but debugging a framework chain often means stepping through
+several layers of framework-internal code to find where a hybrid retriever's
+fusion logic actually lives. Teams that need to reason precisely about
+retrieval quality (this course's entire premise) benefit from understanding
+the plain-Python version first specifically so a framework's abstractions
+read as "the same lessons 2–5 mechanisms, renamed," not as unfamiliar magic.
+
 ## Exercise
 
 Port your Level 1 capstone to LangChain, then interrogate the port.

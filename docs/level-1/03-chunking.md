@@ -179,6 +179,48 @@ lesson 8, and let hit-rate numbers choose for you.
 | Overlap | Repeat boundary content | Mitigate mid-thought cuts (10–20%) |
 | Size sweet spot | ~200–500 words to start | Tune with evaluation, not vibes |
 
+## How It Actually Works
+
+**Why chunk boundaries directly determine embedding quality, mechanically.**
+A sentence-embedding model produces one vector per chunk by pooling
+(typically mean-pooling) the contextual token vectors produced by its
+transformer encoder. If a chunk contains two unrelated topics — say, half a
+refund policy and half a password-reset procedure, because a fixed-size
+slicer cut across the boundary — the pooled vector is the *average* of the
+token representations for both topics. Averaging in embedding space doesn't
+produce "a vector that matches either topic well"; it produces a vector that
+sits between them, closer to *neither* topic's true region of the space than
+a clean single-topic chunk would be. This is the concrete, geometric reason
+mixed-topic chunks retrieve poorly for both of the queries they should
+match — it isn't a heuristic rule, it's what mean-pooling does to a
+distribution of unrelated meanings.
+
+**Why overlap doesn't fully solve the boundary problem, and why sentence-
+aware splitting is a strictly better fix where it's available.** Overlap
+duplicates trailing text into the next chunk so a straddled sentence appears
+whole in at least one chunk — but it does so by creating two chunks that both
+now contain a shared idea, plus each chunk's own idea. If your original
+sentence-worth of overlap was itself topically distinct from its neighbors,
+both copies still get diluted by whatever else shares their chunk, and you've
+also doubled the storage and search cost for that span. Splitting on sentence/
+paragraph boundaries removes the problem at its root because it never
+constructs a chunk out of two things that don't semantically belong together
+in the first place — the "packing" step in `chunk_text` only combines whole
+units up to a size budget, so the worst case is a chunk containing several
+*complete*, related sentences rather than one sentence torn in half.
+
+**Why structural chunking additionally improves retrieval, not just
+readability.** When `chunk_markdown` prepends the section heading's text to a
+chunk before embedding it ("Refunds: Annual plans: 14 days."), it's injecting
+disambiguating tokens directly into the sequence the encoder attends over —
+the word "Refunds" now literally participates in the self-attention
+computation that produces every other token's contextual vector in that
+chunk, pulling the pooled embedding measurably toward the "refunds" region of
+the space even if the sentence itself never uses that word. This is a cheap,
+mechanical way to compensate for the fact that a short chunk in isolation
+often lacks the surrounding context a human reader would use to disambiguate
+it — the heading supplies exactly that missing context at embedding time.
+
 ## Exercise
 
 Take any real Markdown file (a project README works well) and run all three

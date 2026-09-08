@@ -147,6 +147,54 @@ Two failure modes specific to scale:
 | More shards made things slower at p99 | More chances for one straggler per request | Hedge, or reduce shard fan-out |
 | Generation gets cut short under load | Fixed per-stage timeout doesn't account for upstream variance | Budget stages independently, monitor each |
 
+## How It Actually Works
+
+**Why p50 and p99 measure genuinely different things, not just "average vs.
+worst case."** p50 (median) latency reflects the typical request's path
+through the pipeline — usually a cache hit or a well-behaved retrieval and
+generation call. p99 reflects the tail: the 1-in-100 request that hit a
+cold cache, a slow vector-store shard, a generation call that happened to
+produce an unusually long response, or a retry after a transient failure.
+Because RAG's total latency is the *sum* of several independent-ish stage
+latencies (embed + retrieve + rerank + generate, level-3 lesson 7), and
+each stage has its own tail distribution, the pipeline's overall p99 is
+driven by whichever single stage has the fattest tail on that particular
+request — not by which stage is slowest *on average*. A stage that's cheap
+on average but occasionally very slow (a vector store under memory pressure
+that falls back to disk, level-3 lesson 4's memory wall) can dominate p99
+while contributing almost nothing to p50, which is why optimizing average
+latency and optimizing tail latency are different engineering problems that
+require different diagnostics (per-stage p99 tracking, not just per-stage
+mean).
+
+**Why hedged requests trade extra cost for tail-latency reduction, and why
+that trade only works probabilistically.** Sending a duplicate request to
+a second replica after the first hasn't returned within (say) the p50
+threshold, and taking whichever response arrives first, works because a
+slow response is disproportionately likely to be a straggler — a transient,
+uncorrelated slowdown on that specific replica/shard — rather than the query
+itself being inherently slow. If the two replicas share the true bottleneck
+(the same overloaded vector store, the same rate-limited LLM endpoint),
+hedging duplicates the cost without actually escaping the slowdown, because
+both requests hit the same underlying constraint. This is why hedging is
+specifically effective against uncorrelated infrastructure variance and
+specifically ineffective against systemic capacity limits — it's not a
+general latency fix, it's a targeted mitigation for one particular failure
+shape.
+
+**Why latency budgets that ignore retries and cascading timeouts
+understate real user-facing latency.** A budget built by summing each
+stage's expected (p50) latency assumes every stage succeeds on the first
+try — but a retrieval timeout that triggers a retry adds that stage's full
+latency again, and if the retry's timeout is set naively (equal to or
+longer than the caller's own timeout), a single slow dependency can cause
+the entire request to exceed its deadline *and* consume resources for a
+response the caller has already given up on. This compounds specifically
+because RAG pipelines chain several networked calls (embedding service,
+vector store, reranker, LLM API) — each with its own independent failure and
+retry behavior — so the real p99 budget has to account for the probability
+of at least one stage retrying, not just each stage's best-case duration.
+
 ## Exercise
 
 Extend the straggler simulation to 5 parallel shards instead of 3 (same 1%

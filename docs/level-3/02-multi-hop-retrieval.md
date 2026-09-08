@@ -160,6 +160,48 @@ fails because the *query planning* was wrong. Watch for:
 | Cost | Fixed | Scales with hop count |
 | Needs | Retriever | Retriever + decomposer + entity bridge |
 
+## How It Actually Works
+
+**Why naive single-shot retrieval structurally cannot answer multi-hop
+questions.** A question like "what is the refund window for the plan used
+by the customer who filed ticket #482?" requires two independent facts
+(which plan the customer is on, then that plan's refund window) that likely
+live in *different* documents with no lexical or semantic overlap between
+them — the ticket doesn't mention "refund," and the plan's policy document
+doesn't mention ticket numbers. Embedding the whole question produces one
+vector that's an average pull toward both sub-topics at once, similar to
+what mixed-topic chunking does to a chunk's embedding (lesson 3, level-1) —
+except here the *query* itself is the poorly-focused object, and no single
+document embedding can be simultaneously close to a vector that's pulled in
+two unrelated directions. Nearest-neighbor search then returns documents
+that are mediocre matches to *both* sub-questions rather than a great match
+to either.
+
+**Why decomposition works: it turns one unanswerable query into a chain of
+answerable ones.** Splitting the question into "what plan is the customer on
+ticket #482?" and (after getting that answer) "what is the refund window for
+[plan]?" produces two queries, each of which embeds cleanly into a single,
+well-defined region of the space — because each sub-query only carries one
+topic's worth of information, exactly the property that made single-topic
+chunks embed sharply in lesson 3. The second query can only be constructed
+*after* the first hop returns an answer, which is why this is a sequential
+chain rather than a parallelized multi-query fan-out (lesson 4's technique
+for a different problem — ambiguous phrasing of one topic, not two
+dependent facts).
+
+**Why carrying entities forward beats carrying raw retrieved text forward.**
+Passing the full text of hop 1's retrieved chunk into hop 2's query
+generation risks the LLM re-embedding noise: irrelevant sentences in that
+chunk can shift the next query's phrasing in unhelpful directions, and long
+accumulated context reintroduces the lost-in-the-middle risk from level-1
+lesson 9. Extracting just the resolved entity (the plan name, not the whole
+ticket text) and substituting it directly into the next query template keeps
+each hop's query as narrow and single-topic as the first — which is exactly
+why decomposition quality gates everything downstream: if hop 1 extracts the
+wrong entity, hop 2 constructs a well-formed, cleanly-embeddable query for
+entirely the wrong thing, and no amount of retrieval quality at hop 2 can
+recover from that.
+
 ## Exercise
 
 Add a fourth document — `"Marcus Lee started his career at a startup called

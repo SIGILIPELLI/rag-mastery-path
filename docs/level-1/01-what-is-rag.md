@@ -122,6 +122,47 @@ model for tone, inside a generous context window.
 | Fine-tuning | Changing model weights — for behavior, not facts |
 | Long context | Skipping retrieval by pasting docs into the prompt — fine for small corpora |
 
+## How It Actually Works
+
+**Why retrieval changes what the model can say at all.** An LLM generates
+one token at a time by sampling from a probability distribution conditioned
+on everything currently in its context window: `P(next_token | context)`.
+Training bakes a fixed set of weights that approximate this distribution over
+its training corpus — there is no lookup step, no database query, nothing
+that resembles "checking a fact." When you ask about your refund policy, the
+model isn't retrieving a stored answer; it's computing the statistically
+likely continuation of the text "Our refund window is..." given only its
+weights. If refund-policy text was never in training data, the distribution
+over next tokens is still peaked somewhere (models rarely output "I truly
+have no idea" unprompted) — it just peaks on a *plausible* continuation
+rather than a *true* one. That is the actual mechanism behind hallucination:
+not a bug that occasionally fires, but the base behavior of next-token
+prediction when the conditioning context lacks the fact.
+
+RAG changes the conditioning context, not the model. By concatenating
+retrieved passages into the prompt before the question, you shift
+`P(next_token | context)` so that the highest-probability continuations are
+now ones that echo or cite the retrieved text, because the model's attention
+layers can directly attend to those tokens sitting right there in context —
+copying and paraphrasing nearby text is a much easier pattern for a
+transformer to learn and execute than recalling a fact compressed into
+weights during training. This is why RAG answers can quote sources verbatim
+and plain-LLM answers can't: the source text is physically present in the
+attention window during generation.
+
+**Why "similar meaning → nearby in space" is the load-bearing trick.**
+Retrieval only works because embedding models (lesson 2) are trained so that
+cosine distance between two vectors approximates semantic relatedness between
+the texts they represent. The entire pipeline — chunk, embed, index, nearest-
+neighbor search — exists to turn "find text relevant to this question" (a
+hard, unbounded search problem over meaning) into "find the k nearest points
+to this point in R^d" (a well-understood geometric problem with fast
+approximate algorithms, lesson 4). Every later lesson is really refining one
+or both halves of that reduction: making the embedding space more faithful
+to meaning (lessons 2, 5, 8's evaluation loop, level-3's embedding
+selection), or making the k-nearest-neighbor search faster and more precise
+at scale (vector store internals, hybrid search, reranking).
+
 ## Exercise
 
 Without writing any code yet, pick a real document collection you have access

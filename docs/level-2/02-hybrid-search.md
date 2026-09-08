@@ -224,6 +224,50 @@ in more lists beats ranking higher in one.
 | Fusion is not magic | It cannot add capability neither retriever has |
 | Abstain | Threshold on raw scores before fusing |
 
+## How It Actually Works
+
+**Why you cannot just add BM25 and cosine scores, mathematically.** BM25
+scores are unbounded (a function of corpus size, IDF, and raw term
+frequency — a score of 4.2 vs. 11.7 has no fixed meaning outside that
+specific query and corpus) while cosine similarity is bounded to [-1, 1] and
+its useful range in practice is even narrower, often clustering between 0.3
+and 0.9 for real embedding models. Averaging or summing these two numbers
+directly means whichever scale happens to have larger absolute magnitude
+dominates the combined score regardless of which ranking is actually more
+trustworthy for that query — it's not a principled fusion, it's an accident
+of units. Min-max normalizing each list to [0,1] before combining helps but
+still assumes the *shape* of the two score distributions is comparable
+(e.g., that "normalized 0.9" means the same strength of match in both
+systems), which it usually isn't.
+
+**Reciprocal Rank Fusion sidesteps the scale problem entirely by throwing
+scores away.** RRF computes a fused score using only *rank position*:
+`RRF_score(d) = Σ 1/(k + rank_i(d))` summed over every ranking `i` the
+document appears in, where `k` is a constant (60 is the standard default
+from the original paper) that dampens the impact of very top ranks so rank 1
+vs. rank 2 doesn't dominate everything else. Because it only uses "this
+document was 3rd in the BM25 list and 7th in the dense list," it is
+completely immune to the units-mismatch problem — a rank is a rank
+regardless of what scoring function produced it. The `k` constant also
+acts as a smoothing term: without it, a document ranked 1st would score
+1/1 = 1.0 versus 2nd place's 1/2 = 0.5, a 2x gap; with k=60, 1st place
+scores 1/61 ≈ 0.0164 versus 2nd's 1/62 ≈ 0.0161, a much gentler gap that
+reflects the reality that rank-1-vs-rank-2 is usually a less meaningful
+distinction than raw scores would suggest, especially near the top of noisy
+rankings.
+
+**Why fusion at the rank level is provably robust to one retriever being
+bad on a given query.** If BM25 returns garbage for a natural-language
+query (all its top hits are coincidental token overlaps) while dense search
+nails it, RRF still surfaces the dense system's top results near the top of
+the fused list, because a document's RRF contribution from a ranking where
+it scored well is unaffected by how badly it (or anything else) scored in
+the other ranking — the sum is additive across independent rank
+contributions. This is the concrete guarantee behind "hybrid search is at
+least as good as your best single retriever for most queries": each
+retriever can only add to a document's fused score, never actively
+sabotage another retriever's contribution to it.
+
 ## Exercise
 
 Reuse the 12-query audit set from lesson 1. Build a hybrid retriever with both

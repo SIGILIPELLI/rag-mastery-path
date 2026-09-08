@@ -209,6 +209,36 @@ distance threshold catches it first.
 | Generate | `messages.create(...)` — provider-swappable | 6 |
 | CLI | `ingest <folder>` / `ask <question>` | — |
 
+## How It Actually Works
+
+**Why the pipeline splits cleanly into two phases with different cost
+profiles.** Ingestion (chunk → embed → store) runs once per document and is
+CPU/GPU-bound on the embedding model's forward pass — for N chunks it's N
+forward passes through the encoder, easily batched since chunks don't depend
+on each other. Query time (embed → retrieve → assemble → generate) runs on
+every user request and is dominated by two very different costs: one
+embedding forward pass (milliseconds) plus one nearest-neighbor search
+(milliseconds to tens of milliseconds depending on index size), versus one
+LLM generation call, which is orders of magnitude slower (hundreds of
+milliseconds to seconds) because it requires one forward pass *per output
+token*, not one pass total. This asymmetry is why RAG systems can afford to
+over-retrieve a little (grab top-8, rerank down to top-3) — the retrieval
+side is cheap relative to generation — and why the ingestion/query split in
+this file's `rag.py` isn't just code organization, it reflects genuinely
+different latency and cost budgets that production systems monitor
+separately (level-3's observability and latency lessons).
+
+**Why this "minimal" pipeline is the same shape as a billion-document
+system.** Every additional lesson from here on — hybrid search, reranking,
+query rewriting, incremental indexing, multi-tenant filtering — is inserted
+into one of exactly two seams in this file: between "embed" and "store"
+during ingestion, or between "embed" and "assemble" during query. None of
+them change the fundamental two-phase shape; they add stages inside it. Query
+rewriting adds a step before embedding the question. Reranking adds a step
+between retrieval and prompt assembly. Metadata filtering adds a predicate
+to the store call. Understanding this file deeply is what lets you read any
+later, more elaborate pipeline as "the same diagram, with more boxes."
+
 ## Exercise
 
 Extend `rag.py` in three small ways: (1) add a `--show-chunks` flag to `ask`

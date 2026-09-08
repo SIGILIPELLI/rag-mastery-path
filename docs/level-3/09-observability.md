@@ -166,6 +166,51 @@ its own compliance liability the moment it's genuinely useful for debugging.
 | Is quality degrading over time, not just today? | Score history, trended, with an alert threshold |
 | Did this happen before? | trace_id searchable against past incidents |
 
+## How It Actually Works
+
+**Why a span per pipeline stage, not one log line per request, is the
+correct unit of observability for RAG specifically.** A RAG request has
+several independently-failable stages with genuinely different failure
+signatures: the embedding call can be slow or return a degenerate vector,
+retrieval can return zero results or low-similarity results, reranking can
+reorder in a way that demotes the actual answer, and generation can ignore
+grounding instructions entirely. A single request-level log line ("request
+took 850ms, returned an answer") collapses all of that into one
+undifferentiated number — you cannot tell whether the 850ms was 800ms of
+generation and 50ms of retrieval, or the reverse, and you cannot tell
+whether a bad answer came from bad retrieval or bad generation over good
+retrieval. A span per stage (embed, retrieve, rerank, assemble, generate),
+each recording its own duration and stage-specific outputs, is what makes
+those two failure classes distinguishable after the fact instead of only
+during live debugging.
+
+**Why the specific fields attached to a span matter more than the fact of
+tracing itself.** A retrieval span that only logs "retrieval succeeded,
+120ms" is nearly as useless as no span at all for debugging a bad answer,
+because it doesn't tell you *what* was retrieved or how confidently. Logging
+the actual retrieved chunk IDs, their similarity scores, and the query
+embedding's basic statistics turns the span into something you can replay
+against a golden set later — the same information lesson 8's hit-rate/MRR
+computation needs, captured at request time instead of only during offline
+evaluation. This is why observability and evaluation aren't separate
+concerns in a mature RAG system: production traces are the raw material for
+detecting quality drift, provided the spans logged the fields evaluation
+actually needs.
+
+**Why quality drift is invisible to latency-only monitoring by
+construction.** A retrieval system can get slower-but-worse, faster-but-
+worse, or unchanged-speed-but-worse — latency and retrieval quality are
+independent variables, so a dashboard that only alerts on p99 latency has no
+signal at all when average top-retrieval-score quietly drifts downward
+(a stale index accumulating outdated documents, an embedding model
+deprecated and silently falling back to a worse default, a corpus growing
+past the point your original `top_k` was tuned for). Tracking the same
+similarity-score and hit-rate distributions from evaluation, but computed
+continuously over live traffic instead of a static golden set, is the only
+way to catch this class of regression, because it directly measures the
+thing that's actually degrading rather than a proxy (speed) that happens to
+be easy to instrument.
+
 ## Exercise
 
 Add a fourth span type, `rerank`, to `traced_pipeline` that runs between

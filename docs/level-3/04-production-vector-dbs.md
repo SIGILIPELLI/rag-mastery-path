@@ -110,6 +110,53 @@ default — it is not always documented as clearly as the query API itself.
 | Cross-tenant data appears in results | Filter applied after ANN search, or missing entirely |
 | Postgres team says "just use pgvector" | Right call if scale and filter complexity are moderate |
 
+## How It Actually Works
+
+**HNSW's layers exist because a flat graph can't guarantee logarithmic
+search.** The construction algorithm assigns each new vector a random
+maximum layer, with the probability of reaching layer `l` decaying
+exponentially (`~1/e^l`, borrowed directly from skip-list design) — so most
+vectors only exist in layer 0 (the full graph), a few reach layer 1, fewer
+still reach layer 2, and so on, forming a hierarchy of decreasing density.
+A query starts at the single entry point in the topmost (sparsest) layer,
+greedily hops to whichever neighbor is closer to the query vector until no
+neighbor helps, then drops down one layer at the same position and repeats
+with a denser neighbor set. Each layer transition narrows the remaining
+search to a small local neighborhood before the expensive, dense bottom
+layer is ever touched — this is exactly what gives HNSW its `O(log N)`
+query behavior: the sparse top layers do coarse global navigation cheaply,
+and only the final layer does fine-grained local search.
+
+**`ef_construction` and `ef_search` are the two knobs that actually trade
+recall for speed.** Both control the size of the candidate list maintained
+during graph traversal (how many "currently best" neighbors are tracked
+before deciding which to keep or visit next) — `ef_construction` at insert
+time (bigger means a better-connected, more accurate graph, but slower
+builds) and `ef_search` at query time (bigger means the greedy walk explores
+more candidates before stopping, catching neighbors a narrower walk would
+have missed, at the cost of more distance computations per query). This is
+the actual mechanism behind "HNSW recall isn't guaranteed" from earlier in
+this lesson: a low `ef_search` can cause the greedy walk to stop at a local
+optimum — a node where every visible neighbor is farther from the query than
+the current position, even though a better match exists elsewhere in the
+graph the walk never reached.
+
+**IVF's cost trade-off comes from how it partitions the space, not just that
+it partitions it.** Building an IVF index runs k-means clustering over a
+sample of the vectors to produce `nlist` centroids, then assigns every
+vector to its nearest centroid's bucket — an `O(n·nlist)` one-time cost, far
+cheaper than HNSW's incremental graph construction. A query computes
+distance to all `nlist` centroids first, then searches only the `nprobe`
+closest buckets' contents exhaustively — `nprobe` is IVF's equivalent of
+`ef_search`: larger `nprobe` means checking more buckets, catching true
+nearest neighbors whose vector happened to land in a *neighboring* cluster
+rather than the query's single nearest centroid (the "bucket-boundary
+misses" this lesson mentions), at the cost of scanning more of the index.
+Because reassigning a vector to a new bucket after insertion is cheap
+compared to rewiring HNSW graph edges, IVF indexes tolerate high insert
+rates far better — the concrete reason it's "cheaper to build and update,"
+not just a rule of thumb.
+
 ## Exercise
 
 Recompute the memory math for a 100M-vector, 1536-dimension corpus (OpenAI

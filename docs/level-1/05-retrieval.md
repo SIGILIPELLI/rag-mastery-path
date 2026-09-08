@@ -158,6 +158,44 @@ there.
 | Empty result | A feature, not a bug — enables honest "I don't know" |
 | Debug habit | Always print retrieved chunks before blaming the LLM |
 
+## How It Actually Works
+
+**Top-k is a partial sort, not a threshold.** "Similarity search" doesn't
+mean "return everything above some quality bar" — it means compute a
+similarity score against every candidate (or every graph neighbor visited,
+under HNSW) and keep the k highest, full stop, even if the best of them is
+mediocre. That's mechanically why "retrieval finds nothing good" is a real
+failure mode and not an edge case: cosine similarity is defined over the
+whole embedding space, so *some* stored chunk is always mathematically
+closest to the query vector, even when every chunk is topically unrelated.
+The 0.94–0.96 scores in this lesson's "false positive" example are a direct
+consequence — general phrasing overlap ("refreshes," "settings") pulls the
+angle between vectors down even though the underlying facts are unrelated,
+because the embedding model is scoring surface + distributional similarity,
+not truth or relevance to your specific need. There is no similarity score
+that means "actually relevant" in isolation; it only means "closer than the
+alternatives were," which is why lesson 8's calibration against a golden set
+matters more than staring at raw scores.
+
+**Metadata filtering changes the search space, not the ranking.** When you
+filter by `{"source": "engineering.md"}`, the vector store restricts the
+candidate set *before* (or, in graph indexes, by pruning *during*) the
+nearest-neighbor walk — it's a boolean predicate over metadata combined with
+the geometric search, not a post-hoc re-sort. In a brute-force numpy
+implementation this is just masking rows before the argsort; in HNSW it's
+harder, because filtering can break the graph's connectivity assumptions
+(a filtered-out node normally used as a stepping-stone mid-walk is now
+unreachable), which is why production ANN filtering ("pre-filter" vs.
+"post-filter" vs. hybrid strategies) is its own engineering problem covered
+in level-3's production vector database lesson.
+
+**Why MRR and hit-rate, not similarity score, are the real metrics.**
+Because raw cosine scores aren't comparable across queries (a score of 0.7
+can be a great match for one query's embedding distribution and a poor match
+for another's), retrieval quality has to be measured by *rank position
+relative to a known-correct answer*, not by score magnitude — which is
+exactly the shift lesson 8 formalizes with hit-rate and MRR.
+
 ## Exercise
 
 Using the corpus above (or your own from lesson 4's exercise), write 6 test

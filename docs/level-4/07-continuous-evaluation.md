@@ -158,6 +158,58 @@ looking at real traffic.
 | Eval-set augmentation from failures | Any specific failure recurring | Novel failure types not yet seen once |
 | CI suite alone (Level 3 module 06) | Regressions from code changes | Drift from corpus/model/user-base shift with no code change |
 
+## How It Actually Works
+
+**Why distinguishing a real regression from noisy feedback is a statistical
+problem, not a threshold problem.** User feedback signals (thumbs down,
+low-confidence flags, follow-up "that's not right" messages) are noisy at
+the individual level — a correct answer to a badly-phrased or genuinely
+ambiguous question can get a thumbs-down that has nothing to do with
+retrieval or generation quality. A single bad rating, or even a short run
+of them, is well within the natural variance you'd expect from query mix
+alone (level-4 lesson 3's point about traffic-mix drift applies to feedback
+volume too). Detecting a *real* regression means comparing feedback rate
+over a rolling window against its own historical baseline with a
+statistically meaningful threshold — the same "stored baseline, not a
+one-off number" principle from level-3 lesson 6's CI regression suites,
+applied to live user signal instead of an offline golden set.
+
+**Why sampling production traffic for deeper review is necessary precisely
+because feedback is sparse and biased.** Most users don't leave explicit
+feedback at all, and the ones who do skew toward strongly negative or
+strongly positive experiences — the silent middle (answers that were
+mediocre but not bad enough to react to) is invisible to a feedback-only
+signal. Sampling a random slice of *all* traffic (not just traffic that
+generated feedback) for human or LLM-judge review (level-1 lesson 8's
+LLM-as-judge mechanism) recovers visibility into that silent middle, at a
+cost that scales with sample size rather than total traffic — which is why
+this is a sampling problem with a real precision/cost tradeoff, not just
+"review more."
+
+**Why closing the loop by converting failures into eval cases is what
+prevents the same regression from recurring silently.** A failure caught in
+production and fixed, but never added to the golden set (level-1 lesson 8),
+has no representation in the regression suite that would catch it coming
+back — the fix addresses today's symptom without building any structural
+memory of it. Adding the failing query and its correct answer as a new
+golden-set entry means level-3 lesson 6's CI suite will now fail loudly if a
+future change reintroduces the same failure mode, turning each production
+incident into a permanent addition to what "correct" means for this system
+— the golden set is, in this sense, less a fixed test fixture than a living
+record of every failure mode the system has already been taught not to
+repeat.
+
+**Why feedback loops can reward the wrong thing by construction.** If the
+metric driving iteration is "thumbs-up rate" and thumbs-up correlates with
+"answer sounds confident" more than "answer is correct" (users are worse at
+detecting confident-but-wrong answers than obviously-hedged ones — the same
+asymmetry that makes hallucination dangerous in level-1 lesson 1), optimizing
+directly against that feedback signal can systematically train the system
+toward more confident phrasing rather than more accurate retrieval — a
+metric-gaming failure structurally identical to level-3 lesson 6's
+trivially-gameable metrics, just surfacing through human feedback instead
+of an automated score.
+
 ## Exercise
 
 Extend `flag_regression` to use a statistical test (a two-proportion z-test,

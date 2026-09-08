@@ -179,6 +179,48 @@ Retrieve 50, rerank, keep 3–5. That single line is the default worth memorizin
 | Free local models | `ms-marco-MiniLM-L-6-v2`, BGE-reranker (need torch) |
 | Guardrail | Score floor, or you rank noise confidently |
 
+## How It Actually Works
+
+**Why a cross-encoder is strictly more accurate than a bi-encoder, and what
+it costs to get that accuracy.** A bi-encoder (what you've used for
+retrieval so far) embeds the query and each document *independently* — the
+query never sees the document's tokens during its forward pass, and vice
+versa. Similarity is computed afterward as a simple vector operation (cosine
+or dot product) on two already-finished embeddings. A cross-encoder instead
+concatenates the query and a candidate document into a single input
+sequence (`[CLS] query [SEP] document [SEP]`) and runs it through *one*
+transformer forward pass, so every token of the query can attend directly to
+every token of the document, and vice versa, before a classification head on
+top outputs a single relevance score. This cross-attention is exactly what a
+bi-encoder's independent embeddings cannot do — it can catch fine-grained
+interactions like negation, exact term co-occurrence, or which of two
+candidate entities a pronoun refers to, because the model is literally
+computing attention *between* query and document tokens, not comparing two
+frozen summaries. The cost is combinatorial: a cross-encoder needs one full
+transformer forward pass *per (query, document) pair*, so scoring 1,000
+documents means 1,000 forward passes, whereas a bi-encoder embeds all 1,000
+documents once (offline, at ingestion time) and the query once per search —
+which is why cross-encoders are never used for first-stage retrieval over a
+large corpus and always used only to re-score a small candidate set a
+cheaper method already narrowed down.
+
+**Why the two-stage pipeline (retrieve broad, rerank narrow) is the correct
+shape rather than a compromise.** Retrieval and reranking are optimizing for
+different things: bi-encoder retrieval needs to be fast enough to search
+millions of documents (hence the offline-embeddable, ANN-indexable
+architecture) but only needs to get the right answer *somewhere* in the
+top-50 or so — recall over a large set. Reranking needs to get the ordering
+right within a small set the first stage already trusts — precision at the
+top. Running the expensive, accurate cross-encoder only over the ~20-50
+candidates the cheap bi-encoder already surfaced captures nearly all of the
+cross-encoder's accuracy gain while paying its O(candidates) cost against a
+small constant instead of against the whole corpus. Choosing the candidate
+count is a direct trade of that constant against recall: too few candidates
+and the cross-encoder can't fix a real miss the first stage made (a document
+that never made top-20 can't be reranked into position 1); too many and you
+pay reranking latency for no additional gain since the true answer was
+already near the top of the first-stage list.
+
 ## Exercise
 
 Instrument the two-stage pipeline and produce a **cost/quality curve** on your

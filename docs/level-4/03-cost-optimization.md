@@ -170,6 +170,45 @@ as a quality metric that does.
 | Model tiering | Output (and input) cost on routed-down traffic | Misrouted complex queries get worse answers, possibly re-run at full cost anyway |
 | None of the above, just "use a cheaper model everywhere" | Uniform cost cut | Uniform quality cut — no way to recover just the queries that needed the stronger model |
 
+## How It Actually Works
+
+**Why RAG cost decomposes into per-call charges that scale with different
+variables.** LLM API pricing charges per input and output token; embedding
+calls charge per token embedded (usually far cheaper per-token than
+generation); vector store queries typically cost compute/hosting rather
+than per-call fees. This means the three cost levers in this lesson each
+attack a *different* term in the cost equation: caching (level-3 lesson 7's
+mechanism) eliminates whole calls, so it saves whatever that call's full
+cost was — generation calls dominate cost per lesson 7's latency argument,
+so caching generation results has outsized leverage compared to caching
+embeddings. Shrinking context reduces the input-token term directly:
+retrieving fewer, better-ranked chunks (reranking, level-2 lesson 3) cuts
+tokens sent to the expensive generation call without touching the cheap
+embedding/retrieval side at all — the same lost-in-the-middle argument
+(level-1 lesson 9) that favors precision over breadth for quality also
+favors it for cost, for once pointing in the same direction. Model tiering
+(routing simple queries to a cheaper/smaller model) exploits the fact that
+generation cost scales with model size roughly independently of retrieval
+quality — a well-retrieved, narrow context often lets even a small model
+answer correctly, so the expensive model's marginal value is concentrated on
+genuinely hard queries.
+
+**Why optimizing against yesterday's traffic mix is a real, not
+theoretical, failure.** Cost levers are tuned against a distribution of
+query types and cache-hit rates observed at one point in time; if the query
+mix shifts (a new feature drives more novel, non-cacheable questions; a
+product launch shifts traffic toward the harder query class the model-tiering
+router was routing to the expensive model anyway), the same configuration
+that was cost-optimal yesterday can become cost-*negative* — for instance, a
+cache-hit-rate assumption baked into a cost projection silently drops as
+query novelty increases, and the "small model for simple queries" router's
+classifier, trained on the old distribution, misclassifies the new query
+shape and routes expensive queries to the cheap model, trading cost for a
+silent quality regression instead. This is the same underlying lesson as
+level-3 lesson 6's point about needing a stored baseline for evaluation:
+cost, like quality, needs continuous re-measurement against current traffic,
+not a one-time calculation treated as permanently valid.
+
 ## Exercise
 
 Recompute `total` for your own actual (or estimated) query volume, average

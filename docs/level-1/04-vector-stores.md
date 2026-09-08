@@ -187,6 +187,45 @@ or scale** — not because the tutorial you read used one.
 | Distance semantics | Cosine *distance*: smaller = more similar |
 | Skip the DB when | Small corpus, no persistence/filtering needs → numpy |
 
+## How It Actually Works
+
+**What ChromaDB actually stores and searches.** Under `collection.add(...)`,
+Chroma stores three parallel arrays keyed by id: the raw text, the metadata
+dict, and the embedding vector. The embedding is what gets indexed for
+search; text and metadata just ride along, fetched by id once the nearest
+neighbors are known. By default Chroma's index is HNSW (Hierarchical
+Navigable Small World) — a graph-based approximate nearest-neighbor
+structure. Every stored vector becomes a graph node connected to a handful of
+its nearest neighbors, built in layers: the top layer has very few nodes
+connected by long-range edges, each layer down has more nodes and shorter
+edges, and the bottom layer contains every vector. A query walks the graph
+greedily starting at the top layer — hop to whichever neighbor is closer to
+the query vector, drop a layer once no neighbor improves, repeat — which
+finds a very good (not guaranteed exact) answer in roughly logarithmic hops
+instead of comparing against every stored vector.
+
+**Why that trade-off exists.** Exact nearest-neighbor search means computing
+distance to all N vectors — O(N) per query, trivial for 500 chunks (lesson's
+whole point: "a numpy array is honestly enough") but ruinous for 50 million.
+HNSW trades a small, tunable amount of recall (you might miss the true 5th-
+nearest neighbor and get the 6th instead) for query time closer to O(log N).
+The construction happens incrementally on every `.add()` call: each new
+vector greedily searches the existing graph for its nearest current members
+and wires itself into a fixed number of them (Chroma's default is roughly
+16), so insert order and that connectivity parameter directly shape recall
+quality — not something you'd notice at hundreds of vectors, but exactly why
+production stores (level-3 lesson 4) expose these knobs.
+
+**Persistence is a WAL-plus-snapshot problem, not a save-to-disk toggle.**
+When you call `PersistentClient`, Chroma writes vectors and metadata to an
+embedded SQLite database and a separate binary store for the HNSW graph
+itself, because the graph's in-memory pointer structure needs its own
+serialization format distinct from tabular rows. Every `.add()` is logged
+before the graph is updated, so a crash mid-write can replay from the log
+instead of corrupting the index — the same durability pattern (write-ahead
+log + periodic snapshot) that every serious database, vector or otherwise,
+relies on.
+
 ## Exercise
 
 Build a persistent index of the lesson-3 chunker's output: take 2–3 real text
