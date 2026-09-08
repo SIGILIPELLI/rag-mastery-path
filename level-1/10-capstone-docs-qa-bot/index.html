@@ -1047,6 +1047,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2643,6 +2665,32 @@ unanswerable ones:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why this project's file layout mirrors the two-phase architecture exactly.</strong>
+<code>ingest.py</code> and <code>bot.py</code> being separate files isn't a style choice — they run
+on genuinely different triggers and cadences (ingestion on document change,
+querying on every user message), touch different resources (ingestion is
+embedding-model-bound and I/O-bound reading files; querying is embedding-
+model-bound plus LLM-bound), and fail differently (a bad chunk in ingestion
+silently degrades future answers; a bad prompt in <code>bot.py</code> fails visibly on
+one request). Splitting them lets you re-run ingestion after a document
+change without touching or restarting the serving path, which is the same
+separation production systems make between an indexing pipeline and a
+serving API, just at much larger scale.</p>
+<p><strong>Why <code>evaluate.py</code> closes a loop that <code>ingest.py</code>/<code>bot.py</code> alone cannot.</strong>
+Ingestion and querying can each run "successfully" — no exceptions, valid
+output — while still producing wrong answers, because success in the
+software-engineering sense (code ran) and success in the retrieval sense
+(the right chunk was found and used) are orthogonal. <code>evaluate.py</code> exists to
+close that gap by running the <em>whole</em> pipeline (embed question → retrieve →
+generate) against <code>golden.json</code>'s known-correct answers and scoring hit-rate/
+MRR/answer-correctness (lesson 8's metrics), which is the only way to detect
+regressions when you change chunk size, swap the embedding model, or adjust
+top-k — none of which will throw an error, but any of which can silently
+tank quality. "Definition of done" for a RAG project is therefore never
+"the code runs"; it's "the eval score on the golden set meets a bar," because
+the golden set is the only artifact in the whole project that encodes what
+"correct" actually means.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Ship it, then stretch it. After completing the checklist, pick <strong>one</strong>
 extension and implement it end-to-end with an eval before/after: (a) a

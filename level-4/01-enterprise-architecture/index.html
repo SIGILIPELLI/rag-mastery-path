@@ -1890,6 +1890,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2239,6 +2250,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2426,6 +2448,37 @@ change has to be reviewed.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why architecture pattern choice is really a choice about where the
+embed→retrieve→generate seam gets duplicated or shared.</strong> Level-1 lesson 7
+established that every RAG pipeline decomposes into the same ingestion and
+query phases regardless of scale. Enterprise patterns differ only in how
+many independent copies of that pipeline exist and how they share
+infrastructure: a single shared index serving many teams keeps one
+embedding model, one vector store, and one set of chunking rules consistent
+across the org (cheap to operate, but every team's documents compete for
+the same <code>top_k</code> slots and the same relevance tuning); federated
+per-team indexes each get pipeline decisions tuned to their own corpus (a
+legal team's chunking needs differ genuinely from an engineering wiki's,
+lesson 3's tradeoffs are not universal) at the cost of N times the
+operational surface area and no cross-team retrieval without an extra
+fan-out-and-fuse layer (level-2 lesson 2's RRF, applied across indexes
+instead of across techniques within one).</p>
+<p><strong>Why config-driven pipelines are the practical answer to "the pipeline
+keeps changing."</strong> Every lesson from chunking through reranking exposed
+parameters (chunk size, <code>top_k</code>, fusion weights, rerank candidate count)
+that this course tuned by hand per lesson — at enterprise scale, with
+multiple corpora and teams, those parameters need to be re-tunable per
+deployment without a code change and re-deploy, because different corpora
+genuinely warrant different settings (level-3 lesson 5's point that
+benchmark results don't transfer across domains applies to pipeline
+parameters just as much as to embedding model choice). Externalizing them
+into config makes re-tuning an operational change instead of an engineering
+one — which is also precisely what makes "architecture decisions made by
+whoever asked first" a real trap: a config default set for one team's
+corpus silently becomes every other team's default too, unless the
+config-driven system is deliberately built to vary per tenant rather than
+globally.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Extend <code>PipelineConfig</code> with an <code>isolation_mode</code> field (<code>"shared_filtered"</code>,
 <code>"per_tenant"</code>, or <code>"hub_spoke"</code>), and write a <code>validate_config</code> function that

@@ -2184,6 +2184,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#stretch-goals" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2318,6 +2329,17 @@
     <span class="md-ellipsis">
       
         What each Level 4 module contributed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
       
     </span>
   </a>
@@ -2519,6 +2541,37 @@ evolving this platform in production but aren't wired into this toy version —
 extending it with real evaluation, a real ingestion pipeline, and a
 documented architecture decision (module 01) is the gap between this
 capstone and a production enterprise platform.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why "verifying the isolation guarantee" requires a different kind of test
+than "demonstrating a correct answer."</strong> A demonstration runs the happy path
+(tenant A asks a question, gets tenant A's data back) and confirms it looks
+right — but that test alone cannot distinguish "isolation is enforced" from
+"isolation happened to hold for this particular query," because it never
+exercises the failure mode isolation exists to prevent. Verifying the
+guarantee means adversarially constructing a query designed to retrieve the
+<em>other</em> tenant's confidential document (using vocabulary drawn from that
+document, so an unfiltered similarity search would rank it highly) and
+confirming the tenant-scoped filter (level-4 lesson 2's filter-before-
+ranking pattern) excludes it <em>before</em> ranking runs, not just that the final
+answer happens not to mention it — because a filter applied too late could
+still have let that content into a reranker or cache (level-4 lesson 2's
+point about intermediate stages) even if the final generated text looks
+clean.</p>
+<p><strong>Why this capstone's three building blocks compose without conflicting,
+and what would break if they didn't.</strong> Tenant-scoped retrieval (filtering
+before the ANN search touches other tenants' vectors), injection detection
+on retrieved content (screening text after it's retrieved but before it
+reaches the prompt), and audit logging (recording what was retrieved and
+why) sit at three different points in the same pipeline — retrieval-time,
+post-retrieval-pre-generation, and cross-cutting observation — which is why
+they layer rather than interfere: tenant scoping determines <em>what enters</em>
+the candidate set, injection detection determines <em>whether retrieved text is
+safe to place in context</em>, and audit logging <em>records the resulting
+decision chain</em> regardless of what the first two stages did. If tenant
+scoping ran <em>after</em> injection detection instead of before, injection
+detection would be needlessly scanning other tenants' documents that should
+never have been candidates at all — the ordering isn't arbitrary, it mirrors
+each lesson's original claim about which stage the fix belongs at.</p>
 <h2 id="stretch-goals">Stretch goals<a class="headerlink" href="#stretch-goals" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Add <code>classification</code> enforcement: extend <code>tenant_scoped_search</code> to also

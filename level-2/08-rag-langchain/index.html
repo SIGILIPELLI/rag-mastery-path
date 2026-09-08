@@ -1373,6 +1373,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2643,6 +2665,37 @@ survive.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>What a framework's "chain" abstraction is actually compiling to.</strong>
+LangChain's <code>Runnable</code>/chain interface (and LlamaIndex's query engine,
+lesson 9) are not a different execution model from the <code>rag.py</code> you wrote by
+hand in level-1 — they are the exact same sequence (embed question →
+retrieve → assemble prompt → generate) wrapped in composable objects with a
+shared <code>.invoke()</code>/<code>.run()</code> interface. When you write
+<code>retriever | prompt | llm</code>, the pipe operator is Python's <code>__or__</code> overload
+building a linked sequence of callables, and <code>.invoke()</code> walks that sequence
+calling each stage's output as the next stage's input — mechanically
+identical to <code>answer = llm(build_prompt(question, retriever(question)))</code>,
+just decomposed into named, independently swappable objects. Nothing about
+using a framework changes what happens at the embedding-model or vector-
+store layer underneath; it changes how much boilerplate you write to wire
+those layers together and how easily one stage (say, the retriever) can be
+swapped for a hybrid-plus-reranking pipeline without touching the rest of
+the chain.</p>
+<p><strong>Why "framework or plain Python" is a real engineering tradeoff, not a
+preference.</strong> A hand-rolled pipeline gives you full visibility into every
+token that gets embedded, every score used for ranking, and every character
+placed in the prompt — essential when debugging <em>why</em> retrieval missed
+something, because you can print or log any intermediate value trivially.
+A framework's abstraction layers trade that visibility for reusable
+components (built-in loaders for a dozen file formats, pre-wired hybrid
+retrievers, standard eval harness integrations) that would take real time to
+reimplement — but debugging a framework chain often means stepping through
+several layers of framework-internal code to find where a hybrid retriever's
+fusion logic actually lives. Teams that need to reason precisely about
+retrieval quality (this course's entire premise) benefit from understanding
+the plain-Python version first specifically so a framework's abstractions
+read as "the same lessons 2–5 mechanisms, renamed," not as unfamiliar magic.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Port your Level 1 capstone to LangChain, then interrogate the port.</p>
 <p>Rebuild ingestion with <code>DirectoryLoader</code> + <code>RecursiveCharacterTextSplitter</code>, and

@@ -913,6 +913,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2261,6 +2272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2455,6 +2477,44 @@ value of the four rules stops being theoretical.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why position and instructions in the prompt causally change generation.</strong>
+An autoregressive LLM predicts each output token from a single probability
+distribution conditioned on the entire prompt so far, computed via self-
+attention across every prior token — but attention is not uniform: models
+are measurably better at using information near the <em>start</em> and <em>end</em> of the
+context than information buried in the middle (the "lost in the middle"
+effect, covered fully in lesson 9), and instructions phrased as explicit
+constraints ("only answer using the text below; say 'I don't know' if it
+isn't there") work because next-token prediction is highly sensitive to
+recently-seen patterns — an explicit refusal instruction raises the
+probability mass on refusal-shaped continuations whenever the retrieved
+context doesn't contain matching tokens to attend to. This is also why
+prompt <em>order</em> matters mechanically, not just stylistically: putting the
+instruction after the context (so it's the most recent thing the model
+"read") typically anchors behavior more reliably than an instruction buried
+before a long context block.</p>
+<p><strong>Grounding is a bet on attention over parametric memory, and it's not a sure
+bet.</strong> Concatenating retrieved chunks into context doesn't disable the
+model's trained-in knowledge — both sources of information compete during
+generation. When the retrieved text directly contains the answer, copying
+attended tokens is the path of least resistance and usually wins. When the
+retrieved text is present but doesn't actually answer the question (a near-
+miss chunk), the model can still blend it with parametric knowledge and
+produce a plausible-sounding but ungrounded answer — which is exactly why
+this lesson's "prove it works" exercise needs an explicit refusal
+instruction <em>and</em> still needs to be tested against edge cases: grounding is
+a strong bias induced by what's in the context window, not a hard guarantee
+enforced by the architecture.</p>
+<p><strong>Token budget is arithmetic, not vibes.</strong> Every chunk you concatenate
+consumes tokens from the same fixed context window the model uses for
+attention computation; the tokenizer (typically a byte-pair-encoding
+variant) maps text to sub-word tokens at roughly 4 characters per token in
+English, so <code>top_k=5</code> chunks of 1000 characters is roughly 1,250 tokens
+before the question, instructions, and expected answer are even counted —
+the concrete reason lesson 9's "context overflow" failure mode exists and why
+prompt assembly has to budget tokens explicitly rather than just concatenate
+until it "looks like enough."</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Write an <em>ablation test</em>: take one answerable question and one unanswerable
 question, and run each through (a) the full <code>build_prompt</code> above and (b) a

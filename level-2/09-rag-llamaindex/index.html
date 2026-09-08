@@ -1406,6 +1406,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2664,6 +2686,36 @@ and retrieval, exposed as a plain function that the rest of the system calls.</p
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why "distrust the three-line version" is good advice, mechanistically.</strong>
+<code>VectorStoreIndex.from_documents(docs)</code> followed by <code>.as_query_engine()</code>
+hides a chain of default decisions that determine retrieval quality just as
+much as anything you'd tune explicitly: a default chunk size and overlap
+(lesson 3's tradeoffs, chosen for you), a default embedding model (not
+necessarily the best fit for your domain, lesson 5 in level-3), a default
+<code>top_k</code> (lesson 5's precision/recall tradeoff, picked without seeing your
+data), and a default prompt template for assembly (lesson 6's grounding
+instructions, generic rather than tuned to your failure modes). None of
+these defaults are wrong exactly — they're reasonable general-purpose
+choices — but "it runs in three lines" and "it retrieves well for your
+corpus" are unrelated claims, and the three-line version makes it easy to
+mistake the first for evidence of the second.</p>
+<p><strong>What node parsing and postprocessors actually correspond to.</strong>
+LlamaIndex's vocabulary (<code>Document</code>, <code>Node</code>, <code>NodeParser</code>, <code>Postprocessor</code>)
+names the same pipeline stages this course has covered from lesson 3
+onward, just with framework-specific terms: a <code>Node</code> is a chunk plus
+metadata plus relationships to neighboring nodes (useful for retrieving a
+chunk's surrounding context, not just the chunk itself — a capability plain
+chunking doesn't give you for free); a <code>NodeParser</code> is a chunker (lesson 3);
+a <code>Postprocessor</code> is anything that runs between raw retrieval and prompt
+assembly — a reranker (lesson 3, level-2), a metadata filter (lesson 5), or
+a similarity-score cutoff. What's genuinely distinctive about LlamaIndex
+relative to hand-rolled pipelines and to LangChain is its node-relationship
+model: because nodes track links to adjacent nodes at ingestion time, a
+retriever can expand a hit to include its neighbors post-retrieval (a
+built-in mitigation for the "chunk too small to contain the full answer"
+tension from lesson 3), something that requires manual bookkeeping in a
+plain-Python or LangChain pipeline.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Build the same pipeline a third time — LlamaIndex — and run your lesson 1 golden
 set against all three implementations (hand-built, LangChain, LlamaIndex).</p>

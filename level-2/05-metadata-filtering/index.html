@@ -1272,6 +1272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2547,6 +2569,41 @@ customer B's documents through your chatbot.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Pre-filter vs. post-filter is a real algorithmic fork, not an API detail.</strong>
+Post-filtering runs the ANN search first (HNSW or otherwise) over the <em>full</em>
+index and then discards results that fail the metadata predicate — simple to
+implement, but if the top-k the index naturally returns happens to be mostly
+filtered out (say, <code>top_k=10</code> but only 1 of those 10 belongs to the
+requested tenant), you can end up with far fewer than k usable results even
+though plenty of matching documents exist deeper in the ranking. Pre-
+filtering restricts the candidate set to only documents matching the
+predicate <em>before</em> the similarity search runs — exact for brute-force search
+(just mask the matrix rows), but for graph-based ANN indexes like HNSW it's
+genuinely hard: the graph's navigability relies on being able to hop through
+<em>any</em> nearby node as a stepping-stone toward the query, and if most nodes
+are excluded by the filter, the greedy walk can lose the path to the true
+nearest matching neighbors entirely, silently degrading recall in a way that
+looks like "search is broken" rather than "search is filtered." Production
+vector databases handle this with specialized strategies — filtered graph
+traversal that still allows hopping through excluded nodes without returning
+them, or maintaining separate sub-indexes per common filter value — covered
+in level-3's production vector database lesson.</p>
+<p><strong>Why metadata as a security boundary requires filtering to be enforced
+below the application layer.</strong> If tenant isolation is implemented as "the
+LLM prompt says only use documents where tenant_id matches," that
+instruction is a soft bias on generation (lesson 6's grounding mechanism) —
+retrieval still fetched the other tenant's chunk into context, so a
+sufficiently adversarial prompt, a model error, or a bug in prompt assembly
+can leak it. Enforcing the filter as a hard predicate <em>inside</em> the vector
+store query — so the other tenant's vectors are structurally excluded from
+the candidate set and never enter the retrieval results at all — means the
+data physically cannot reach the LLM's context window through this path,
+which is the only version of "isolation" that survives an adversarial or
+buggy prompt. This is the same reason database-level row security is
+preferred over "the application always remembers to add a WHERE clause":
+enforcement closest to the data source is enforcement that can't be
+bypassed by a mistake upstream.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Design and stress-test a metadata schema for a corpus with real constraints.</p>
 <p>Take 20+ documents and attach at least five fields, including one date, one

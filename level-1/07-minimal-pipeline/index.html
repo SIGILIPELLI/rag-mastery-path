@@ -941,6 +941,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2261,6 +2272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2522,6 +2544,33 @@ distance threshold catches it first.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why the pipeline splits cleanly into two phases with different cost
+profiles.</strong> Ingestion (chunk → embed → store) runs once per document and is
+CPU/GPU-bound on the embedding model's forward pass — for N chunks it's N
+forward passes through the encoder, easily batched since chunks don't depend
+on each other. Query time (embed → retrieve → assemble → generate) runs on
+every user request and is dominated by two very different costs: one
+embedding forward pass (milliseconds) plus one nearest-neighbor search
+(milliseconds to tens of milliseconds depending on index size), versus one
+LLM generation call, which is orders of magnitude slower (hundreds of
+milliseconds to seconds) because it requires one forward pass <em>per output
+token</em>, not one pass total. This asymmetry is why RAG systems can afford to
+over-retrieve a little (grab top-8, rerank down to top-3) — the retrieval
+side is cheap relative to generation — and why the ingestion/query split in
+this file's <code>rag.py</code> isn't just code organization, it reflects genuinely
+different latency and cost budgets that production systems monitor
+separately (level-3's observability and latency lessons).</p>
+<p><strong>Why this "minimal" pipeline is the same shape as a billion-document
+system.</strong> Every additional lesson from here on — hybrid search, reranking,
+query rewriting, incremental indexing, multi-tenant filtering — is inserted
+into one of exactly two seams in this file: between "embed" and "store"
+during ingestion, or between "embed" and "assemble" during query. None of
+them change the fundamental two-phase shape; they add stages inside it. Query
+rewriting adds a step before embedding the question. Reranking adds a step
+between retrieval and prompt assembly. Metadata filtering adds a predicate
+to the store call. Understanding this file deeply is what lets you read any
+later, more elaborate pipeline as "the same diagram, with more boxes."</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Extend <code>rag.py</code> in three small ways: (1) add a <code>--show-chunks</code> flag to <code>ask</code>
 that prints each retrieved chunk with its distance before the answer; (2) add

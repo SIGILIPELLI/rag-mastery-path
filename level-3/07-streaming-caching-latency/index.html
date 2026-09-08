@@ -1704,6 +1704,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2481,6 +2503,47 @@ responsiveness, and the one worth instrumenting and alerting on separately.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why generation dominates the latency budget, arithmetically.</strong> Embedding a
+query is one forward pass through a small encoder (milliseconds); ANN search
+is milliseconds to tens of milliseconds (level-3 lesson 4); LLM generation is
+one forward pass <em>per output token</em>, autoregressively — a 300-token answer
+means 300 sequential forward passes through a much larger model, each one
+waiting on the previous token's output before it can run (the KV-cache
+speeds up each individual pass but doesn't remove the sequential dependency).
+This is why caching and parallelism target different halves of the pipeline:
+retrieval-side costs are small and mostly parallelizable, while generation
+cost is large and fundamentally sequential per request — the only way to cut
+observed generation latency is to avoid running it at all (caching) or to
+change what "done" means to the user (streaming), not to make one pass
+faster in isolation.</p>
+<p><strong>Why caching is a hash-and-lookup problem whose correctness depends
+entirely on the cache key's design.</strong> A naive cache key of the raw user
+query string produces near-zero hit rate on real traffic, because users
+phrase the same question dozens of different ways ("refund window?" vs.
+"how long do I have to get a refund"). A cache keyed on the <em>embedding</em>
+(rounded or quantized to tolerate near-duplicate phrasing) or on the
+<em>retrieved chunk set</em> rather than the query text catches semantically
+repeated questions the exact-string cache misses entirely — the same
+"vocabulary mismatch vs. semantic similarity" split that motivated dense
+retrieval over BM25 in the first place (level-2 lesson 1) reappears here as
+a cache-design decision. Cache correctness vs. freshness is the same stale-
+index problem from level-1 lesson 9 wearing a performance-optimization
+costume: a cached answer is a snapshot, and nothing about caching itself
+knows when the underlying documents changed underneath it — invalidation has
+to be wired explicitly to the same ingestion pipeline that updates the
+index.</p>
+<p><strong>Why streaming changes perceived latency without changing total latency at
+all.</strong> Streaming tokens to the user as they're generated doesn't make the
+last token arrive any sooner — total wall-clock time for the full answer is
+identical to non-streaming. What changes is <em>time-to-first-token</em>: the user
+sees output starting in the time it takes to generate one token plus
+network overhead, rather than waiting for the entire response to buffer.
+This is a perception fix layered on top of the same sequential-generation
+mechanism described above, not a throughput improvement — which is why
+streaming and caching/parallelism are complementary rather than competing
+optimizations: caching and parallelism reduce real work done, streaming
+reduces perceived wait for the work that remains.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Add a tenant-scoped cache key to <code>cached_embed</code> (hash <code>tenant_id + text</code>
 instead of just <code>text</code>), and write a test with two tenants issuing the

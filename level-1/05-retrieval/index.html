@@ -913,6 +913,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2510,6 +2532,40 @@ there.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Top-k is a partial sort, not a threshold.</strong> "Similarity search" doesn't
+mean "return everything above some quality bar" — it means compute a
+similarity score against every candidate (or every graph neighbor visited,
+under HNSW) and keep the k highest, full stop, even if the best of them is
+mediocre. That's mechanically why "retrieval finds nothing good" is a real
+failure mode and not an edge case: cosine similarity is defined over the
+whole embedding space, so <em>some</em> stored chunk is always mathematically
+closest to the query vector, even when every chunk is topically unrelated.
+The 0.94–0.96 scores in this lesson's "false positive" example are a direct
+consequence — general phrasing overlap ("refreshes," "settings") pulls the
+angle between vectors down even though the underlying facts are unrelated,
+because the embedding model is scoring surface + distributional similarity,
+not truth or relevance to your specific need. There is no similarity score
+that means "actually relevant" in isolation; it only means "closer than the
+alternatives were," which is why lesson 8's calibration against a golden set
+matters more than staring at raw scores.</p>
+<p><strong>Metadata filtering changes the search space, not the ranking.</strong> When you
+filter by <code>{"source": "engineering.md"}</code>, the vector store restricts the
+candidate set <em>before</em> (or, in graph indexes, by pruning <em>during</em>) the
+nearest-neighbor walk — it's a boolean predicate over metadata combined with
+the geometric search, not a post-hoc re-sort. In a brute-force numpy
+implementation this is just masking rows before the argsort; in HNSW it's
+harder, because filtering can break the graph's connectivity assumptions
+(a filtered-out node normally used as a stepping-stone mid-walk is now
+unreachable), which is why production ANN filtering ("pre-filter" vs.
+"post-filter" vs. hybrid strategies) is its own engineering problem covered
+in level-3's production vector database lesson.</p>
+<p><strong>Why MRR and hit-rate, not similarity score, are the real metrics.</strong>
+Because raw cosine scores aren't comparable across queries (a score of 0.7
+can be a great match for one query's embedding distribution and a poor match
+for another's), retrieval quality has to be measured by <em>rank position
+relative to a known-correct answer</em>, not by score magnitude — which is
+exactly the shift lesson 8 formalizes with hit-rate and MRR.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Using the corpus above (or your own from lesson 4's exercise), write 6 test
 questions: four answerable (one per source file) and two unanswerable. For

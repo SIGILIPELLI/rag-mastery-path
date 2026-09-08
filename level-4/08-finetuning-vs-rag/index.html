@@ -2108,6 +2108,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2445,6 +2467,43 @@ how to operate.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why RAG and fine-tuning modify genuinely different parts of the
+generation mechanism, which is what makes the cost/update-speed asymmetry
+absolute rather than incidental.</strong> RAG changes the <em>conditioning context</em> fed
+into a fixed set of weights (level-1 lesson 1's <code>P(next_token | context)</code>
+argument) — updating knowledge means updating what's retrievable, which is
+an indexing operation (embed and store, level-1 lesson 4) costing seconds to
+minutes and requiring no change to the model itself. Fine-tuning changes
+the <em>weights themselves</em> via gradient descent over example data — updating
+knowledge means another training run, which costs GPU-hours to GPU-days
+depending on model and data size, and produces a new model artifact that has
+to be validated and redeployed before the update takes effect anywhere. This
+is not a difference of degree; it's a difference of which layer of the
+system a knowledge update touches, which is why "update speed" isn't a minor
+inconvenience of fine-tuning — it's a structural property of choosing to
+encode facts in weights instead of in a swappable context source.</p>
+<p><strong>Why fine-tuning wins for behavior in exactly the cases where RAG's
+mechanism has nothing to contribute.</strong> RAG's leverage comes entirely from
+putting relevant <em>text</em> in front of the model at generation time — it has no
+mechanism for changing <em>how</em> the model writes (tone, format adherence,
+domain-specific reasoning style) because those are properties of the
+weights' learned generation policy, not properties of any retrievable
+document. Fine-tuning directly reshapes that policy through gradient
+updates on examples of the desired behavior, which is why style transfer,
+strict output-format compliance, and domain-specific reasoning patterns are
+fine-tuning's genuine strength and RAG's genuine blind spot — no amount of
+retrieved context teaches a model a new <em>way of answering</em>, only new
+<em>material to answer with</em>.</p>
+<p><strong>Why the hybrid pattern is not a compromise but an exploitation of the
+fact that these two mechanisms are orthogonal.</strong> Because RAG operates on
+context and fine-tuning operates on weights, applying both means the fixed,
+fine-tuned generation policy (house style, structured citation format) runs
+<em>on top of</em> whatever facts the current retrieval call supplies — the two
+mechanisms don't compete for the same computational resource, so combining
+them captures fine-tuning's behavioral control and RAG's fact-freshness
+simultaneously, at the combined cost of both (a fine-tuning pipeline to
+maintain and an index to keep fresh) rather than a compromise between them.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Take one real eval failure from your own project (or one from Level 3 module
 06's synthetic set) and classify it as a knowledge-freshness failure, a

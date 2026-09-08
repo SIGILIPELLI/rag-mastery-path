@@ -1367,6 +1367,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2361,6 +2372,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2674,6 +2696,47 @@ sidebars, and comment sections that a tag allowlist will not.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><strong>Why PDF extraction is fundamentally lossy in a way HTML/Markdown parsing
+is not.</strong> A PDF is a page-description format: it stores instructions like
+"draw the glyph 'R' at coordinate (120, 340) in font Helvetica-12" — it has
+no native concept of "paragraph," "table," or even "reading order." Text
+extractors reconstruct structure heuristically, by clustering glyphs into
+lines based on vertical position and lines into paragraphs based on spacing
+and indentation — which works well for simple single-column layouts and
+breaks down for multi-column layouts, tables (columns of numbers can get
+read left-to-right across the whole page instead of top-to-bottom within a
+column), headers/footers repeated on every page, and text embedded in
+images (which extracts as nothing at all unless you run OCR). This is a
+structural limitation of the format, not a bug in any particular library —
+every PDF text extractor is solving the same ill-posed inverse problem of
+recovering document structure from a stream of positioned glyphs.</p>
+<p><strong>Why HTML stripping is a precision problem, not a completeness problem.</strong>
+HTML <em>does</em> carry real structure (tags), so the failure mode is different:
+naive text extraction (concatenating all visible text) pulls in navigation
+menus, cookie banners, related-article widgets, and ad text alongside the
+actual content, because a <code>&lt;div class="sidebar"&gt;</code> and a <code>&lt;div
+class="article-body"&gt;</code> look identical to an extractor that only reads text
+nodes. This pollutes chunk embeddings with boilerplate that's identical
+across every page on the site — which, mechanically, makes every page's
+chunks embed <em>more similarly to each other</em> than they should (since they now
+share large amounts of near-duplicate boilerplate text), degrading the
+embedding space's ability to distinguish between pages on genuinely
+different topics. The fix (targeting content-bearing tags, stripping
+<code>nav</code>/<code>header</code>/<code>footer</code>/<code>aside</code>) isn't just cosmetic cleanup — it's removing
+a systematic source of embedding noise that would otherwise be baked into
+every chunk from that source.</p>
+<p><strong>Why format comparison ultimately reduces to "how much structure survives
+extraction."</strong> Markdown and well-structured Word documents (built with real
+heading styles, not bold-and-bigger-font pretending to be a heading) preserve
+the most exploitable structure for chunking (lesson 3's structural chunking
+strategy needs real heading boundaries to split on), while scanned PDFs and
+image-heavy slides preserve the least, sometimes requiring OCR before any
+text exists to chunk at all. Every ingestion pipeline you build is, at its
+core, an attempt to recover as much of that original structure as the source
+format allows — the less structure survives, the more the downstream
+retrieval quality depends on chunking and embedding compensating for
+information the extractor could not recover.</p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Build an ingestion pipeline that survives contact with reality, and prove it.</p>
 <p>Collect at least 15 documents across three formats, deliberately including one
