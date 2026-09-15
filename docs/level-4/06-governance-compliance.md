@@ -1,3 +1,7 @@
+---
+description: "Governance, Compliance & Auditability — 'It worked in testing' isn't a defense in a regulated audit. Enterprise RAG systems handling legal, healthcare, or…"
+---
+
 # 06 · Governance, Compliance & Auditability
 
 "It worked in testing" isn't a defense in a regulated audit. Enterprise RAG

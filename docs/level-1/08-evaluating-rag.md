@@ -1,3 +1,7 @@
+---
+description: "Evaluating RAG — 'It looks right when I try it' is not evaluation. RAG systems fail quietly — a chunking tweak that helps five questions silently breaks…"
+---
+
 # 08 · Evaluating RAG
 
 "It looks right when I try it" is not evaluation. RAG systems fail quietly —

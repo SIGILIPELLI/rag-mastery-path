@@ -1,3 +1,7 @@
+---
+description: "Enterprise RAG Architecture Patterns — Everything through Level 3 is one pipeline, one corpus, one set of users. An enterprise deployment usually has none…"
+---
+
 # 01 · Enterprise RAG Architecture Patterns
 
 Everything through Level 3 is one pipeline, one corpus, one set of users. An

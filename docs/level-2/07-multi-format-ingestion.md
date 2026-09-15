@@ -1,3 +1,7 @@
+---
+description: "Multi-Format Ingestion (PDF/HTML/Docs) — Every lesson so far started from a Python list of clean sentences. Real corpora do not arrive that way. They…"
+---
+
 # 07 · Multi-Format Ingestion (PDF/HTML/Docs)
 
 Every lesson so far started from a Python list of clean sentences. Real corpora

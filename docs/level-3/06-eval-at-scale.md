@@ -1,3 +1,7 @@
+---
+description: "Evaluation at Scale — Level 1's eval harness checked a handful of hand-written question/answer pairs against a handful of documents. That's enough to…"
+---
+
 # 06 · Evaluation at Scale
 
 Level 1's eval harness checked a handful of hand-written question/answer

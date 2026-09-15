@@ -1,3 +1,7 @@
+---
+description: "GraphRAG & Knowledge Graphs — Vector retrieval finds chunks that are semantically similar to a query. It's bad at a different, common question shape: 'how…"
+---
+
 # 03 · GraphRAG & Knowledge Graphs
 
 Vector retrieval finds chunks that are *semantically similar* to a query.

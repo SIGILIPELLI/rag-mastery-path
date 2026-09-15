@@ -1,3 +1,7 @@
+---
+description: "Project — Docs Q&A Bot — The capstone: a small but complete documentation Q&A bot that pulls together every lesson in this level. It ingests a folder of…"
+---
+
 # 10 · Project — Docs Q&A Bot
 
 The capstone: a small but complete **documentation Q&A bot** that pulls

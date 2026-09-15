@@ -1,3 +1,7 @@
+---
+description: "Chunking Strategies — Chunking — splitting documents into retrievable pieces — is the least glamorous and most consequential decision in a RAG pipeline.…"
+---
+
 # 03 · Chunking Strategies
 
 Chunking — splitting documents into retrievable pieces — is the least

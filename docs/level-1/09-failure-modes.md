@@ -1,3 +1,7 @@
+---
+description: "Common Failure Modes — Every RAG system fails in the same handful of ways — the difference between a frustrating pipeline and a reliable one is knowing…"
+---
+
 # 09 · Common Failure Modes
 
 Every RAG system fails in the same handful of ways — the difference between a

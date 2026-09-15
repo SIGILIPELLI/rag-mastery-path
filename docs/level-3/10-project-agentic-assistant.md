@@ -1,3 +1,7 @@
+---
+description: "Project — Agentic Research Assistant — This project combines four modules from this level into one working pipeline: agentic tool-calling with a budget…"
+---
+
 # 10 · Project — Agentic Research Assistant
 
 This project combines four modules from this level into one working pipeline:

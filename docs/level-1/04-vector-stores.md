@@ -1,3 +1,7 @@
+---
+description: "Vector Stores (ChromaDB) — In lesson 2 you searched a corpus by comparing the query vector against every document vector in a Python loop. A vector store…"
+---
+
 # 04 · Vector Stores (ChromaDB)
 
 In lesson 2 you searched a corpus by comparing the query vector against every

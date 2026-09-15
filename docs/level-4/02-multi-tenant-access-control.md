@@ -1,3 +1,7 @@
+---
+description: "Multi-Tenant RAG & Access Control — This is the module where a subtle-looking bug is actually a data breach. In a multi-tenant RAG system — one deployment…"
+---
+
 # 02 · Multi-Tenant RAG & Access Control
 
 This is the module where a subtle-looking bug is actually a data breach. In a

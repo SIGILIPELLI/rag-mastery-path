@@ -1,3 +1,7 @@
+---
+description: "Retrieval — Retrieval is the moment of truth in a RAG pipeline: given a question, fetch the chunks that contain the answer. Everything before it…"
+---
+
 # 05 · Retrieval
 
 Retrieval is the moment of truth in a RAG pipeline: given a question, fetch

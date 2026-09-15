@@ -1,3 +1,7 @@
+---
+description: "RAG with LlamaIndex — LangChain is a general framework for LLM applications that happens to do RAG well. LlamaIndex is a framework built specifically for…"
+---
+
 # 09 · RAG with LlamaIndex
 
 LangChain is a general framework for LLM applications that happens to do RAG

@@ -1,3 +1,7 @@
+---
+description: "What Is RAG & Why It Exists — Retrieval-Augmented Generation (RAG) is a simple idea with a big payoff: instead of asking a language model to answer from…"
+---
+
 # 01 · What Is RAG & Why It Exists
 
 Retrieval-Augmented Generation (RAG) is a simple idea with a big payoff:

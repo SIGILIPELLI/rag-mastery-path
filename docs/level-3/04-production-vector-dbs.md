@@ -1,3 +1,7 @@
+---
+description: "Production Vector Databases — ChromaDB, used throughout Levels 1–2, is a local, single-process, embedded store — perfect for learning and small projects…"
+---
+
 # 04 · Production Vector Databases
 
 ChromaDB, used throughout Levels 1–2, is a local, single-process, embedded

@@ -1,3 +1,7 @@
+---
+description: "Hybrid Search (Dense + Sparse) — Lesson 1 ended with a corpus where BM25 scored 0.00 on every document for the query 'undo a bad release' — while Level…"
+---
+
 # 02 · Hybrid Search (Dense + Sparse)
 
 Lesson 1 ended with a corpus where BM25 scored `0.00` on every document for the

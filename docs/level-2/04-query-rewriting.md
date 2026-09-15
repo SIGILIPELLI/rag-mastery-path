@@ -1,3 +1,7 @@
+---
+description: "Query Rewriting & Expansion — Lessons 1–3 all optimized the same thing: what happens after the query arrives. But the query itself is usually the weakest…"
+---
+
 # 04 · Query Rewriting & Expansion
 
 Lessons 1–3 all optimized the same thing: what happens *after* the query

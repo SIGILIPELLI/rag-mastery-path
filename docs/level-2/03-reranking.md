@@ -1,3 +1,7 @@
+---
+description: "Reranking with Cross-Encoders — Retrieval has to be fast, because it scores every document in your corpus. Precision has to be high, because whatever…"
+---
+
 # 03 · Reranking with Cross-Encoders
 
 Retrieval has to be fast, because it scores every document in your corpus.

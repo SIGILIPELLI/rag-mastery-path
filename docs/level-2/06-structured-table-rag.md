@@ -1,3 +1,7 @@
+---
+description: "Structured & Table RAG — Every RAG pipeline built so far assumes documents are prose: a paragraph means something on its own, and cutting between…"
+---
+
 # 06 · Structured & Table RAG
 
 Every RAG pipeline built so far assumes documents are prose: a paragraph means

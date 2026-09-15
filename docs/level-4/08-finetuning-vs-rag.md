@@ -1,3 +1,7 @@
+---
+description: "Fine-Tuning vs. RAG vs. Hybrid — Every level up to this one has assumed RAG is the answer and focused on doing it well. This module steps back: RAG isn't…"
+---
+
 # 08 · Fine-Tuning vs. RAG vs. Hybrid
 
 Every level up to this one has assumed RAG is the answer and focused on

@@ -1,3 +1,7 @@
+---
+description: "Observability & Tracing — By this point in Level 3 the pipeline has a lot of moving, independently failing parts: an agent loop that might call retrieval…"
+---
+
 # 09 · Observability & Tracing
 
 By this point in Level 3 the pipeline has a lot of moving, independently

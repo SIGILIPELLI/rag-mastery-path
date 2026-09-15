@@ -1,3 +1,7 @@
+---
+description: "Streaming, Caching & Latency — A RAG request that takes 3 seconds end-to-end and one that streams its first token in 200ms feel completely different to a…"
+---
+
 # 07 · Streaming, Caching & Latency
 
 A RAG request that takes 3 seconds end-to-end and one that streams its first

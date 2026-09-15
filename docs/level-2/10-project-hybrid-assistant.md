@@ -1,3 +1,7 @@
+---
+description: "Project — Hybrid Search Documentation Assistant — Level 1's capstone was a working RAG bot. This one is the same bot, made measurably better — and…"
+---
+
 # 10 · Project — Hybrid Search Documentation Assistant
 
 Level 1's capstone was a working RAG bot. This one is the same bot, made

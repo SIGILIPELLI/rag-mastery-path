@@ -1,3 +1,7 @@
+---
+description: "Prompt Assembly & Generation — You can retrieve perfect chunks and still get a bad answer if the prompt is sloppy. Prompt assembly is where retrieval…"
+---
+
 # 06 · Prompt Assembly & Generation
 
 You can retrieve perfect chunks and still get a bad answer if the prompt is

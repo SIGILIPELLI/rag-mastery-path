@@ -1,3 +1,7 @@
+---
+description: "Embeddings & Semantic Similarity — Embeddings are the engine that makes retrieval-by-meaning possible. An embedding model turns a piece of text into a…"
+---
+
 # 02 · Embeddings & Semantic Similarity
 
 Embeddings are the engine that makes retrieval-by-meaning possible. An

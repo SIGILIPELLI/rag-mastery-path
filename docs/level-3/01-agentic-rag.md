@@ -1,3 +1,7 @@
+---
+description: "Agentic RAG — Every pipeline through Level 2 retrieves once, then answers. That works when the question maps cleanly onto one search. It breaks the moment…"
+---
+
 # 01 · Agentic RAG
 
 Every pipeline through Level 2 retrieves once, then answers. That works when

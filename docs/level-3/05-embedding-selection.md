@@ -1,3 +1,7 @@
+---
+description: "Embedding Model Selection & Fine-Tuning — MTEB leaderboard rank is the number everyone quotes and the number that matters least for your corpus. A model…"
+---
+
 # 05 · Embedding Model Selection & Fine-Tuning
 
 MTEB leaderboard rank is the number everyone quotes and the number that

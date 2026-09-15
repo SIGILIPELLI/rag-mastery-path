@@ -1,3 +1,7 @@
+---
+description: "A Minimal End-to-End Pipeline — Time to put lessons 2–6 together into one file you can actually run: a ~100-line script that ingests a folder of text…"
+---
+
 # 07 · A Minimal End-to-End Pipeline
 
 Time to put lessons 2–6 together into one file you can actually run: a

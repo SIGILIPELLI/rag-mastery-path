@@ -1,3 +1,7 @@
+---
+description: "RAG Security — Every earlier module treated retrieved documents as trusted data. In an enterprise deployment, 'documents' often means anything ingested…"
+---
+
 # 05 · RAG Security
 
 Every earlier module treated retrieved documents as trusted data. In an

@@ -1,3 +1,7 @@
+---
+description: "Continuous Evaluation & Feedback Loops — Level 3 module 06 built a CI regression suite that runs against a fixed eval set. That catches regressions in…"
+---
+
 # 07 · Continuous Evaluation & Feedback Loops
 
 Level 3 module 06 built a CI regression suite that runs against a fixed eval

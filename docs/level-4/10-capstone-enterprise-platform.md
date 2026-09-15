@@ -1,3 +1,7 @@
+---
+description: "Capstone — Enterprise Knowledge Platform — This capstone combines four Level 4 modules into one working platform: tenant-scoped retrieval that…"
+---
+
 # 10 · Capstone — Enterprise Knowledge Platform
 
 This capstone combines four Level 4 modules into one working platform:

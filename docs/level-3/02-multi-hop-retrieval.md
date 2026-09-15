@@ -1,3 +1,7 @@
+---
+description: "Multi-Hop Retrieval & Query Decomposition — Some questions have a single answer sitting in a single chunk. Others require chaining facts across documents…"
+---
+
 # 02 · Multi-Hop Retrieval & Query Decomposition
 
 Some questions have a single answer sitting in a single chunk. Others require

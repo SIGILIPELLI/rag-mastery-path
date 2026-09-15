@@ -1,3 +1,7 @@
+---
+description: "Latency Optimization at Scale — Level 3 module 07 covered caching, streaming, and parallelism as latency levers on a single request. This module is about…"
+---
+
 # 04 · Latency Optimization at Scale
 
 Level 3 module 07 covered caching, streaming, and parallelism as latency

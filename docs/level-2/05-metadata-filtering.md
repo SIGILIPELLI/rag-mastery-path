@@ -1,3 +1,7 @@
+---
+description: "Metadata Design & Filtered Retrieval — Semantic similarity cannot express 'only documents this user is allowed to see', 'only the current policy version'…"
+---
+
 # 05 · Metadata Design & Filtered Retrieval
 
 Semantic similarity cannot express "only documents this user is allowed to

@@ -1,3 +1,7 @@
+---
+description: "Keyword Search & BM25 — Level 1 built everything on embeddings, and embeddings have one blind spot that matters enormously in practice: they are bad at…"
+---
+
 # 01 · Keyword Search & BM25
 
 Level 1 built everything on embeddings, and embeddings have one blind spot that

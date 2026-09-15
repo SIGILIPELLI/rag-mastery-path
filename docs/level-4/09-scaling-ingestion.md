@@ -1,3 +1,7 @@
+---
+description: "Scaling Ingestion Pipelines — Level 3 module 08 built correct incremental ingestion — hash-based change detection, upserts, deletes. This module is about…"
+---
+
 # 09 · Scaling Ingestion Pipelines
 
 Level 3 module 08 built correct incremental ingestion — hash-based change

@@ -1,3 +1,7 @@
+---
+description: "Cost Optimization — At enterprise query volume, 'which model should we use' is a budget line item, not a preference. This module builds a real cost model…"
+---
+
 # 03 · Cost Optimization
 
 At enterprise query volume, "which model should we use" is a budget line

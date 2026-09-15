@@ -1,3 +1,7 @@
+---
+description: "RAG with LangChain — You have now built every RAG component by hand: chunking, embedding, a vector store, BM25, fusion, reranking, query rewriting, and…"
+---
+
 # 08 · RAG with LangChain
 
 You have now built every RAG component by hand: chunking, embedding, a vector

@@ -1,3 +1,7 @@
+---
+description: "Incremental Indexing & Freshness — Every pipeline so far builds an index once, from a fixed snapshot of documents, and never touches it again. Real…"
+---
+
 # 08 · Incremental Indexing & Freshness
 
 Every pipeline so far builds an index once, from a fixed snapshot of
