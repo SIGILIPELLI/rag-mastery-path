@@ -215,6 +215,11 @@ way to catch this class of regression, because it directly measures the
 thing that's actually degrading rather than a proxy (speed) that happens to
 be easy to instrument.
 
+## 🔀 Related lessons on other tracks
+
+- [Azure — 05 · Advanced Observability (App Insights, Tracing)](https://sigilipelli.github.io/azure-mastery-path/level-4/05-advanced-observability/)
+- [LLM Dev — 09 · Observability & Tracing](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/09-observability-tracing/)
+
 ## Exercise
 
 Add a fourth span type, `rerank`, to `traced_pipeline` that runs between

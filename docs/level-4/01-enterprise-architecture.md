@@ -160,6 +160,12 @@ corpus silently becomes every other team's default too, unless the
 config-driven system is deliberately built to vary per tenant rather than
 globally.
 
+## 🔀 Related lessons on other tracks
+
+- [Data Engineering — 01 · Enterprise Data Platform Architecture](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/01-enterprise-platform-architecture/)
+- [ETL & Data Lake — 10 · Capstone — Governed Enterprise Data Lake Architecture](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/10-capstone-enterprise-lake-architecture/)
+- [Excel — 01 · Enterprise Excel Architecture](https://sigilipelli.github.io/excel-mastery-path/level-4/01-enterprise-excel-architecture/)
+
 ## Exercise
 
 Extend `PipelineConfig` with an `isolation_mode` field (`"shared_filtered"`,

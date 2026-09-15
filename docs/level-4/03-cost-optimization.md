@@ -213,6 +213,12 @@ level-3 lesson 6's point about needing a stored baseline for evaluation:
 cost, like quality, needs continuous re-measurement against current traffic,
 not a one-time calculation treated as permanently valid.
 
+## 🔀 Related lessons on other tracks
+
+- [AI/ML — 08 · Cost Optimization & Efficient Inference](https://sigilipelli.github.io/ai-ml-mastery-path/level-4/08-efficient-inference/)
+- [AWS — Cost Optimization at Scale](https://sigilipelli.github.io/aws-mastery-path/level-4/06-cost-optimization-at-scale/)
+- [Azure — 09 · Cost Management & Optimization](https://sigilipelli.github.io/azure-mastery-path/level-3/09-cost-management-optimization/)
+
 ## Exercise
 
 Recompute `total` for your own actual (or estimated) query volume, average

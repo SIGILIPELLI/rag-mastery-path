@@ -171,6 +171,10 @@ them captures fine-tuning's behavioral control and RAG's fact-freshness
 simultaneously, at the combined cost of both (a fine-tuning pipeline to
 maintain and an index to keep fresh) rather than a compromise between them.
 
+## 🔀 Related lessons on other tracks
+
+- [LLM Dev — 06 · Fine-Tuning Fundamentals (LoRA/QLoRA)](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/06-fine-tuning/)
+
 ## Exercise
 
 Take one real eval failure from your own project (or one from Level 3 module

@@ -218,6 +218,10 @@ leaked correlation, not generalizable retrieval quality, which is why a
 representative, independently-sourced golden set matters as much as the
 benchmarking methodology itself.
 
+## 🔀 Related lessons on other tracks
+
+- [LLM Dev — 06 · Fine-Tuning Fundamentals (LoRA/QLoRA)](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/06-fine-tuning/)
+
 ## Exercise
 
 Add two more `(query, relevant_doc_index)` pairs to `eval_set` where the query

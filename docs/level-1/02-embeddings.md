@@ -209,6 +209,10 @@ similarity and plain dot product become identical — which is why some vector
 stores default to dot product for speed and only normalize vectors once at
 index time rather than per query.
 
+## 🔀 Related lessons on other tracks
+
+- [LLM Dev — 03 · Embeddings & Semantic Search](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/03-embeddings-semantic-search/)
+
 ## Exercise
 
 Build a tiny "semantic FAQ matcher": create a list of 8–10 FAQ answers from

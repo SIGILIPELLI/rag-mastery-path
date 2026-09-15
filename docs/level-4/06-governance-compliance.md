@@ -202,6 +202,12 @@ path might not check — an unenforced "deleted" flag that a query predicate
 forgets to filter on is functionally identical to the row-level-security gap
 in level-4 lesson 2, just for compliance rather than access control.
 
+## 🔀 Related lessons on other tracks
+
+- [AI Manager — 02 · AI Governance & Compliance](https://sigilipelli.github.io/ai-manager-mastery-path/level-3/02-ai-governance-compliance/)
+- [AWS — Compliance & Governance (Config, Audit Manager)](https://sigilipelli.github.io/aws-mastery-path/level-4/08-compliance-governance/)
+- [Data Engineering — 04 · Advanced Data Governance & Compliance](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/04-advanced-governance-compliance/)
+
 ## Exercise
 
 Extend `AuditLog` with a `redact_actor(actor_id)` method that removes all

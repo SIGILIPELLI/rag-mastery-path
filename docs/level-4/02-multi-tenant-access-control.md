@@ -186,6 +186,11 @@ context" and "the right information reached the user" are not the same
 guarantee once documents themselves contain heterogeneous permission
 levels.
 
+## 🔀 Related lessons on other tracks
+
+- [Cybersecurity — 05 · Authentication & Access Control](https://sigilipelli.github.io/cybersecurity-mastery-path/level-1/05-authentication-access-control/)
+- [ETL & Data Lake — 03 · Security & Access Control Patterns for Data Lakes](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/03-security-access-control/)
+
 ## Exercise
 
 Write a test with three tenants and a query engineered (like the one above)

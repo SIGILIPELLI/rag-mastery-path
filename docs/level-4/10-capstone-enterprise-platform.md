@@ -239,3 +239,7 @@ each lesson's original claim about which stage the fix belongs at.
   non-cached, non-injection-flagged query) into the cost model from module
   03, and compute the dollar savings the tenant-scoped cache produces at
   10,000 queries/day with a 25% repeat-query rate.
+
+## 🔀 Related lessons on other tracks
+
+- [Data Engineering — 01 · Enterprise Data Platform Architecture](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/01-enterprise-platform-architecture/)
