@@ -204,9 +204,9 @@ in level-4 lesson 2, just for compliance rather than access control.
 
 ## 🔀 Related lessons on other tracks
 
-- [AI Manager — 02 · AI Governance & Compliance](https://sigilipelli.github.io/ai-manager-mastery-path/level-3/02-ai-governance-compliance/)
-- [AWS — Compliance & Governance (Config, Audit Manager)](https://sigilipelli.github.io/aws-mastery-path/level-4/08-compliance-governance/)
-- [Data Engineering — 04 · Advanced Data Governance & Compliance](https://sigilipelli.github.io/data-engineering-mastery-path/level-4/04-advanced-governance-compliance/)
+- [AI Manager — 02 · AI Governance & Compliance](https://learnmasterypath.com/ai-manager-mastery-path/level-3/02-ai-governance-compliance/)
+- [AWS — Compliance & Governance (Config, Audit Manager)](https://learnmasterypath.com/aws-mastery-path/level-4/08-compliance-governance/)
+- [Data Engineering — 04 · Advanced Data Governance & Compliance](https://learnmasterypath.com/data-engineering-mastery-path/level-4/04-advanced-governance-compliance/)
 
 ## Exercise
 

@@ -211,7 +211,7 @@ index time rather than per query.
 
 ## 🔀 Related lessons on other tracks
 
-- [LLM Dev — 03 · Embeddings & Semantic Search](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/03-embeddings-semantic-search/)
+- [LLM Dev — 03 · Embeddings & Semantic Search](https://learnmasterypath.com/llm-dev-mastery-path/level-3/03-embeddings-semantic-search/)
 
 ## Exercise
 

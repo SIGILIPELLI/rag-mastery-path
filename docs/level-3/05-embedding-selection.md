@@ -220,7 +220,7 @@ benchmarking methodology itself.
 
 ## 🔀 Related lessons on other tracks
 
-- [LLM Dev — 06 · Fine-Tuning Fundamentals (LoRA/QLoRA)](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/06-fine-tuning/)
+- [LLM Dev — 06 · Fine-Tuning Fundamentals (LoRA/QLoRA)](https://learnmasterypath.com/llm-dev-mastery-path/level-3/06-fine-tuning/)
 
 ## Exercise
 

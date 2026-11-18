@@ -217,8 +217,8 @@ be easy to instrument.
 
 ## 🔀 Related lessons on other tracks
 
-- [Azure — 05 · Advanced Observability (App Insights, Tracing)](https://sigilipelli.github.io/azure-mastery-path/level-4/05-advanced-observability/)
-- [LLM Dev — 09 · Observability & Tracing](https://sigilipelli.github.io/llm-dev-mastery-path/level-3/09-observability-tracing/)
+- [Azure — 05 · Advanced Observability (App Insights, Tracing)](https://learnmasterypath.com/azure-mastery-path/level-4/05-advanced-observability/)
+- [LLM Dev — 09 · Observability & Tracing](https://learnmasterypath.com/llm-dev-mastery-path/level-3/09-observability-tracing/)
 
 ## Exercise
 

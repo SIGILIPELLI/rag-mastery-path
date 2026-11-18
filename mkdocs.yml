@@ -1,6 +1,6 @@
 site_name: RAG Pipelines Mastery Path
 site_description: A structured, module-wise training program on Retrieval-Augmented Generation — from your first embedding to production-grade RAG systems, with runnable Python code in every module.
-site_url: https://sigilipelli.github.io/rag-mastery-path/
+site_url: https://learnmasterypath.com/rag-mastery-path/
 repo_url: https://github.com/SIGILIPELLI/rag-mastery-path
 repo_name: rag-mastery-path
 

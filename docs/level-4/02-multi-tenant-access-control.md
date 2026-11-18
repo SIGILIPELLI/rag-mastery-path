@@ -188,8 +188,8 @@ levels.
 
 ## 🔀 Related lessons on other tracks
 
-- [Cybersecurity — 05 · Authentication & Access Control](https://sigilipelli.github.io/cybersecurity-mastery-path/level-1/05-authentication-access-control/)
-- [ETL & Data Lake — 03 · Security & Access Control Patterns for Data Lakes](https://sigilipelli.github.io/etl-datalake-mastery-path/level-4/03-security-access-control/)
+- [Cybersecurity — 05 · Authentication & Access Control](https://learnmasterypath.com/cybersecurity-mastery-path/level-1/05-authentication-access-control/)
+- [ETL & Data Lake — 03 · Security & Access Control Patterns for Data Lakes](https://learnmasterypath.com/etl-datalake-mastery-path/level-4/03-security-access-control/)
 
 ## Exercise
 
