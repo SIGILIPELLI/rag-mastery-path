@@ -74,7 +74,7 @@ sites cover the neighboring ground:
 - [AI/ML Mastery Path](https://learnmasterypath.com/ai-ml-mastery-path/) — machine-learning foundations
 - [LLM Development Mastery Path](https://learnmasterypath.com/llm-dev-mastery-path/) — building LLM applications
 
-🎥 **Prefer video?** Watch the [Mastery Path video series](https://youtube.com/@sigilipelli) on YouTube — Shorts and full walkthroughs of these lessons.
+🎥 **Prefer video?** Watch the [Mastery Path video series](https://youtube.com/@learnmasterypath) on YouTube — Shorts and full walkthroughs of these lessons.
 
 ## More from the Mastery Path series
 
