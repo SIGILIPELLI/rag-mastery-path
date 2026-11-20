@@ -1,3 +1,7 @@
+---
+description: "Level 2 (Intermediate) of the free RAG Pipelines Mastery Path. Move beyond plain top-k vector search — combine dense and keyword retrieval, rerank results…"
+---
+
 # Level 2 · Intermediate <span class="level-badge">Smarter Retrieval</span>
 
 Goal: move beyond plain top-k vector search — combine dense and keyword retrieval, rerank results, rewrite queries, handle tables and messy real-world documents, and learn what the popular frameworks actually do under the hood.

@@ -1,3 +1,7 @@
+---
+description: "Level 1 (Entry) of the free RAG Pipelines Mastery Path. Understand every moving part of a RAG pipeline — embeddings, chunking, vector storage, retrieval…"
+---
+
 # Level 1 · Entry <span class="level-badge">Foundations</span>
 
 Goal: understand every moving part of a RAG pipeline — embeddings, chunking,

@@ -1,3 +1,7 @@
+---
+description: "Level 4 (Master) of the free RAG Pipelines Mastery Path. Design and operate RAG platforms at enterprise scale — multi-tenant architecture, security and…"
+---
+
 # Level 4 · Master <span class="level-badge">Enterprise Scale</span>
 
 Goal: design and operate RAG platforms at enterprise scale — multi-tenant architecture, security and governance, cost and latency engineering, and the judgment to choose between RAG, fine-tuning, and hybrid strategies for each workload.

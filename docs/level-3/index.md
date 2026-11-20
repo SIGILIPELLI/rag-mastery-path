@@ -1,3 +1,7 @@
+---
+description: "Level 3 (Advanced) of the free RAG Pipelines Mastery Path. Build RAG systems that hold up in production — agentic and multi-hop retrieval, graph-based…"
+---
+
 # Level 3 · Advanced <span class="level-badge">Production Systems</span>
 
 Goal: build RAG systems that hold up in production — agentic and multi-hop retrieval, graph-based knowledge, real vector databases, evaluation at scale, and the operational concerns (latency, freshness, observability) that separate demos from services.

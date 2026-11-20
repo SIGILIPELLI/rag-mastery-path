@@ -1,3 +1,7 @@
+---
+description: "Privacy policy for the free RAG Pipelines Mastery Path: how Google Analytics and AdSense cookies are used, what is not collected, and how to opt out."
+---
+
 # Privacy Policy
 
 _Last updated: 2026-07-21_
