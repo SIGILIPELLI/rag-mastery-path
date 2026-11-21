@@ -50,7 +50,7 @@ for i, c in enumerate(chunk_fixed(text)):
     print(i, len(c))
 # 0 800
 # 1 800
-# 2 800
+# 2 700
 # 3 50
 ```
 
