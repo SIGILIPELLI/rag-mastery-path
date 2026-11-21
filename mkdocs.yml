@@ -53,9 +53,11 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/progress-tracker.css
+  - stylesheets/final-quiz.css
 
 extra_javascript:
   - javascripts/progress-tracker.js
+  - javascripts/final-quiz.js
 
 
 
@@ -127,3 +129,5 @@ nav:
       - "08 · Fine-Tuning vs. RAG vs. Hybrid": level-4/08-finetuning-vs-rag.md
       - "09 · Scaling Ingestion Pipelines": level-4/09-scaling-ingestion.md
       - "10 · Capstone — Enterprise Knowledge Platform": level-4/10-capstone-enterprise-platform.md
+  - "🎯 Final Quiz": quiz.md
+
