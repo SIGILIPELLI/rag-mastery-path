@@ -18,7 +18,3 @@ Goal: design and operate RAG platforms at enterprise scale — multi-tenant arch
 8. [Fine-Tuning vs. RAG vs. Hybrid](08-finetuning-vs-rag.md)
 9. [Scaling Ingestion Pipelines](09-scaling-ingestion.md)
 10. [Capstone — Enterprise Knowledge Platform](10-capstone-enterprise-platform.md)
-
-!!! info "Coming soon"
-    Full lesson content for this level is being written next. Start with
-    [Level 1 · Entry](../level-1/index.md), which is complete.

@@ -18,7 +18,3 @@ Goal: move beyond plain top-k vector search — combine dense and keyword retrie
 8. [RAG with LangChain](08-rag-langchain.md)
 9. [RAG with LlamaIndex](09-rag-llamaindex.md)
 10. [Project — Hybrid Search Documentation Assistant](10-project-hybrid-assistant.md)
-
-!!! info "Coming soon"
-    Full lesson content for this level is being written next. Start with
-    [Level 1 · Entry](../level-1/index.md), which is complete.
