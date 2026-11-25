@@ -1,0 +1,4155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="179 RAG Pipelines interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the RAG Pipelines Mastery Path.">
+      
+      
+      
+        <link rel="canonical" href="https://learnmasterypath.com/rag-mastery-path/interview-questions/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../cheat-sheet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+  
+  <title>RAG Pipelines Interview Questions and Answers (179 Questions)</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/progress-tracker.css">
+    
+      <link rel="stylesheet" href="../stylesheets/final-quiz.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05VBGCXN12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05VBGCXN12');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mastery Path">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="RAG Pipelines Interview Questions and Answers (179 Questions)">
+  <meta property="og:description" content="179 RAG Pipelines interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the RAG Pipelines Mastery Path.">
+  <meta property="og:url" content="https://learnmasterypath.com/rag-mastery-path/interview-questions/">
+  <meta property="og:image" content="https://learnmasterypath.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mastery Path: free structured courses, beginner to master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RAG Pipelines Interview Questions and Answers (179 Questions)">
+  <meta name="twitter:description" content="179 RAG Pipelines interview questions with answers and explanations, from beginner to advanced, organised by level. Free, from the RAG Pipelines Mastery Path.">
+  <meta name="twitter:image" content="https://learnmasterypath.com/og-image.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
+     crossorigin="anonymous"></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Mastery Path", "item": "https://learnmasterypath.com/"},
+      {"@type": "ListItem", "position": 2, "name": "RAG Pipelines Mastery Path", "item": "https://learnmasterypath.com/rag-mastery-path/"},
+      {"@type": "ListItem", "position": 3, "name": "Interview Questions", "item": "https://learnmasterypath.com/rag-mastery-path/interview-questions/"}
+    ]
+  }
+  </script>
+  <style>
+    .md-banner a:hover { text-decoration: underline !important; }
+    .mp-related { margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--md-default-fg-color--lightest); font-size: .78rem; }
+    .mp-related h2 { font-size: .9rem; margin: 0 0 .5rem; }
+    .mp-related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .9rem; }
+    .mp-related li { margin: 0 !important; }
+  </style>
+  <script type="application/json" id="mp-course-meta">{"home": false, "id": "rag-mastery-path", "name": "RAG Pipelines Mastery Path", "repo": "https://github.com/SIGILIPELLI/rag-mastery-path", "src": "interview-questions.md", "url": "https://learnmasterypath.com/rag-mastery-path/"}</script>
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/learn.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://learnmasterypath.com/assets/course.css?v=1">
+  <script src="https://learnmasterypath.com/assets/learn.js" defer></script>
+  <script src="https://learnmasterypath.com/assets/signup.js" defer></script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rag-pipelines-interview-questions-and-answers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://learnmasterypath.com/" style="color: inherit; text-decoration: none;">
+    &larr; Mastery Path &middot; all 100+ free courses
+  </a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/search/" style="color: inherit; text-decoration: none;">Search all courses</a>
+  <span style="opacity: .6; margin: 0 .6em;">|</span>
+  <a href="https://learnmasterypath.com/resume/" style="color: inherit; font-weight: 700; text-decoration: none;">
+    Got the skills? Free resume ATS check &rarr;
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="RAG Pipelines Mastery Path" class="md-header__button md-logo" aria-label="RAG Pipelines Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RAG Pipelines Mastery Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAG Pipelines Interview Questions and Answers (179 Questions)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SIGILIPELLI/rag-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rag-mastery-path
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Interview Questions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cheat-sheet/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cheat Sheet
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 1 · Entry
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 2 · Intermediate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 3 · Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../level-4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 4 · Master
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quiz/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Final Quiz
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RAG Pipelines Mastery Path" class="md-nav__button md-logo" aria-label="RAG Pipelines Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    RAG Pipelines Mastery Path
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SIGILIPELLI/rag-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rag-mastery-path
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-what-is-rag-why-it-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · What Is RAG &amp; Why It Exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-embeddings-semantic-similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Embeddings &amp; Semantic Similarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-chunking-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Chunking Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-vector-stores-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Vector Stores (ChromaDB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-prompt-assembly-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Prompt Assembly &amp; Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-a-minimal-end-to-end-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · A Minimal End-to-End Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-evaluating-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Evaluating RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-common-failure-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Common Failure Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-docs-qa-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Docs Q&amp;A Bot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-keyword-search-bm25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Keyword Search &amp; BM25
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-hybrid-search-dense-sparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Hybrid Search (Dense + Sparse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-reranking-with-cross-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Reranking with Cross-Encoders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-query-rewriting-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Query Rewriting &amp; Expansion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-metadata-design-filtered-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Metadata Design &amp; Filtered Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-structured-table-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Structured &amp; Table RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-multi-format-ingestion-pdfhtmldocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Multi-Format Ingestion (PDF/HTML/Docs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-rag-with-langchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · RAG with LangChain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-rag-with-llamaindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · RAG with LlamaIndex
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-hybrid-search-documentation-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Hybrid Search Documentation Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-agentic-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Agentic RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-multi-hop-retrieval-query-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Multi-Hop Retrieval &amp; Query Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-graphrag-knowledge-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · GraphRAG &amp; Knowledge Graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-production-vector-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Production Vector Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-embedding-model-selection-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Embedding Model Selection &amp; Fine-Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-evaluation-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Evaluation at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-streaming-caching-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Streaming, Caching &amp; Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-incremental-indexing-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Incremental Indexing &amp; Freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-observability-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Observability &amp; Tracing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-agentic-research-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Agentic Research Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-rag-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise RAG Architecture Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-multi-tenant-rag-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Multi-Tenant RAG &amp; Access Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-latency-optimization-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Latency Optimization at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-rag-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · RAG Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-governance-compliance-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Governance, Compliance &amp; Auditability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-continuous-evaluation-feedback-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Continuous Evaluation &amp; Feedback Loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-fine-tuning-vs-rag-vs-hybrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Fine-Tuning vs. RAG vs. Hybrid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-scaling-ingestion-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Scaling Ingestion Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-enterprise-knowledge-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone — Enterprise Knowledge Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunk-with-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk with overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reciprocal-rank-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reciprocal rank fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/01-what-is-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · What Is RAG & Why It Exists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/02-embeddings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Embeddings & Semantic Similarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/03-chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Chunking Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/04-vector-stores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Vector Stores (ChromaDB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/05-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/06-prompt-assembly-generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Prompt Assembly & Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/07-minimal-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · A Minimal End-to-End Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/08-evaluating-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Evaluating RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/09-failure-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Common Failure Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-1/10-capstone-docs-qa-bot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Docs Q&A Bot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 · Intermediate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 2 · Intermediate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/01-bm25-keyword-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Keyword Search & BM25
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/02-hybrid-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Hybrid Search (Dense + Sparse)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/03-reranking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Reranking with Cross-Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/04-query-rewriting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Query Rewriting & Expansion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/05-metadata-filtering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Metadata Design & Filtered Retrieval
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/06-structured-table-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Structured & Table RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/07-multi-format-ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Multi-Format Ingestion (PDF/HTML/Docs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/08-rag-langchain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · RAG with LangChain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/09-rag-llamaindex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · RAG with LlamaIndex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-2/10-project-hybrid-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Hybrid Search Documentation Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 · Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 3 · Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/01-agentic-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Agentic RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/02-multi-hop-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Multi-Hop Retrieval & Query Decomposition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/03-graphrag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · GraphRAG & Knowledge Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/04-production-vector-dbs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Production Vector Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/05-embedding-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Embedding Model Selection & Fine-Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/06-eval-at-scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Evaluation at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/07-streaming-caching-latency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Streaming, Caching & Latency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/08-incremental-indexing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Incremental Indexing & Freshness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/09-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Observability & Tracing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-3/10-project-agentic-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Agentic Research Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../level-4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 · Master
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 4 · Master
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/01-enterprise-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Enterprise RAG Architecture Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/02-multi-tenant-access-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Multi-Tenant RAG & Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/03-cost-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Cost Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/04-latency-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Latency Optimization at Scale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/05-rag-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · RAG Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/06-governance-compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Governance, Compliance & Auditability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/07-continuous-evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Continuous Evaluation & Feedback Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/08-finetuning-vs-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Fine-Tuning vs. RAG vs. Hybrid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/09-scaling-ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Scaling Ingestion Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-4/10-capstone-enterprise-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone — Enterprise Knowledge Platform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Final Quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#level-1-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 1 · Entry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 1 · Entry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-what-is-rag-why-it-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · What Is RAG &amp; Why It Exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-embeddings-semantic-similarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Embeddings &amp; Semantic Similarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-chunking-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Chunking Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-vector-stores-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Vector Stores (ChromaDB)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-prompt-assembly-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Prompt Assembly &amp; Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-a-minimal-end-to-end-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · A Minimal End-to-End Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-evaluating-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Evaluating RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-common-failure-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Common Failure Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-docs-qa-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Docs Q&amp;A Bot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-2-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 2 · Intermediate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 2 · Intermediate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-keyword-search-bm25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Keyword Search &amp; BM25
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-hybrid-search-dense-sparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Hybrid Search (Dense + Sparse)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-reranking-with-cross-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Reranking with Cross-Encoders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-query-rewriting-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Query Rewriting &amp; Expansion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-metadata-design-filtered-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Metadata Design &amp; Filtered Retrieval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-structured-table-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Structured &amp; Table RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-multi-format-ingestion-pdfhtmldocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Multi-Format Ingestion (PDF/HTML/Docs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-rag-with-langchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · RAG with LangChain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-rag-with-llamaindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · RAG with LlamaIndex
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-hybrid-search-documentation-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Hybrid Search Documentation Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-3-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 3 · Advanced
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 3 · Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-agentic-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Agentic RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-multi-hop-retrieval-query-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Multi-Hop Retrieval &amp; Query Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-graphrag-knowledge-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · GraphRAG &amp; Knowledge Graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-production-vector-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Production Vector Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-embedding-model-selection-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · Embedding Model Selection &amp; Fine-Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-evaluation-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Evaluation at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-streaming-caching-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Streaming, Caching &amp; Latency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-incremental-indexing-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Incremental Indexing &amp; Freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-observability-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Observability &amp; Tracing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-project-agentic-research-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Project — Agentic Research Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level-4-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level 4 · Master
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Level 4 · Master">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-enterprise-rag-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 · Enterprise RAG Architecture Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-multi-tenant-rag-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 · Multi-Tenant RAG &amp; Access Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 · Cost Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-latency-optimization-at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 · Latency Optimization at Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-rag-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 · RAG Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-governance-compliance-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 · Governance, Compliance &amp; Auditability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-continuous-evaluation-feedback-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 · Continuous Evaluation &amp; Feedback Loops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-fine-tuning-vs-rag-vs-hybrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08 · Fine-Tuning vs. RAG vs. Hybrid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-scaling-ingestion-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        09 · Scaling Ingestion Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-capstone-enterprise-knowledge-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10 · Capstone — Enterprise Knowledge Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixed-questions-across-all-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed questions across all levels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-coding-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical coding questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical coding questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunk-with-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunk with overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reciprocal-rank-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reciprocal rank fusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="rag-pipelines-interview-questions-and-answers">RAG Pipelines Interview Questions and Answers<a class="headerlink" href="#rag-pipelines-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
+<p><strong>179 questions</strong> with the correct answer and a short explanation, organised from beginner (Level 1) to advanced (Level 4). Every question comes from a lesson in the free RAG Pipelines Mastery Path, so you can open the lesson to go deeper.</p>
+<div class="admonition tip">
+<p class="admonition-title">Practise, don't just read</p>
+<p>Each lesson also ends with an interactive quiz, and the <a href="../quiz/">final quiz</a> tests all four levels. Try to answer each question below before reading the answer.</p>
+</div>
+<h2 id="level-1-entry">Level 1 · Entry<a class="headerlink" href="#level-1-entry" title="Permanent link">&para;</a></h2>
+<h3 id="01-what-is-rag-why-it-exists"><a href="../level-1/01-what-is-rag/">01 · What Is RAG &amp; Why It Exists</a><a class="headerlink" href="#01-what-is-rag-why-it-exists" title="Permanent link">&para;</a></h3>
+<p><strong>Q1.</strong> What is the core idea of RAG?</p>
+<p><strong>Answer:</strong> Look up relevant text first and hand it to the model with the question, shrinking its job from 'know everything' to 'read this and answer'</p>
+<p>LLMs are extremely good at reading provided text and answering.</p>
+<p><strong>Q2.</strong> Which two problems does RAG solve?</p>
+<p><strong>Answer:</strong> Knowledge cutoffs/private data, and hallucination</p>
+<p>A plain model can only refuse or guess about private or recent data.</p>
+<p><strong>Q3.</strong> Why not paste the entire knowledge base into every prompt?</p>
+<p><strong>Answer:</strong> It doesn't fit, it costs too much on every request, and accuracy degrades with facts buried in the middle</p>
+<p>A 1M-token window is roughly 3–4 MB; real collections are gigabytes.</p>
+<p><strong>Q4.</strong> How does grounding change the hallucination failure profile?</p>
+<p><strong>Answer:</strong> The model can quote and cite real passages and be told to say 'I don't know' when the text lacks the answer</p>
+<p>It doesn't make hallucination impossible.</p>
+<h3 id="02-embeddings-semantic-similarity"><a href="../level-1/02-embeddings/">02 · Embeddings &amp; Semantic Similarity</a><a class="headerlink" href="#02-embeddings-semantic-similarity" title="Permanent link">&para;</a></h3>
+<p><strong>Q5.</strong> What property makes embeddings useful for retrieval?</p>
+<p><strong>Answer:</strong> Texts that mean similar things get close vectors, even with no words in common</p>
+<p>'How do I get my money back?' lands near 'refund policy'.</p>
+<p><strong>Q6.</strong> What does a cosine similarity near 0 mean?</p>
+<p><strong>Answer:</strong> The texts are unrelated</p>
+<p>1.0 is the same direction; −1.0 is opposite (rare).</p>
+<p><strong>Q7.</strong> What is the vector shape of all-MiniLM-L6-v2 embeddings?</p>
+<p><strong>Answer:</strong> 384 dimensions</p>
+<p>Each text becomes a point in a 384-dimensional space.</p>
+<p><strong>Q8.</strong> Why does semantic search beat keyword search for 'money back' vs 'refund'?</p>
+<p><strong>Answer:</strong> Keyword search can't match words with no overlap, while embeddings capture meaning</p>
+<p>The individual numbers are meaningless; relative position matters.</p>
+<h3 id="03-chunking-strategies"><a href="../level-1/03-chunking/">03 · Chunking Strategies</a><a class="headerlink" href="#03-chunking-strategies" title="Permanent link">&para;</a></h3>
+<p><strong>Q9.</strong> Why does chunking matter so much?</p>
+<p><strong>Answer:</strong> Retrieval returns chunks, the LLM reads chunks and evaluation scores chunks, so wrong chunks can't be fixed downstream</p>
+<p>It's the least glamorous and most consequential decision.</p>
+<p><strong>Q10.</strong> What two forces pull chunk size in opposite directions?</p>
+<p><strong>Answer:</strong> Embedding models truncate long input, while the LLM needs enough context in each chunk</p>
+<p>Chunks must be small enough for one coherent topic and large enough to be useful evidence.</p>
+<p><strong>Q11.</strong> Why use overlap in fixed-size chunking?</p>
+<p><strong>Answer:</strong> A fixed slicer will cut ideas in half; overlap ensures at least one chunk holds the whole thought</p>
+<p>Typical overlap is 10–20%, at the cost of near-duplicate chunks.</p>
+<p><strong>Q12.</strong> For 2000 'A' characters with chunk_size 800 and overlap 150, what are the chunk lengths?</p>
+<p><strong>Answer:</strong> 800, 800, 700, 50</p>
+<p>The start advances by chunk_size − overlap = 650: chunks begin at 0, 650, 1300 and 1950, so the lengths are 800, 800, 700 and 50. (The lesson's printed output shows 800 for the third chunk, which is a typo.)</p>
+<h3 id="04-vector-stores-chromadb"><a href="../level-1/04-vector-stores/">04 · Vector Stores (ChromaDB)</a><a class="headerlink" href="#04-vector-stores-chromadb" title="Permanent link">&para;</a></h3>
+<p><strong>Q13.</strong> What are a vector database's four jobs?</p>
+<p><strong>Answer:</strong> Store, index, query and filter</p>
+<p>Records are (id, vector, text, metadata).</p>
+<p><strong>Q14.</strong> Why index vectors with ANN structures such as HNSW?</p>
+<p><strong>Answer:</strong> To find nearest neighbors without comparing against every vector, with near-perfect results in a fraction of the time</p>
+<p>It's approximate nearest-neighbor search.</p>
+<p><strong>Q15.</strong> What does metadata filtering add?</p>
+<p><strong>Answer:</strong> Restricting search to records whose metadata matches, such as source == 'policy.md', which pure vector math can't do</p>
+<p>Filtering complements similarity.</p>
+<p><strong>Q16.</strong> What is the same-model rule for a collection?</p>
+<p><strong>Answer:</strong> One collection per corpus per embedding model; queries must use the same model that embedded the documents</p>
+<p>Mixing models breaks similarity.</p>
+<h3 id="05-retrieval"><a href="../level-1/05-retrieval/">05 · Retrieval</a><a class="headerlink" href="#05-retrieval" title="Permanent link">&para;</a></h3>
+<p><strong>Q17.</strong> What does the shared retrieve(question, k, where) function return?</p>
+<p><strong>Answer:</strong> The top-k nearest chunks, optionally restricted by metadata</p>
+<p>This exact shape appears in every RAG system.</p>
+<p><strong>Q18.</strong> What does a similarity threshold (MAX_DISTANCE) do?</p>
+<p><strong>Answer:</strong> Drops weak matches so the system can say it doesn't know instead of using irrelevant chunks</p>
+<p>It's a retrieval confidence threshold.</p>
+<p><strong>Q19.</strong> Why does retrieval matter more than anything after it?</p>
+<p><strong>Answer:</strong> Generation can only be as good as the chunks it receives</p>
+<p>Everything after retrieval depends on what it returns.</p>
+<p><strong>Q20.</strong> What does metadata filtering let you do in a knowledge base?</p>
+<p><strong>Answer:</strong> Search only a source or topic, e.g. topic == 'refunds'</p>
+<p>The corpus tags each chunk with source and topic.</p>
+<h3 id="06-prompt-assembly-generation"><a href="../level-1/06-prompt-assembly-generation/">06 · Prompt Assembly &amp; Generation</a><a class="headerlink" href="#06-prompt-assembly-generation" title="Permanent link">&para;</a></h3>
+<p><strong>Q21.</strong> Why tag each context chunk with a number and source?</p>
+<p><strong>Answer:</strong> The tags make citations like [1] possible</p>
+<p>build_context formats '[i] (source: ...)'.</p>
+<p><strong>Q22.</strong> Why does the prompt say to use ONLY the provided context?</p>
+<p><strong>Answer:</strong> It's the grounding instruction separating RAG from the model freestyling; otherwise it blends retrieved facts with guesses</p>
+<p>Without it you can't tell facts from guesses.</p>
+<p><strong>Q23.</strong> What should the model do if the context lacks the answer?</p>
+<p><strong>Answer:</strong> Say exactly 'I don't know based on the available documents.' and not guess</p>
+<p>An honest don't-know path is part of the design.</p>
+<p><strong>Q24.</strong> Which piece is the only paid/networked part of the pipeline?</p>
+<p><strong>Answer:</strong> The generation call to the Anthropic API</p>
+<p>The pattern is the same for any chat-completions API.</p>
+<h3 id="07-a-minimal-end-to-end-pipeline"><a href="../level-1/07-minimal-pipeline/">07 · A Minimal End-to-End Pipeline</a><a class="headerlink" href="#07-a-minimal-end-to-end-pipeline" title="Permanent link">&para;</a></h3>
+<p><strong>Q25.</strong> What stages does the minimal rag.py pipeline contain?</p>
+<p><strong>Answer:</strong> Ingest → chunk → embed → store → retrieve → generate</p>
+<p>It's about 100 lines with no framework.</p>
+<p><strong>Q26.</strong> What does the persistent ChromaDB path give you?</p>
+<p><strong>Answer:</strong> The index survives between runs, so you ingest once and ask many times</p>
+<p>The script has 'ingest' and 'ask' commands.</p>
+<p><strong>Q27.</strong> How does chunk_text pack content?</p>
+<p><strong>Answer:</strong> Paragraphs (falling back to sentences) into chunks of at most max_chars</p>
+<p>It avoids cutting mid-idea.</p>
+<p><strong>Q28.</strong> What is the pipeline the skeleton for?</p>
+<p><strong>Answer:</strong> The capstone project in lesson 10</p>
+<p>The capstone grows from it.</p>
+<h3 id="08-evaluating-rag"><a href="../level-1/08-evaluating-rag/">08 · Evaluating RAG</a><a class="headerlink" href="#08-evaluating-rag" title="Permanent link">&para;</a></h3>
+<p><strong>Q29.</strong> Why is RAG evaluation hard?</p>
+<p><strong>Answer:</strong> Two coupled stages (retrieval and generation), no single right answer, and small samples mislead</p>
+<p>Measure the stages separately.</p>
+<p><strong>Q30.</strong> What is in a golden question set?</p>
+<p><strong>Answer:</strong> Questions with expected answers and known relevant chunk ids, including deliberate unanswerable questions</p>
+<p>A pipeline that never says 'I don't know' fails the unanswerable ones.</p>
+<p><strong>Q31.</strong> Why include unanswerable questions on purpose?</p>
+<p><strong>Answer:</strong> To catch pipelines that never admit they don't know</p>
+<p>Those expected answers are 'I don't know based on the available documents.'</p>
+<p><strong>Q32.</strong> How many questions should you start with?</p>
+<p><strong>Answer:</strong> 20+, growing over time as users hit failures</p>
+<p>With 5 questions one flake swings your score by 20 points.</p>
+<h3 id="09-common-failure-modes"><a href="../level-1/09-failure-modes/">09 · Common Failure Modes</a><a class="headerlink" href="#09-common-failure-modes" title="Permanent link">&para;</a></h3>
+<p><strong>Q33.</strong> How do you confirm a bad-chunking failure?</p>
+<p><strong>Answer:</strong> Print the retrieved chunks; if boundaries sever sentences, tables or Q→A pairs, that's it</p>
+<p>Fix with structure-aware chunking, more overlap and one topic per chunk.</p>
+<p><strong>Q34.</strong> Why do embeddings miss exact identifiers like ERR_4012 or part numbers?</p>
+<p><strong>Answer:</strong> Embeddings treat exact tokens as noise; add keyword/BM25 search alongside dense retrieval (hybrid)</p>
+<p>Hybrid search exists because embeddings whiff on exact tokens.</p>
+<p><strong>Q35.</strong> A user says 'can't log in' but docs say 'authentication failure'. What kind of retrieval miss is this?</p>
+<p><strong>Answer:</strong> A vocabulary mismatch the embedding model can't bridge</p>
+<p>Check whether the right chunk is at rank 7 (ranking) or rank 400 (vocabulary).</p>
+<p><strong>Q36.</strong> What does context overflow look like?</p>
+<p><strong>Answer:</strong> API errors about maximum context length, or costs and latency creeping up as k is raised</p>
+<p>Top-k chunks, scaffolding and history exceed the window or waste money.</p>
+<h3 id="10-project-docs-qa-bot"><a href="../level-1/10-capstone-docs-qa-bot/">10 · Project — Docs Q&amp;A Bot</a><a class="headerlink" href="#10-project-docs-qa-bot" title="Permanent link">&para;</a></h3>
+<p><strong>Q37.</strong> What does the capstone Docs Q&amp;A bot do?</p>
+<p><strong>Answer:</strong> Ingests docs, answers in a CLI loop with cited sources, refuses ungrounded questions, and ships a golden-set eval</p>
+<p>It's a tiny multi-file project.</p>
+<p><strong>Q38.</strong> Why put every tunable in config.py?</p>
+<p><strong>Answer:</strong> Evaluation tells you how to set them, and they live in one place</p>
+<p>For example CHUNK_MAX_CHARS, TOP_K and MAX_DISTANCE.</p>
+<p><strong>Q39.</strong> What does MAX_DISTANCE = 0.8 do in the bot?</p>
+<p><strong>Answer:</strong> Drops hits above that cosine distance so weak matches aren't used</p>
+<p>It supports the honest don't-know path.</p>
+<p><strong>Q40.</strong> What does evaluate.py measure?</p>
+<p><strong>Answer:</strong> Hit rate, MRR and an LLM-judge score on the golden set</p>
+<p>It lets you keep proving it works as you change things.</p>
+<h2 id="level-2-intermediate">Level 2 · Intermediate<a class="headerlink" href="#level-2-intermediate" title="Permanent link">&para;</a></h2>
+<h3 id="01-keyword-search-bm25"><a href="../level-2/01-bm25-keyword-search/">01 · Keyword Search &amp; BM25</a><a class="headerlink" href="#01-keyword-search-bm25" title="Permanent link">&para;</a></h3>
+<p><strong>Q41.</strong> What blind spot do embeddings have that BM25 covers?</p>
+<p><strong>Answer:</strong> Exact tokens such as error codes, order ids and rare product names</p>
+<p>A vector store returns something semantically adjacent but wrong.</p>
+<p><strong>Q42.</strong> Which three ideas does BM25 formalize?</p>
+<p><strong>Answer:</strong> Term frequency (diminishing returns), inverse document frequency (rare terms matter more) and length normalization</p>
+<p>A term in a 10-word doc is stronger evidence than in a 1000-word doc.</p>
+<p><strong>Q43.</strong> Why does matching 'E4022' tell you more than matching 'the'?</p>
+<p><strong>Answer:</strong> Rare words carry the signal (high IDF)</p>
+<p>Common words appear everywhere.</p>
+<p><strong>Q44.</strong> Why is sparse retrieval cheap?</p>
+<p><strong>Answer:</strong> It needs no embedding model, API key or GPU</p>
+<p>The lesson ran everything with rank-bm25 and the standard library.</p>
+<h3 id="02-hybrid-search-dense-sparse"><a href="../level-2/02-hybrid-search/">02 · Hybrid Search (Dense + Sparse)</a><a class="headerlink" href="#02-hybrid-search-dense-sparse" title="Permanent link">&para;</a></h3>
+<p><strong>Q45.</strong> Why run both dense and sparse retrieval?</p>
+<p><strong>Answer:</strong> They have opposite blind spots: BM25 misses 'undo a bad release' while embeddings find the rollback doc, and embeddings miss exact tokens</p>
+<p>Hybrid search merges their results.</p>
+<p><strong>Q46.</strong> Why can't you just add BM25 and dense scores?</p>
+<p><strong>Answer:</strong> They live on incompatible scales (BM25 up to ~7.5, cosine up to ~0.63)</p>
+<p>Fusion needs a scale-free method such as rank-based merging.</p>
+<p><strong>Q47.</strong> Why does the key design point make fusion a ten-line function?</p>
+<p><strong>Answer:</strong> Both retrievers expose the same interface: a query in, an ordered list of document indices out</p>
+<p>No refactor needed.</p>
+<p><strong>Q48.</strong> What was the 'dense' channel in that lesson's examples, honestly?</p>
+<p><strong>Answer:</strong> A character n-gram TF-IDF stand-in, still lexical, so it doesn't solve vocabulary mismatch</p>
+<p>The lesson states what ran and what didn't.</p>
+<h3 id="03-reranking-with-cross-encoders"><a href="../level-2/03-reranking/">03 · Reranking with Cross-Encoders</a><a class="headerlink" href="#03-reranking-with-cross-encoders" title="Permanent link">&para;</a></h3>
+<p><strong>Q49.</strong> What is the two-stage pipeline in reranking?</p>
+<p><strong>Answer:</strong> Cast a wide, cheap net (e.g. 50 candidates), then re-score only the survivors with a cross-encoder</p>
+<p>It routinely moves the right document from rank 7 to rank 1 without touching the index.</p>
+<p><strong>Q50.</strong> How does a cross-encoder differ from a bi-encoder?</p>
+<p><strong>Answer:</strong> It feeds the query and document through the model together so every query token attends to every document token</p>
+<p>A bi-encoder embeds the query and documents separately.</p>
+<p><strong>Q51.</strong> Why can't you cross-encode a 100,000-document corpus at query time?</p>
+<p><strong>Answer:</strong> It needs a full forward pass per (query, document) pair, which is impossible at that scale</p>
+<p>So retrieve about 50 first, then rerank those.</p>
+<p><strong>Q52.</strong> What did the lesson say honestly about its reranker?</p>
+<p><strong>Answer:</strong> It used a pair-scoring stand-in; pipeline shape and rank movement are real but quality and cost numbers aren't representative</p>
+<p>Real cross-encoders need torch and sentence-transformers.</p>
+<h3 id="04-query-rewriting-expansion"><a href="../level-2/04-query-rewriting/">04 · Query Rewriting &amp; Expansion</a><a class="headerlink" href="#04-query-rewriting-expansion" title="Permanent link">&para;</a></h3>
+<p><strong>Q53.</strong> Why is the query often the weakest link?</p>
+<p><strong>Answer:</strong> Users type short, typo'd or context-dependent queries while documents are careful formal prose, a translation problem</p>
+<p>Rewriting turns a bad query into one or more good ones.</p>
+<p><strong>Q54.</strong> What is multi-query retrieval?</p>
+<p><strong>Answer:</strong> Generate several phrasings and fuse their rankings (e.g. with RRF)</p>
+<p>The variants were hard-coded in the lesson; production uses an LLM.</p>
+<p><strong>Q55.</strong> Why does the rank function filter s[i] &gt; 0?</p>
+<p><strong>Answer:</strong> A 0.0 score is not a hit; otherwise it returns corpus-order documents that fusion can't distinguish from real hits</p>
+<p>All-zero rankings poison the fusion.</p>
+<p><strong>Q56.</strong> What does an empty BM25 result for 'undo a bad release' show?</p>
+<p><strong>Answer:</strong> The query shares no vocabulary with the rollback runbook</p>
+<p>The answer exists; the words don't overlap.</p>
+<h3 id="05-metadata-design-filtered-retrieval"><a href="../level-2/05-metadata-filtering/">05 · Metadata Design &amp; Filtered Retrieval</a><a class="headerlink" href="#05-metadata-design-filtered-retrieval" title="Permanent link">&para;</a></h3>
+<p><strong>Q57.</strong> Why does semantic similarity not replace metadata filters?</p>
+<p><strong>Answer:</strong> It can't express hard constraints like 'only documents this user may see' or 'only the current policy version'</p>
+<p>These are correctness and security boundaries.</p>
+<p><strong>Q58.</strong> Why capture metadata at ingestion time?</p>
+<p><strong>Answer:</strong> Metadata you didn't capture doesn't exist; re-indexing to add a field is expensive and sometimes impossible</p>
+<p>Ask what someone will want to filter on in six months.</p>
+<p><strong>Q59.</strong> Why store dates as numbers rather than strings?</p>
+<p><strong>Answer:</strong> Numbers support $gte and ordering; strings only support equality and mislead about ordering</p>
+<p>year: 2025 supports range filters.</p>
+<p><strong>Q60.</strong> Why capture security fields like tenant_id on day one?</p>
+<p><strong>Answer:</strong> Retrofitting after launch is a migration and an incident report</p>
+<p>In multi-tenant systems metadata is a security boundary.</p>
+<h3 id="06-structured-table-rag"><a href="../level-2/06-structured-table-rag/">06 · Structured &amp; Table RAG</a><a class="headerlink" href="#06-structured-table-rag" title="Permanent link">&para;</a></h3>
+<p><strong>Q61.</strong> Why do tables break prose-style RAG?</p>
+<p><strong>Answer:</strong> A cell like 99 is meaningless without its column header and row label, and chunking scatters that context</p>
+<p>Chunks that each look fine say nothing.</p>
+<p><strong>Q62.</strong> Why can't retrieval answer 'how many seats total?'</p>
+<p><strong>Answer:</strong> Those are aggregations; retrieval cannot sum, so no top-k tuning computes SUM(seats)</p>
+<p>Use text-to-SQL or code for aggregation.</p>
+<p><strong>Q63.</strong> What is row-level verbalization?</p>
+<p><strong>Answer:</strong> Turn each row into a self-contained sentence that carries its own headers</p>
+<p>Strategy B in the lesson.</p>
+<p><strong>Q64.</strong> What is the problem with the whole table as one chunk?</p>
+<p><strong>Answer:</strong> Every row retrieves together, the LLM may read the wrong row, and it doesn't scale to large tables</p>
+<p>For example Enterprise's SLA pulled onto the Team plan.</p>
+<h3 id="07-multi-format-ingestion-pdfhtmldocs"><a href="../level-2/07-multi-format-ingestion/">07 · Multi-Format Ingestion (PDF/HTML/Docs)</a><a class="headerlink" href="#07-multi-format-ingestion-pdfhtmldocs" title="Permanent link">&para;</a></h3>
+<p><strong>Q65.</strong> Why is ingestion where most RAG quality is won or lost?</p>
+<p><strong>Answer:</strong> A retriever can't outperform its input; repeated boilerplate pollutes BM25 statistics and drags embeddings together</p>
+<p>Every chunk inheriting a header becomes a high-frequency term.</p>
+<p><strong>Q66.</strong> What does a PDF actually contain?</p>
+<p><strong>Answer:</strong> Instructions for drawing glyphs at coordinates, so reading order and headings are reconstructed heuristically</p>
+<p>The parser may get it wrong.</p>
+<p><strong>Q67.</strong> How does the lesson detect boilerplate without hard-coding it?</p>
+<p><strong>Answer:</strong> Text that repeats across pages (plus patterns like 'Page N of M') is boilerplate</p>
+<p>You don't need to know what it says.</p>
+<p><strong>Q68.</strong> What was not executed in this lesson?</p>
+<p><strong>Answer:</strong> The .docx section (described in prose) and OCR</p>
+<p>python-docx wasn't installed for the run.</p>
+<h3 id="08-rag-with-langchain"><a href="../level-2/08-rag-langchain/">08 · RAG with LangChain</a><a class="headerlink" href="#08-rag-with-langchain" title="Permanent link">&para;</a></h3>
+<p><strong>Q69.</strong> What is LangChain's genuine value for RAG?</p>
+<p><strong>Answer:</strong> Composition: many loaders, splitters, store adapters and retrievers sharing an interface, so swapping a store or adding a reranker is a one-line change</p>
+<p>It wraps what you already built by hand.</p>
+<p><strong>Q70.</strong> Which LangChain abstraction corresponds to your own rrf() fusion?</p>
+<p><strong>Answer:</strong> EnsembleRetriever (weighted RRF over N retrievers)</p>
+<p>ContextualCompressionRetriever wraps a cross-encoder reranker.</p>
+<p><strong>Q71.</strong> Why does the lesson warn that none of its code was executed?</p>
+<p><strong>Answer:</strong> The packages weren't installed, so there are no verified outputs; treat it as a map of the API surface</p>
+<p>Check the version's docs before copying.</p>
+<p><strong>Q72.</strong> Why learn the pieces by hand before using a framework?</p>
+<p><strong>Answer:</strong> Frameworks are easier to evaluate, and harder to be fooled by, when you know what they wrap</p>
+<p>The mapping table is the curriculum.</p>
+<h3 id="09-rag-with-llamaindex"><a href="../level-2/09-rag-llamaindex/">09 · RAG with LlamaIndex</a><a class="headerlink" href="#09-rag-with-llamaindex" title="Permanent link">&para;</a></h3>
+<p><strong>Q73.</strong> How does LlamaIndex differ from LangChain?</p>
+<p><strong>Answer:</strong> It is built specifically for connecting LLMs to data, with Index and QueryEngine abstractions and opinions about retrieval</p>
+<p>LangChain gives you a Retriever to compose.</p>
+<p><strong>Q74.</strong> Why is the three-line LlamaIndex version dangerous?</p>
+<p><strong>Answer:</strong> It silently chooses chunk size, embedding model, top_k, prompt and LLM, every knob you should tune</p>
+<p>Use it to check data loads, not to decide whether RAG works for your problem.</p>
+<p><strong>Q75.</strong> What is a LlamaIndex Node?</p>
+<p><strong>Answer:</strong> A chunk plus relationships to its neighbours</p>
+<p>A Document is the source file with metadata.</p>
+<p><strong>Q76.</strong> What does a QueryEngine represent?</p>
+<p><strong>Answer:</strong> The whole pipeline, callable</p>
+<p>It maps to your own answer function.</p>
+<h3 id="10-project-hybrid-search-documentation-assistant"><a href="../level-2/10-project-hybrid-assistant/">10 · Project — Hybrid Search Documentation Assistant</a><a class="headerlink" href="#10-project-hybrid-search-documentation-assistant" title="Permanent link">&para;</a></h3>
+<p><strong>Q77.</strong> What is the skill this project builds?</p>
+<p><strong>Answer:</strong> Proving which techniques earn their keep on your corpus, and deleting those that don't</p>
+<p>In the reference run, two of four configurations bought nothing.</p>
+<p><strong>Q78.</strong> Why does config.py give every technique a feature flag?</p>
+<p><strong>Answer:</strong> You cannot ablate what you cannot switch off</p>
+<p>Each flag is a row in the ablation table.</p>
+<p><strong>Q79.</strong> Which five techniques does the project test?</p>
+<p><strong>Answer:</strong> BM25, hybrid fusion, reranking, query expansion and metadata filtering</p>
+<p>Each costs latency, complexity or money.</p>
+<p><strong>Q80.</strong> How should you read the reference numbers?</p>
+<p><strong>Answer:</strong> They're real numbers from real code but not a claim about production corpora with real embeddings; produce your own table</p>
+<p>The dense channel was a TF-IDF stand-in.</p>
+<h2 id="level-3-advanced">Level 3 · Advanced<a class="headerlink" href="#level-3-advanced" title="Permanent link">&para;</a></h2>
+<h3 id="01-agentic-rag"><a href="../level-3/01-agentic-rag/">01 · Agentic RAG</a><a class="headerlink" href="#01-agentic-rag" title="Permanent link">&para;</a></h3>
+<p><strong>Q81.</strong> What makes RAG 'agentic'?</p>
+<p><strong>Answer:</strong> Retrieval becomes a tool the model can call zero or more times in a loop it steers, deciding whether evidence is enough or to rephrase</p>
+<p>The LLM controls retrieval decisions instead of your pipeline code.</p>
+<p><strong>Q82.</strong> Why does the loop have a Budget capping tool calls?</p>
+<p><strong>Answer:</strong> To stop runaway loops and cost; exceeding it raises an error</p>
+<p>It's the trap the lesson warns about.</p>
+<p><strong>Q83.</strong> What question shapes break single-shot RAG?</p>
+<p><strong>Answer:</strong> Ones needing judgment about retrieval itself: is the evidence enough, should I rephrase, do I need a second different search</p>
+<p>One search can't cover the other half of the question.</p>
+<p><strong>Q84.</strong> Why does the lesson hardcode the model's subqueries?</p>
+<p><strong>Answer:</strong> So the control flow is inspectable; a real agent generates them</p>
+<p>A real system hands the LLM a search tool schema.</p>
+<h3 id="02-multi-hop-retrieval-query-decomposition"><a href="../level-3/02-multi-hop-retrieval/">02 · Multi-Hop Retrieval &amp; Query Decomposition</a><a class="headerlink" href="#02-multi-hop-retrieval-query-decomposition" title="Permanent link">&para;</a></h3>
+<p><strong>Q85.</strong> Why does single-shot retrieval fail on 'Who acquired the company where Acme's founder used to work?'</p>
+<p><strong>Answer:</strong> No chunk holds the whole answer; the facts are in separate chunks that don't share the query's words</p>
+<p>Only the founder chunk overlaps with the query.</p>
+<p><strong>Q86.</strong> What is the decompose-then-chain approach?</p>
+<p><strong>Answer:</strong> Break the question into ordered sub-questions and feed each hop's evidence into the next query</p>
+<p>It lets hop 2 find 'Globex' even though the sub-question doesn't name it.</p>
+<p><strong>Q87.</strong> How many hops does the example need?</p>
+<p><strong>Answer:</strong> Three: founder, previous employer, acquirer</p>
+<p>Jane Rivera → Globex → Initech.</p>
+<p><strong>Q88.</strong> Who acquired Globex in the corpus?</p>
+<p><strong>Answer:</strong> Initech, in 2015 for $400M</p>
+<p>The chain ends at chunk 3.</p>
+<h3 id="03-graphrag-knowledge-graphs"><a href="../level-3/03-graphrag/">03 · GraphRAG &amp; Knowledge Graphs</a><a class="headerlink" href="#03-graphrag-knowledge-graphs" title="Permanent link">&para;</a></h3>
+<p><strong>Q89.</strong> What does GraphRAG retrieve by?</p>
+<p><strong>Answer:</strong> Traversal of an explicit entity-relation graph instead of text similarity</p>
+<p>It answers 'how are these entities connected?'</p>
+<p><strong>Q90.</strong> Why does a vector retriever fail to surface Initech for the query 'Jane Rivera'?</p>
+<p><strong>Answer:</strong> Nothing about Initech is semantically close to her name; the connection is structural</p>
+<p>Two hops in the graph reach Initech.</p>
+<p><strong>Q91.</strong> What do community summaries add in Microsoft-style GraphRAG?</p>
+<p><strong>Answer:</strong> The graph is clustered into communities and pre-summarized, so a query can retrieve one dense summary instead of walking edges</p>
+<p>It avoids edge walks at query time.</p>
+<p><strong>Q92.</strong> What is networkx standing in for?</p>
+<p><strong>Answer:</strong> A graph store such as Neo4j in production</p>
+<p>The traversal logic is the same.</p>
+<h3 id="04-production-vector-databases"><a href="../level-3/04-production-vector-dbs/">04 · Production Vector Databases</a><a class="headerlink" href="#04-production-vector-databases" title="Permanent link">&para;</a></h3>
+<p><strong>Q93.</strong> What are the two index families underneath production vector databases?</p>
+<p><strong>Answer:</strong> HNSW (multi-layer neighbor graph) and IVF (clustered buckets)</p>
+<p>HNSW has logarithmic query time; IVF is cheaper to build/update at some recall cost.</p>
+<p><strong>Q94.</strong> How much memory do 10M float32 vectors of 768 dimensions need as a flat index?</p>
+<p><strong>Answer:</strong> About 30.7 GB</p>
+<p>10,000,000 × 768 × 4 bytes.</p>
+<p><strong>Q95.</strong> Which databases does the lesson compare?</p>
+<p><strong>Answer:</strong> pgvector, Qdrant, Weaviate and Pinecone</p>
+<p>Chroma is local, single-process and embedded.</p>
+<p><strong>Q96.</strong> Why was this lesson manual review rather than runnable code?</p>
+<p><strong>Answer:</strong> No local service for these databases was available in the sandbox; the memory math is real arithmetic</p>
+<p>The lesson says so plainly.</p>
+<h3 id="05-embedding-model-selection-fine-tuning"><a href="../level-3/05-embedding-selection/">05 · Embedding Model Selection &amp; Fine-Tuning</a><a class="headerlink" href="#05-embedding-model-selection-fine-tuning" title="Permanent link">&para;</a></h3>
+<p><strong>Q97.</strong> Why does MTEB leaderboard rank matter least for your corpus?</p>
+<p><strong>Answer:</strong> It's an average over 56 datasets in domains none of which is yours, so a top model can underperform on your tickets, contracts or code</p>
+<p>Benchmark on your own data.</p>
+<p><strong>Q98.</strong> How do you benchmark an embedding model on your data?</p>
+<p><strong>Answer:</strong> Make an eval set of (query, answering doc) pairs and measure top-1 (or recall@k) accuracy</p>
+<p>The lesson's TF-IDF baseline scored 1/3.</p>
+<p><strong>Q99.</strong> Why did TF-IDF score only 0.33 on the eval set?</p>
+<p><strong>Answer:</strong> It's lexical: 'refund' and 'money-back' don't overlap, and shared words like 'api' mislead</p>
+<p>It's bad in a very informative way for this lesson.</p>
+<p><strong>Q100.</strong> What does the lesson weigh besides accuracy?</p>
+<p><strong>Answer:</strong> The dimension/cost trade-off and when fine-tuning beats picking another off-the-shelf model</p>
+<p>Higher dimensions cost more storage and compute.</p>
+<h3 id="06-evaluation-at-scale"><a href="../level-3/06-eval-at-scale/">06 · Evaluation at Scale</a><a class="headerlink" href="#06-evaluation-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q101.</strong> What does context precision measure?</p>
+<p><strong>Answer:</strong> Of what you retrieved, how much was relevant</p>
+<p>Recall is the reverse.</p>
+<p><strong>Q102.</strong> retrieved = [0, 3, 4] and relevant = {0, 3}. What are precision and recall?</p>
+<p><strong>Answer:</strong> About 0.667 and 1.0</p>
+<p>Two of three retrieved are relevant; both relevant docs were found.</p>
+<p><strong>Q103.</strong> Why track precision alongside recall?</p>
+<p><strong>Answer:</strong> A pipeline can hit 100% recall by over-retrieving</p>
+<p>Full recall with 67% precision is a normal pair of scores.</p>
+<p><strong>Q104.</strong> What does faithfulness measure?</p>
+<p><strong>Answer:</strong> Of the answer's claims, how many are supported by the context</p>
+<p>It catches hallucination.</p>
+<h3 id="07-streaming-caching-latency"><a href="../level-3/07-streaming-caching-latency/">07 · Streaming, Caching &amp; Latency</a><a class="headerlink" href="#07-streaming-caching-latency" title="Permanent link">&para;</a></h3>
+<p><strong>Q105.</strong> Which step dominates a synchronous RAG request's latency?</p>
+<p><strong>Answer:</strong> LLM generation (1–5+ seconds)</p>
+<p>Steps 1–3 are usually 50–300ms combined.</p>
+<p><strong>Q106.</strong> Which lever targets which step?</p>
+<p><strong>Answer:</strong> Streaming targets generation; caching targets embedding/search/rerank; parallelism targets sharded vector search</p>
+<p>Each attacks a different part of the budget.</p>
+<p><strong>Q107.</strong> Why does a production cache key on normalized or similarity matches?</p>
+<p><strong>Answer:</strong> Near-duplicate queries like 'what's your refund policy' vs 'what is the refund policy' would miss an exact-hash cache</p>
+<p>The lesson's exact-hash cache missed them.</p>
+<p><strong>Q108.</strong> What did caching achieve in the measured example?</p>
+<p><strong>Answer:</strong> 5 calls dropped from 57.7 ms to 10.2 ms, more than 5x faster</p>
+<p>One miss and four hits.</p>
+<h3 id="08-incremental-indexing-freshness"><a href="../level-3/08-incremental-indexing/">08 · Incremental Indexing &amp; Freshness</a><a class="headerlink" href="#08-incremental-indexing-freshness" title="Permanent link">&para;</a></h3>
+<p><strong>Q109.</strong> What does content hashing tell you?</p>
+<p><strong>Answer:</strong> Which documents actually changed, so unchanged ones skip re-embedding, without trusting source timestamps</p>
+<p>Timestamps are frequently wrong or absent.</p>
+<p><strong>Q110.</strong> What does upsert return for identical content re-synced?</p>
+<p><strong>Answer:</strong> 'unchanged', skipping the embedding call</p>
+<p>Different content returns 'reindexed' with version + 1.</p>
+<p><strong>Q111.</strong> What is 'the part teams forget' in incremental indexing?</p>
+<p><strong>Answer:</strong> Deletes: otherwise a deleted refund policy keeps being retrieved forever</p>
+<p>Reconcile against the authoritative source set.</p>
+<p><strong>Q112.</strong> Why isn't re-embedding the whole corpus on every change acceptable?</p>
+<p><strong>Answer:</strong> A one-line edit shouldn't cost a million embedding calls</p>
+<p>It doesn't scale.</p>
+<h3 id="09-observability-tracing"><a href="../level-3/09-observability/">09 · Observability &amp; Tracing</a><a class="headerlink" href="#09-observability-tracing" title="Permanent link">&para;</a></h3>
+<p><strong>Q113.</strong> Why record spans per stage rather than one log line per request?</p>
+<p><strong>Answer:</strong> Structured per-stage records answer 'what happened' without guessing which of five stages failed</p>
+<p>You can query fields like retrieve.top_k scores.</p>
+<p><strong>Q114.</strong> What does a Span hold?</p>
+<p><strong>Answer:</strong> A name, start and end time and arbitrary attributes</p>
+<p>It's the unit used by OpenTelemetry, LangSmith and Phoenix.</p>
+<p><strong>Q115.</strong> In the example, which stage dominated latency?</p>
+<p><strong>Answer:</strong> generate (about 34.5 of 69.9 ms)</p>
+<p>Tracing shows which stage dominates and what the retrieval scores were.</p>
+<p><strong>Q116.</strong> What does the module add besides tracing?</p>
+<p><strong>Answer:</strong> A drift-detection check</p>
+<p>It also helps debug reports that 'the answer was wrong'.</p>
+<h3 id="10-project-agentic-research-assistant"><a href="../level-3/10-project-agentic-assistant/">10 · Project — Agentic Research Assistant</a><a class="headerlink" href="#10-project-agentic-research-assistant" title="Permanent link">&para;</a></h3>
+<p><strong>Q117.</strong> Which four modules does the agentic research assistant combine?</p>
+<p><strong>Answer:</strong> Agentic tool-calling with a budget, multi-hop decomposition, a query cache and a trace log per stage</p>
+<p>It answers multi-fact questions within a call budget.</p>
+<p><strong>Q118.</strong> Why does extract_entity take the last capitalized token?</p>
+<p><strong>Answer:</strong> A chunk mentions the already-known entity first, then the new one the next hop needs</p>
+<p>Jane Rivera comes before Globex in the chunk.</p>
+<p><strong>Q119.</strong> What does the cache avoid?</p>
+<p><strong>Answer:</strong> Redundant work on repeat queries</p>
+<p>cached_search returns a hit flag.</p>
+<p><strong>Q120.</strong> What does the trace leave behind?</p>
+<p><strong>Answer:</strong> An inspectable record of every decision</p>
+<p>It supports debugging.</p>
+<h2 id="level-4-master">Level 4 · Master<a class="headerlink" href="#level-4-master" title="Permanent link">&para;</a></h2>
+<h3 id="01-enterprise-rag-architecture-patterns"><a href="../level-4/01-enterprise-architecture/">01 · Enterprise RAG Architecture Patterns</a><a class="headerlink" href="#01-enterprise-rag-architecture-patterns" title="Permanent link">&para;</a></h3>
+<p><strong>Q121.</strong> What is the risk of a single shared index with per-tenant metadata filters?</p>
+<p><strong>Answer:</strong> A missing or wrong filter leaks data across tenants</p>
+<p>It is the cheapest to operate and the riskiest.</p>
+<p><strong>Q122.</strong> What does index-per-tenant guarantee?</p>
+<p><strong>Answer:</strong> Structural isolation: no code path touches two tenants' data, at the cost of N indexes to run</p>
+<p>Small tenants pay disproportionate fixed overhead.</p>
+<p><strong>Q123.</strong> Why do enterprises grow into hub-and-spoke?</p>
+<p><strong>Answer:</strong> A central retrieval service handles auth, routing, observability and policies once, scaling the platform team's effort sub-linearly</p>
+<p>Teams own their data and ingestion.</p>
+<p><strong>Q124.</strong> Why is much of this module deliberately manual review?</p>
+<p><strong>Answer:</strong> 'Which architecture fits your org' can't be validated by a toy script</p>
+<p>Runnable code appears only for genuinely code-level decisions.</p>
+<h3 id="02-multi-tenant-rag-access-control"><a href="../level-4/02-multi-tenant-access-control/">02 · Multi-Tenant RAG &amp; Access Control</a><a class="headerlink" href="#02-multi-tenant-rag-access-control" title="Permanent link">&para;</a></h3>
+<p><strong>Q125.</strong> What is the vulnerable pattern?</p>
+<p><strong>Answer:</strong> Filter after ranking: rank across all tenants, then discard non-matches</p>
+<p>The order of two operations is the whole security model.</p>
+<p><strong>Q126.</strong> What happens in the lesson when tenant acme queries Globex's wording with a post-filter?</p>
+<p><strong>Answer:</strong> It returns [] (denies acme their own data) because the top global hit belonged to Globex</p>
+<p>A post-filter can deny a tenant their own data or leak another's.</p>
+<p><strong>Q127.</strong> What does the safe pre-filter do?</p>
+<p><strong>Answer:</strong> Restrict candidates to the tenant's documents first, then rank only within them</p>
+<p>It returned acme's Q3 revenue.</p>
+<p><strong>Q128.</strong> Why is this bug a data breach rather than a performance detail?</p>
+<p><strong>Answer:</strong> Under the right query the system can hand a tenant someone else's data</p>
+<p>Isolation must be enforced before ranking.</p>
+<h3 id="03-cost-optimization"><a href="../level-4/03-cost-optimization/">03 · Cost Optimization</a><a class="headerlink" href="#03-cost-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>Q129.</strong> In the cost model, where does almost all the money go?</p>
+<p><strong>Answer:</strong> The LLM call: prompt input and generated output tokens (embedding cost was $0.40 of $8,310)</p>
+<p>Teams instinctively optimize embeddings and retrieval speed, but the money is in generation.</p>
+<p><strong>Q130.</strong> For 1M queries, ~1,520 input tokens and 250 output tokens each, what is the approximate total?</p>
+<p><strong>Answer:</strong> About $8,310</p>
+<p>LLM input $4,560 plus output $3,750 plus tiny embedding cost.</p>
+<p><strong>Q131.</strong> What does a 30% cache hit rate save in the example?</p>
+<p><strong>Answer:</strong> About $2,493 (total drops to $5,817)</p>
+<p>Cached queries skip a fresh LLM call.</p>
+<p><strong>Q132.</strong> If the goal is specifically cost, where should you look first?</p>
+<p><strong>Answer:</strong> The LLM call: context tokens and output length</p>
+<p>Retrieval optimization still matters for latency and quality.</p>
+<h3 id="04-latency-optimization-at-scale"><a href="../level-4/04-latency-optimization/">04 · Latency Optimization at Scale</a><a class="headerlink" href="#04-latency-optimization-at-scale" title="Permanent link">&para;</a></h3>
+<p><strong>Q133.</strong> Why did parallelizing three retrieval shards save only 78 ms?</p>
+<p><strong>Answer:</strong> Generation (1800 ms) dwarfs everything else; optimize the stage that dominates, not the easiest to parallelize</p>
+<p>Sequential 1963 ms vs parallel 1885 ms.</p>
+<p><strong>Q134.</strong> What does a 1% straggler on one of three shards do to p99?</p>
+<p><strong>Answer:</strong> It turns p99 into about 7x p50 (46.8 ms vs 331.3 ms)</p>
+<p>Parallel retrieval waits for the slowest shard.</p>
+<p><strong>Q135.</strong> Why is p99, not the average, the number that matters?</p>
+<p><strong>Answer:</strong> Averages hide the slow requests that generate a steady stream of complaints</p>
+<p>Fast on average still has slow-request complaints.</p>
+<p><strong>Q136.</strong> How can you reduce perceived latency even if total time doesn't change?</p>
+<p><strong>Answer:</strong> Stream tokens</p>
+<p>Streaming makes the first words appear quickly.</p>
+<h3 id="05-rag-security"><a href="../level-4/05-rag-security/">05 · RAG Security</a><a class="headerlink" href="#05-rag-security" title="Permanent link">&para;</a></h3>
+<p><strong>Q137.</strong> What is indirect prompt injection in RAG?</p>
+<p><strong>Answer:</strong> A malicious instruction planted in a document that later gets retrieved into the LLM's context, where the model may follow it</p>
+<p>The attack doesn't need to come from the user's message.</p>
+<p><strong>Q138.</strong> Why do RAG systems have a larger attack surface than a plain chatbot?</p>
+<p><strong>Answer:</strong> Any ingestion source (tickets, scraped pages, uploads, emails) is a potential injection vector</p>
+<p>Ingestion pipelines are built for correctness and freshness, not adversarial content.</p>
+<p><strong>Q139.</strong> What is the security model for retrieved context?</p>
+<p><strong>Answer:</strong> Untrusted input, not just data</p>
+<p>Treat it that way throughout.</p>
+<p><strong>Q140.</strong> What is a first line of defense shown in the lesson?</p>
+<p><strong>Answer:</strong> Pattern-based flagging of phrases like 'ignore previous instructions' or 'api key'</p>
+<p>It is only a first line, not a complete defense.</p>
+<h3 id="06-governance-compliance-auditability"><a href="../level-4/06-governance-compliance/">06 · Governance, Compliance &amp; Auditability</a><a class="headerlink" href="#06-governance-compliance-auditability" title="Permanent link">&para;</a></h3>
+<p><strong>Q141.</strong> What must enterprise RAG answer in an audit?</p>
+<p><strong>Answer:</strong> Who asked what, what data informed the answer, who could have seen it, and how long the record is kept</p>
+<p>'It worked in testing' isn't a defense.</p>
+<p><strong>Q142.</strong> Why log query, retrieval and generation as separate entries?</p>
+<p><strong>Answer:</strong> Each is independently attributable, so an auditor can see which document informed which answer</p>
+<p>A single combined line loses that detail.</p>
+<p><strong>Q143.</strong> What does the entry hash provide?</p>
+<p><strong>Answer:</strong> A cheap way to detect that an entry was altered after the fact (not a secure chain by itself)</p>
+<p>The lesson is explicit about its limits.</p>
+<p><strong>Q144.</strong> What is data lineage?</p>
+<p><strong>Answer:</strong> Mapping an answer back to the source documents and their metadata that informed it</p>
+<p>For example source, classification and ingestion date.</p>
+<h3 id="07-continuous-evaluation-feedback-loops"><a href="../level-4/07-continuous-evaluation/">07 · Continuous Evaluation &amp; Feedback Loops</a><a class="headerlink" href="#07-continuous-evaluation-feedback-loops" title="Permanent link">&para;</a></h3>
+<p><strong>Q145.</strong> What does continuous evaluation catch that a CI regression suite doesn't?</p>
+<p><strong>Answer:</strong> Quality drift from a shifting corpus or user population, or a provider silently updating a model, none of which show up as a code diff</p>
+<p>It uses production-traffic evaluation and feedback loops.</p>
+<p><strong>Q146.</strong> In the example, thumbs-up rates were 0.86, 0.845 and 0.65 across three weeks. Which drop is real?</p>
+<p><strong>Answer:</strong> Week 3's drop to 0.65, an injected regression; the week 1 vs 2 gap is sampling noise</p>
+<p>A 10-point threshold stays quiet on noise and fires on the real drop.</p>
+<p><strong>Q147.</strong> What happens if the regression threshold is too tight or too loose?</p>
+<p><strong>Answer:</strong> Too tight false-alarms on normal variance; too loose lets real regressions slip through for weeks</p>
+<p>The right threshold depends on feedback volume.</p>
+<p><strong>Q148.</strong> How does higher traffic volume help?</p>
+<p><strong>Answer:</strong> It lets you tighten the threshold and catch smaller regressions faster</p>
+<p>This is a statistics problem as much as an engineering one.</p>
+<h3 id="08-fine-tuning-vs-rag-vs-hybrid"><a href="../level-4/08-finetuning-vs-rag/">08 · Fine-Tuning vs. RAG vs. Hybrid</a><a class="headerlink" href="#08-fine-tuning-vs-rag-vs-hybrid" title="Permanent link">&para;</a></h3>
+<p><strong>Q149.</strong> What does RAG change versus fine-tuning?</p>
+<p><strong>Answer:</strong> RAG changes what the model knows right now by handing it facts at query time; fine-tuning changes what it does by default (tone, format, behavior)</p>
+<p>RAG never changes weights.</p>
+<p><strong>Q150.</strong> What happens if you fine-tune a model to know current pricing?</p>
+<p><strong>Answer:</strong> It's wrong the moment pricing changes, since facts are baked into weights needing a whole new training run</p>
+<p>Use RAG for facts that change.</p>
+<p><strong>Q151.</strong> What happens if you use RAG to make a model sound like your brand voice?</p>
+<p><strong>Answer:</strong> It doesn't, since retrieved documents give facts, not a persistent behavioral pattern</p>
+<p>That's a job for fine-tuning.</p>
+<p><strong>Q152.</strong> In the illustration, how much more does updating one fact cost via fine-tuning than via RAG?</p>
+<p><strong>Answer:</strong> About 12.5 million times, and hours instead of seconds</p>
+<p>RAG: one embedding call for one chunk; fine-tune: a $50, 3-hour run.</p>
+<h3 id="09-scaling-ingestion-pipelines"><a href="../level-4/09-scaling-ingestion/">09 · Scaling Ingestion Pipelines</a><a class="headerlink" href="#09-scaling-ingestion-pipelines" title="Permanent link">&para;</a></h3>
+<p><strong>Q153.</strong> Which two levers dominate scaling ingestion?</p>
+<p><strong>Answer:</strong> Parallelism and batching</p>
+<p>They interact in ways worth measuring.</p>
+<p><strong>Q154.</strong> Why was 10-way parallelism only 3.9x faster?</p>
+<p><strong>Answer:</strong> Thread-scheduling overhead, and past a point you're bound by the embedding provider's rate limit, risking 429s</p>
+<p>I/O-bound calls overlap, but not perfectly.</p>
+<p><strong>Q155.</strong> Why does batching help?</p>
+<p><strong>Answer:</strong> It amortizes the fixed per-request overhead that single-doc calls pay every time</p>
+<p>Total time falls steeply as batch size grows.</p>
+<p><strong>Q156.</strong> What is the risk of an ingestion pipeline that's too slow?</p>
+<p><strong>Answer:</strong> The index stays stale for hours</p>
+<p>At millions of documents it can become the bottleneck.</p>
+<h3 id="10-capstone-enterprise-knowledge-platform"><a href="../level-4/10-capstone-enterprise-platform/">10 · Capstone — Enterprise Knowledge Platform</a><a class="headerlink" href="#10-capstone-enterprise-knowledge-platform" title="Permanent link">&para;</a></h3>
+<p><strong>Q157.</strong> Which four pieces does the capstone combine?</p>
+<p><strong>Answer:</strong> Tenant-scoped retrieval, a tenant-scoped cache, injection detection on retrieved content and an audit log</p>
+<p>It enforces isolation with a real assertion.</p>
+<p><strong>Q158.</strong> How does tenant_scoped_search stay safe?</p>
+<p><strong>Answer:</strong> It filters to the tenant's documents before ranking</p>
+<p>That's module 2's safe pattern.</p>
+<p><strong>Q159.</strong> Why is the cache tenant-scoped?</p>
+<p><strong>Answer:</strong> A shared cache could return one tenant's cached answer to another</p>
+<p>The cache key includes the tenant.</p>
+<p><strong>Q160.</strong> What does the audit log capture?</p>
+<p><strong>Answer:</strong> Every query, retrieval and security event</p>
+<p>It supports compliance review.</p>
+<h2 id="mixed-questions-across-all-levels">Mixed questions across all levels<a class="headerlink" href="#mixed-questions-across-all-levels" title="Permanent link">&para;</a></h2>
+<p><strong>Q161.</strong> What does this print?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>def chunk_fixed(text, size=800, overlap=150):
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    out=[]; start=0
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    while start &lt; len(text):
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        out.append(text[start:start+size]); start += size-overlap
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    return out
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>print([len(c) for c in chunk_fixed('A'*2000)])
+</code></pre></div>
+<p><strong>Answer:</strong> [800, 800, 700, 50]</p>
+<p>Starts advance by 650: chunks begin at 0, 650, 1300 and 1950, with lengths 800, 800, 700 and 50.</p>
+<p><strong>Q162.</strong> What does this print?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>def precision(r, rel): return sum(x in rel for x in r)/len(r)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>def recall(r, rel): return sum(x in r for x in rel)/len(rel)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>r=[0,3,4]; rel={0,3}
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>print(round(precision(r,rel),3), recall(r,rel))
+</code></pre></div>
+<p><strong>Answer:</strong> 0.667 1.0</p>
+<p>Two of three retrieved are relevant; both relevant docs were retrieved.</p>
+<p><strong>Q163.</strong> What does this print?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>def rrf(rankings,k=60):
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    s={}
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    for r in rankings:
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        for i,d in enumerate(r):
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            s[d]=s.get(d,0)+1/(k+i+1)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    return sorted(s,key=lambda d:-s[d])
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>print(rrf([['a','b','c'],['b','a','d']]))
+</code></pre></div>
+<p><strong>Answer:</strong> ['a', 'b', 'c', 'd']</p>
+<p>a and b tie on the fused score; sorted() is stable so a stays first, then c beats d.</p>
+<p><strong>Q164.</strong> What does this print?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>import hashlib
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>h=lambda t: hashlib.sha256(t.encode()).hexdigest()
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>print(h('Refunds within 30 days.')==h('Refunds within 30 days.'), h('30 days')==h('45 days'))
+</code></pre></div>
+<p><strong>Answer:</strong> True False</p>
+<p>Content hashing detects whether a document changed, so unchanged ones skip re-embedding.</p>
+<p><strong>Q165.</strong> What does this print?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docs=[('acme','a rev $2M'),('globex','g rev $5M')]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>q={'g','rev'}
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>post=[d for d in sorted(docs,key=lambda d:-len(q&amp;set(d[1].split())))[:1] if d[0]=='acme']
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>pre=sorted([d for d in docs if d[0]=='acme'],key=lambda d:-len(q&amp;set(d[1].split())))[:1]
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>print(post, pre)
+</code></pre></div>
+<p><strong>Answer:</strong> [] [('acme', 'a rev $2M')]</p>
+<p>Filtering after ranking loses the tenant's own data when another tenant ranks first; filter before ranking.</p>
+<p><strong>Q166.</strong> Users type 'card got rejected' but docs say 'payment declined'. What helps most?</p>
+<p><strong>Answer:</strong> Query rewriting/expansion plus dense (embedding) retrieval</p>
+<p>It's a vocabulary mismatch.</p>
+<p><strong>Q167.</strong> Queries contain error codes like E4022 that embeddings mangle. What do you add?</p>
+<p><strong>Answer:</strong> BM25 keyword search fused with dense retrieval (hybrid)</p>
+<p>Embeddings are poor at exact tokens.</p>
+<p><strong>Q168.</strong> The right chunk is at rank 7 but the LLM sees only the top 3. What is the highest-leverage fix?</p>
+<p><strong>Answer:</strong> Retrieve ~50 then rerank with a cross-encoder</p>
+<p>Reranking can move the right document from rank 7 to rank 1.</p>
+<p><strong>Q169.</strong> A question needs facts chained across three documents. What pattern helps?</p>
+<p><strong>Answer:</strong> Query decomposition with multi-hop retrieval</p>
+<p>Each hop's evidence feeds the next query.</p>
+<p><strong>Q170.</strong> You must answer 'how many seats total across plans?' from a table. What approach fits?</p>
+<p><strong>Answer:</strong> Text-to-SQL or code over structured data; retrieval can't aggregate</p>
+<p>Aggregations need computation, not retrieval.</p>
+<p><strong>Q171.</strong> You want to know if a technique earns its keep. What do you do?</p>
+<p><strong>Answer:</strong> Run an ablation on a golden set with a flag per technique</p>
+<p>Delete techniques that don't help your corpus.</p>
+<p><strong>Q172.</strong> Your RAG answers are fluent but cite nothing relevant. Which metric flags that?</p>
+<p><strong>Answer:</strong> Faithfulness (are claims supported by the context) plus context precision</p>
+<p>Faithfulness catches unsupported claims.</p>
+<p><strong>Q173.</strong> A recall of 100% with low precision tells you what?</p>
+<p><strong>Answer:</strong> You over-retrieve; noise is entering the context</p>
+<p>Track precision alongside recall.</p>
+<p><strong>Q174.</strong> A policy doc is updated nightly. How do you keep the index fresh cheaply?</p>
+<p><strong>Answer:</strong> Content hashing with upserts and deletes, re-embedding only changed documents</p>
+<p>Don't forget deletes, or removed policies keep being retrieved.</p>
+<p><strong>Q175.</strong> A customer-uploaded PDF contains 'IGNORE ALL PREVIOUS INSTRUCTIONS'. What is this?</p>
+<p><strong>Answer:</strong> Indirect prompt injection; treat retrieved context as untrusted input</p>
+<p>Any ingestion source is an injection vector.</p>
+<p><strong>Q176.</strong> A multi-tenant system filters results after ranking. What can go wrong?</p>
+<p><strong>Answer:</strong> It can deny a tenant their own data or leak another's; filter before ranking</p>
+<p>The order of operations is the security model.</p>
+<p><strong>Q177.</strong> Your facts change weekly but you want the model to answer in a fixed brand voice. What do you combine?</p>
+<p><strong>Answer:</strong> RAG for facts plus fine-tuning (or prompting) for voice</p>
+<p>They're complementary, not competitors.</p>
+<p><strong>Q178.</strong> At a million queries a month, where does most of the cost go?</p>
+<p><strong>Answer:</strong> LLM input/output tokens, not embeddings</p>
+<p>Reduce context size, output length or use caching.</p>
+<p><strong>Q179.</strong> Your mean latency is fine but users complain. What should you check?</p>
+<p><strong>Answer:</strong> p99 latency, since stragglers dominate the tail</p>
+<p>A 1% straggler can make p99 7x p50.</p>
+<h2 id="practical-coding-questions">Practical coding questions<a class="headerlink" href="#practical-coding-questions" title="Permanent link">&para;</a></h2>
+<h3 id="chunk-with-overlap">Chunk with overlap<a class="headerlink" href="#chunk-with-overlap" title="Permanent link">&para;</a></h3>
+<p>Write <code>chunk_fixed(text, size, overlap)</code> that slices text into <code>size</code>-character chunks, advancing by <code>size - overlap</code>, and print the chunk lengths for 'A' * 25 with size 10 and overlap 3.</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>def chunk_fixed(text, size, overlap):
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    # your code here
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    pass
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>print([len(c) for c in chunk_fixed("A" * 25, 10, 3)])
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[10, 10, 10, 4]
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+def chunk_fixed(text, size, overlap):
+    out, start = [], 0
+    while start &lt; len(text):
+        out.append(text[start:start + size])
+        start += size - overlap
+    return out
+
+print([len(c) for c in chunk_fixed("A" * 25, 10, 3)])
+```
+
+The start advances by 7 each time: chunks start at 0, 7, 14 and 21.
+</code></pre></div>
+<h3 id="reciprocal-rank-fusion">Reciprocal rank fusion<a class="headerlink" href="#reciprocal-rank-fusion" title="Permanent link">&para;</a></h3>
+<p>Write <code>rrf(rankings, k=60)</code> that fuses ranked lists using score 1/(k + rank) (rank starting at 1) and returns document ids best-first. Print the fusion of [['a','b','c'], ['c','b','d']].</p>
+<p>Starter code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>def rrf(rankings, k=60):
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    # your code here
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    pass
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>print(rrf([["a", "b", "c"], ["c", "b", "d"]]))
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>['c', 'b', 'a', 'd']
+</code></pre></div>
+<p>??? success "Show a solution"</p>
+<div class="highlight"><pre><span></span><code>```
+def rrf(rankings, k=60):
+    scores = {}
+    for ranking in rankings:
+        for rank, doc in enumerate(ranking, start=1):
+            scores[doc] = scores.get(doc, 0) + 1 / (k + rank)
+    return sorted(scores, key=lambda d: -scores[d])
+
+print(rrf([["a", "b", "c"], ["c", "b", "d"]]))
+```
+
+c scores 1/63 + 1/61 (rank 3 in one list, rank 1 in the other), slightly more than b's 1/62 + 1/62, so c comes first, then b, then a (1/61) and d (1/63). RRF rewards documents that rank well in several lists.
+</code></pre></div>
+<hr />
+<p>More free practice: the <a href="../">RAG Pipelines Mastery Path</a> curriculum, the <a href="https://learnmasterypath.com/interview-pack/">Interview Prep Pack</a> and the <a href="https://learnmasterypath.com/resume/">free resume ATS check</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+  
+  <nav class="mp-related" aria-label="Related free courses">
+    <h2>Related free courses</h2>
+    <ul>
+      <li><a href="https://learnmasterypath.com/ai-ml-mastery-path/">AI/ML</a></li><li><a href="https://learnmasterypath.com/llm-dev-mastery-path/">LLM Dev</a></li><li><a href="https://learnmasterypath.com/edge-ai-mastery-path/">Edge AI</a></li><li><a href="https://learnmasterypath.com/claude-training-mastery-path/">Claude Training</a></li><li><a href="https://learnmasterypath.com/ai-tools-mastery-path/">AI Tools</a></li>
+      <li><a href="https://learnmasterypath.com/">All 100+ courses &rarr;</a></li>
+    </ul>
+  </nav>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cheat-sheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Cheat Sheet">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Cheat Sheet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  <div class="mp-foot">
+    <div class="mp-foot-inner">
+      <a class="mp-foot-brand" href="https://learnmasterypath.com/"><svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <circle cx="80" cy="80" r="74" fill="#FAF7EF" stroke="#2FA98D" stroke-width="5"/>
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg><span>Mastery Path</span></a>
+      <nav class="mp-sitelinks" aria-label="Site and legal links">
+        <a href="https://learnmasterypath.com/">All courses</a>
+        <a href="https://learnmasterypath.com/about.html">About</a>
+        <a href="https://learnmasterypath.com/contact.html">Contact</a>
+        <a href="https://learnmasterypath.com/rag-mastery-path/privacy/">Privacy Policy</a>
+        <a href="https://learnmasterypath.com/terms.html">Terms</a>
+        <a href="https://learnmasterypath.com/rag-mastery-path/license/">License</a>
+        <a href="https://learnmasterypath.com/verify/">Verify a certificate</a>
+      </nav>
+    </div>
+    <p class="mp-license-note">
+      © 2026 Vinod Kumar Sigilipelli · Except where otherwise noted, lesson content is licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code examples under the
+      <a href="https://opensource.org/license/mit">MIT License</a>.
+    </p>
+  </div>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.path", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../javascripts/progress-tracker.js"></script>
+      
+        <script src="../javascripts/final-quiz.js"></script>
+      
+    
+  </body>
+</html>
