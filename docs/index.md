@@ -7,8 +7,7 @@ description: "Free course on building RAG pipelines -- embeddings, vector stores
 
 A structured, module-wise training program on **Retrieval-Augmented Generation
 (RAG)** — from your first embedding to production-grade, master-level RAG
-systems — with runnable Python code in every module and a hands-on project at
-the end of each level.
+systems — with runnable Python code in every module and a hands-on project at the end of Levels 1–3 and a capstone at the end of Level 4.
 
 RAG is the technique behind almost every "chat with your documents" product:
 instead of hoping a language model memorized your data, you **retrieve** the
@@ -40,7 +39,7 @@ plain Python — no framework required to understand what's actually happening.
 - Work through each level in order — later modules assume earlier ones.
 - Every topic page has runnable code — copy it into a local `.py` file and run
   it. Code that needs an API key says so explicitly.
-- Each level ends with a project that combines everything learned in that level.
+- Levels 1–3 each end with a project that combines everything learned in that level, and Level 4 ends with the course capstone.
 - Use the search bar (top of the page) to jump straight to a topic.
 
 Start here → [Level 1 · Entry](level-1/index.md)
